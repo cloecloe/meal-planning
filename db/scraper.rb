@@ -1,36 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 require 'nokogiri'
 
-Calendar.destroy_all
-User.destroy_all
-Recipe.destroy_all
-
-puts "starting seed"
-
-calendar = Calendar.create!
-
-default_user = User.create!({
-  first_name: "Micha",
-  last_name: "Smith",
-  email: "micha@email.com",
-  password: "123456",
-  calendar_id: 1
-})
-
-second_user = User.create!({
-  first_name: "Boran",
-  last_name: "Smith",
-  email: "boran@email.com",
-  password: "123456",
-  calendar_id: 1
-})
 
 ingredient = 'cheese'
 url = "https://www.bbcgoodfood.com/search/recipes?q=#{ingredient}"
@@ -61,19 +31,4 @@ html_doc.search('.standard-card-new').first(10).each do |element|
   servings = recipe_doc.search('.icon-with-text__children')[2].text.strip
   photo_url =recipe_doc.search('.image__container picture img')[2]
   photo = photo_url.attribute('src').value
-
-  recipe = Recipe.create!({
-    title: name,
-    ingredients: ingredients,
-    instructions: instructions,
-    preptime: prep_time,
-    serving: servings,
-    user_id: 1
-  })
-  recipe.photo.attach(io: URI.open(photo), filename: 'recipe.jpg', content_type: 'image/jpg')
 end
-
-
-
-
-puts "ending seed"
