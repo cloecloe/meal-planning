@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   def index
+    @recipes = Recipe.where(displayed: true)
   end
 
   def new
