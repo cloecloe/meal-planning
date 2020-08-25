@@ -13,7 +13,7 @@ html_doc.search('.standard-card-new').first(10).each do |element|
   url = element.search('.standard-card-new__thumbnail a')
   query = url.attribute('href').value
 
-  recipe_url = "https://www.bbcgoodfood.com#{query}"
+  recipe_url = "https://www.bbcgoodfood.com/recipes/ham-cheese"
 
   recipe_file = open(recipe_url).read
   recipe_doc = Nokogiri::HTML(recipe_file)
@@ -24,7 +24,7 @@ html_doc.search('.standard-card-new').first(10).each do |element|
   ingredients = recipe_doc.search('.recipe-template__ingredients ul li').map do |ingredient|
     ingredient.text
   end
-  instructions = recipe_doc.search('.recipe-template__method-steps ul li').map do |instruction|
+  p instructions = recipe_doc.search('.recipe-template__method-steps ul li').map do |instruction|
     instruction.text
   end
   prep_time = recipe_doc.search('.body-copy-small span time').first.text.strip
