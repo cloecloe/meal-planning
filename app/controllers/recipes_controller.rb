@@ -53,7 +53,6 @@ class RecipesController < ApplicationController
     when "couple"
       @recipes = Recipe.where(serving: "Serves 2", displayed: true)
     when "family"
-      isfamily = ""
       @recipes = Recipe.where.not(serving: ["Serves 2","Serves 1"], displayed: false)
     else ""
       @recipes = Recipe.where(displayed: true)
