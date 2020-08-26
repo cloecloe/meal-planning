@@ -17,7 +17,9 @@
   <% @recipes.each do | recipe | %>
     <ul><li>
       N°<%= recipe.id %>: <%= recipe.title %><br>
-      <%= recipe.difficulty %> | Prep: <%=recipe.preptime %> h/min | Serving: <%=recipe.serving%>
+      <%= recipe.difficulty %> |
+      Prep: <%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %> |
+      <%=recipe.serving%>
     </li></ul>
   <% end%>
   <%else%>
