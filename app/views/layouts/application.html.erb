@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <meta name="algolia-app-id" content="<%= ENV["ALGOLIA_APP_ID"] %>">
     <meta name="algolia-search-only-api-key" content="<%= ENV["ALGOLIA_SEARCH_ONLY_API_KEY"] %>">
-    <meta name="current_user_id" content="<%= current_user.id %>">
+    <meta name="current_user_id" content="<%= current_user.id if user_signed_in?%>">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 

@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+    skip_before_action :authenticate_user!, only: [ :index ]
+
   def index
     if params[:search]
       @recipes = Recipe.algolia_search(params[:search])

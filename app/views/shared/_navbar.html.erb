@@ -1,35 +1,110 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+  <div class="collapse navbar-collapse">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%# <%= cl_image_tag("riqzvy6cb5yhvbelfzxx") %>
     <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
+      <%= link_to "To add name and logo here...", root_path, class: "nav-link white-text" %>
+  </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to "Calendar",meals_path , class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+          <%= link_to "Cookbook",favorites_path , class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Add recipe",new_recipe_path , class: "nav-link" %>
+        </li>
+
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%# <%= link_to "Action", "#", class: "dropdown-item" %>
+            <%# <%= link_to "Another action", "#", class: "dropdown-item"  %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Login", "#", class: "nav-link", data: { toggle: "modal", target: "#loginModal" } %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", "#", class: "nav-link", data: { toggle: "modal", target: "#signupModal" } %>
         </li>
       <% end %>
     </ul>
   </div>
-</div>
+</nav>
+
+<% if !user_signed_in? %>
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Login!</h5>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for(User.new, as: :user, url: session_path(:user)) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" } %>
+              <%= f.input :password,
+                          required: false,
+                          input_html: { autocomplete: "current-password" } %>
+              <%= f.input :remember_me, as: :boolean %>
+            </div>
+            <div class="form-actions modal-footer">
+              <%= f.button :submit, "Log in", class: "w-100" %>
+            </div>
+          <% end %>
+          <%= link_to "Sign up","#", class: "nav-link my-1 dark-text", data: { toggle: "modal", target: "#signupModal" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Create an account to see amazing recipes!</h5>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for(User.new, as: :user, url: registration_path(:user)) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :first_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "first_name" }%>
+              <%= f.input :last_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "last_name" }%>
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" }%>
+              <%= f.input :password,
+                          required: true,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          required: true,
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+            <div class="form-actions modal-footer">
+              <%= f.button :submit, "Sign up", class: "w-100" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
