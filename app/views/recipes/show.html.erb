@@ -1,2 +1,22 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1><%= @recipe.title %></h1>
+
+<%= cl_image_tag @recipe.photo.key, height: 300, width: 400, crop: :fill %>
+
+
+<p>Prep Time: <%= @recipe.preptime %> </p>
+<p>Difficulty: <%= @recipe.difficulty %> </p>
+<p>Serving: <%= @recipe.serving %></p>
+<h2>Ingredients</h2>
+<ul>
+  <% @recipe.ingredients.each do |ingredient|%>
+    <li><%= ingredient %></li>
+  <% end %>
+</ul>
+
+<h3>Method</h3>
+<ol>
+  <% @recipe.instructions.each do |instruction|%>
+    <% instruction = instruction[6...-1] %>
+    <li><%= instruction %></li><br>
+  <% end %>
+</ol>
