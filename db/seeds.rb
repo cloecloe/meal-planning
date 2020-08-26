@@ -63,6 +63,7 @@ def create_recipe(ingredient)
     servings = recipe_doc.search('.icon-with-text__children')[2].text.strip
     photo_url =recipe_doc.search('.image__container picture img')[2]
     photo = photo_url.attribute('src').value
+    difficulty = recipe_doc.search('.icon-with-text__children')[1].text.strip
 
     recipe = Recipe.create!({
       title: name,
@@ -70,6 +71,7 @@ def create_recipe(ingredient)
       instructions: instructions,
       preptime: prep_time,
       serving: servings,
+      difficulty: difficulty,
       user_id: 1
     })
     recipe.photo.attach(io: URI.open(photo), filename: 'recipe.jpg', content_type: 'image/jpg')
