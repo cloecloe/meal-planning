@@ -7,5 +7,5 @@ class Recipe < ApplicationRecord
   validates :instructions, presence: true
   validates :serving, presence: true
   validates :preptime, presence: true
-  validates :difficulty, presence: true, inclusion: { in: ["Easy", "Intermediate", "Advanced"] }
+  validates :difficulty, presence: true
 end
