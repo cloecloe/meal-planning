@@ -1,0 +1,28 @@
+.search-box-container input {
+  border: none;
+  border-bottom: 1px solid #cecece;
+  width: 100%;
+  font-size: 20px;
+  background: transparent;
+  padding: 0 !important;
+  outline: none;
+  height: 100%;
+  position: relative;
+  z-index: 99;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#predictive-box {
+  height: 49px;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-bottom: 1px solid transparent;
+}
+
+#predictive-box-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: #a2a2a2;
+}
