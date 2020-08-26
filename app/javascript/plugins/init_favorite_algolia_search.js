@@ -1,7 +1,7 @@
 import algoliasearch from "algoliasearch";
 
 const initFavoriteAlgoliaSearch = () => {
-  const inputFavoriteField = document.querySelector("#search");
+  const inputFavoriteField = document.querySelector("#fav-search");
   
   const appId = document.querySelector("meta[name='algolia-app-id']").content;
   const searchOnlyApiKey = document.querySelector("meta[name='algolia-search-only-api-key']").content;
