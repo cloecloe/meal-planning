@@ -1,2 +1,17 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<div class="container my-5">
+
+  <h1>Add your recipe</h1>
+
+  <%= simple_form_for(@recipe) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :serving %>
+    <%= f.input :preptime, label: "Prep time (in minutes)" %>
+    <%= f.input :difficulty, collection: ["Easy", "Intermediate", "Advanced"] %>
+    <%= f.input :ingredients, hint: "Please write 1 ingredient per line" %>
+    <%= f.input :instructions, hint: "Please write 1 instruction per line" %>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :displayed, as: :radio_buttons, label: "Share with our global community?", collection: ["Yes", "No, keep private"] %>
+    <%= f.submit "Create!", class: "btn btn-warning" %>
+  <% end %>
+
+</div>
