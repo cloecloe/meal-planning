@@ -5,12 +5,24 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @recipe = Recipe.new
   end
 
   def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+    @recipe.ingredients = params[:recipe][:ingredients].split("\r\n")
+    @recipe.instructions = params[:recipe][:instructions].split("\r\n")
+
+    if @recipe.save
+      redirect_to recipe_path(@recipe)
+    else
+      render :new
+    end
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
   def edit
@@ -48,4 +60,10 @@ class RecipesController < ApplicationController
     render :index
   end
   
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:title, :ingredients, :instructions, :photo, :preptime, :serving, :difficulty, :displayed)
+  end
+
 end
