@@ -37,6 +37,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @favorited = Favorite.where(user: current_user, recipe_id: params[:id]).empty? ? false : true
+    @favorite = Favorite.new
   end
 
   def edit
