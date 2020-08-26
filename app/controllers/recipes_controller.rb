@@ -48,12 +48,13 @@ class RecipesController < ApplicationController
       @recipes = Recipe.where(preptime: (31..59), displayed: true)
     when "long"
       @recipes = Recipe.where(preptime: (1..5), displayed: true)
-    when "indivudual"
-      @recipes = Recipe.where(serving: 0 || 1, displayed: true)
+    when "individual"
+      @recipes = Recipe.where(serving: "Serves 1", displayed: true)
     when "couple"
-      @recipes = Recipe.where(serving: 2, displayed: true)
+      @recipes = Recipe.where(serving: "Serves 2", displayed: true)
     when "family"
-      @recipes = Recipe.where(serving: (3..100), displayed: true)
+      isfamily = ""
+      @recipes = Recipe.where.not(serving: ["Serves 2","Serves 1"], displayed: false)
     else ""
       @recipes = Recipe.where(displayed: true)
     end
