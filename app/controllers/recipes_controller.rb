@@ -39,6 +39,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @favorited = Favorite.where(user: current_user, recipe_id: params[:id]).empty? ? false : true
     @favorite = Favorite.new
+    @review = Review.new
+    @reviews = @recipe.reviews
   end
 
   def edit
@@ -75,7 +77,7 @@ class RecipesController < ApplicationController
     end
     render :index
   end
-  
+
   private
 
   def recipe_params

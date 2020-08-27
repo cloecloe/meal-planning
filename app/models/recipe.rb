@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   has_many :meals, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
+  has_many :reviews, dependent: :destroy
   has_one_attached :photo
 
   include AlgoliaSearch
