@@ -1,5 +1,15 @@
 <h1><%= @recipe.title %></h1>
 
+<%= simple_form_for [@recipe, @favorite], class: "favorite-container" do |f| %>
+  <%= f.hidden_field :favorited, value: @favorited.to_s %>
+  <% if @favorited %>
+    <i class="fas fa-heart" id="heart"></i>
+  <% else %>
+    <i class="far fa-heart" id="heart"></i>
+  <% end %>
+  <%= f.submit "", class: "favorite-submit" %>
+<% end %>
+
 <%= cl_image_tag @recipe.photo.key, height: 300, width: 400, crop: :fill %>
 
 
@@ -20,14 +30,3 @@
     <li><%= instruction %></li><br>
   <% end %>
 </ol>
-
-
-<%= simple_form_for [@recipe, @favorite], class: "favorite-container" do |f| %>
-  <%= f.hidden_field :favorited, value: @favorited.to_s %>
-  <% if @favorited %>
-    <i class="fas fa-heart"></i>
-  <% else %>
-    <i class="far fa-heart"></i>
-  <% end %>
-  <%= f.submit "", class: "favorite-submit" %>
-<% end %>

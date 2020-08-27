@@ -3,12 +3,16 @@ class FavoritesController < ApplicationController
   end
 
   def create
+    @recipe = Recipe.find(params[:recipe_id])
+    @favorite = Favorite.new
+
     if params[:favorite][:favorited] == "true"
-      @favorite = Favorite.where(user_id: current_user, recipe_id: params[:recipe_id])
-      @favorite.first.destroy
+      @favorite_current = Favorite.where(user_id: current_user, recipe_id: params[:recipe_id])
+      @favorite_current.first.destroy
     else
       Favorite.create(user: current_user, recipe_id: params[:recipe_id])
     end
+    redirect_to recipe_path(@recipe)
   end
 
     # @recipe = Recipe.find(params[:recipe_id])
