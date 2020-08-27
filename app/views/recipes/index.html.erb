@@ -26,19 +26,19 @@
 
 <div class="recipe-card-container">
 
-  <% @recipes.each do |recipe| %>
-    <%= link_to recipe_path(recipe) do%>
-    <div class="recipe-card m-3">
-        <%= cl_image_tag recipe.photo.key, height: 300, width: 400, crop: :fill %>
-        <div class="icons">
+    <% @recipes.each do |recipe| %>
+      <%= link_to recipe_path(recipe) do%>
+      <div class="recipe-card m-3">
+          <%= cl_image_tag recipe.photo.key, height: 280, width: 350 %>
+          <div class="icons">
 
+          </div>
+          <div class="recipe-title px-3">
+            <strong><%= recipe.title %></strong>
+            <%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %>
+          </div>
         </div>
-        <div class="recipe-title p-2">
-          <strong><%= recipe.title %></strong>
-          <p><%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %></p>
-        </div>
-      </div>
+      <% end%>
     <% end%>
-  <% end%>
 
 </div>
