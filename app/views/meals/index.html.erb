@@ -1,6 +1,8 @@
 <h1>Calendar</h1>
-<p>Find me in app/views/meals/index.html.erb</p>
-<% @meals %>
+
+<button id="update-btn" class= "btn btn-primary">Update</button>
+<button id = "back-btn" class= "btn btn-primary" onclick="window.location.href='/recipes'">Look for a meal</button>
+
 <%= week_calendar attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
   <%= date %>
   <p>BREAKFAST</p> 
@@ -8,7 +10,9 @@
   <ul>
   <% unless breakfast_meals.empty? %>
     <%breakfast_meals.each do |meal|%>
+      <div class= "meal-card">
       <p><%= meal.recipe.title %><p>
+      </div>
     <%end%>
   <%else%>
      <p><i>--None--</i></p>
@@ -19,7 +23,10 @@
   <ul>
   <% unless lunch_meals.empty? %>
     <%lunch_meals.each do |meal|%>
+      <div class= "meal-card" data-meal-id = '<%= meal.id%>' >
+      
       <p><%= meal.recipe.title %><p>
+      </div>
     <%end%>
   <%else%>
      <p><i>--None--</i></p>
@@ -30,10 +37,14 @@
   <ul>
   <% unless dinner_meals.empty? %>
     <%dinner_meals.each do |meal|%>
+      <div class= "meal-card" data-meal-id = '<%= meal.id%>'>
       <p><%= meal.recipe.title %><p>
+      </div>
     <%end%>
   <%else%>
      <p><i>--None--</i></p>
   <%end%>
   </ul>
 <% end %>
+<p id = "delete-btn" ><%= link_to "Remove"%></p>
+<p class = "array-chosen"></p>
