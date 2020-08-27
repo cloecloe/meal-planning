@@ -14,17 +14,21 @@
 </div>
 
 <%unless @recipes.empty? %>
-  <% @recipes.each do | recipe | %>
-    <ul><li>
-      N°<%= recipe.id %>: <%= recipe.title %><br>
-      <%= recipe.difficulty %> |
-      Prep: <%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %> |
-      <%=recipe.serving%>
-    </li></ul>
-  <% end%>
-  <%else%>
-    <p>-- No Recipes Found --</p>
-  <%end%>
+  <ul>
+    <% @recipes.each do | recipe | %>
+      <%= link_to recipe_path(recipe) do%>
+        <li>
+        N°<%= recipe.id %>: <%= recipe.title %><br>
+        <%= recipe.difficulty %> |
+        Prep: <%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %> |
+        <%=recipe.serving%>
+        </li>
+      <% end%>
+    <% end%>
+  </ul>
+<%else%>
+  <p>-- No Recipes Found --</p>
+<%end%>
 
 <%= link_to "All", recipes_path %> |
 <%= link_to "Easy", recipes_path(@filter = "easy") %> |
