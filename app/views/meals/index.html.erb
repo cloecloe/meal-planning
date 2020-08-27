@@ -1,6 +1,8 @@
 <h1>Calendar</h1>
 
 <button id="update-btn" class= "btn btn-primary">Update</button>
+<button id = "back-btn" class= "btn btn-primary" onclick="window.location.href='/recipes'">Look for a meal</button>
+
 <%= week_calendar attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
   <%= date %>
   <p>BREAKFAST</p> 
