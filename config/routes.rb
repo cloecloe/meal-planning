@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   end
 
   resources :favorites, only: [:index]
-  resources :meals, only: [:index, :destroy]
+  resources :meals, only: [:index]
+  delete 'meals', to: 'meals#destroy'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -12,6 +12,18 @@
     </form>
   </div>
 </div>
+<div>
+  <%= link_to "All", recipes_path %> |
+  <%= link_to "Easy", recipes_path(@filter = "easy") %> |
+  <%= link_to "More Effort", recipes_path(@filter = "effort") %> |
+  <%= link_to "Challenging Recipes", recipes_path(@filter = "challenge") %> |
+  <%= link_to "Quick Recipes", recipes_path(@filter = "quick") %> |
+  <%= link_to "Short Recipes", recipes_path(@filter = "short") %> |
+  <%= link_to "Long Recipes", recipes_path(@filter = "long") %> |
+  <%= link_to "Individuals Portions", recipes_path(@filter = "individual") %> |
+  <%= link_to "Couple Meals", recipes_path(@filter = "couple") %> |
+  <%= link_to "Family Serving", recipes_path(@filter = "family") %>
+</div>
 
 <%unless @recipes.empty? %>
   <% @recipes.each do | recipe | %>
@@ -26,13 +38,3 @@
     <p>-- No Recipes Found --</p>
   <%end%>
 
-<%= link_to "All", recipes_path %> |
-<%= link_to "Easy", recipes_path(@filter = "easy") %> |
-<%= link_to "More Effort", recipes_path(@filter = "effort") %> |
-<%= link_to "Challenging Recipes", recipes_path(@filter = "challenge") %> |
-<%= link_to "Quick Recipes", recipes_path(@filter = "quick") %> |
-<%= link_to "Short Recipes", recipes_path(@filter = "short") %> |
-<%= link_to "Long Recipes", recipes_path(@filter = "long") %> |
-<%= link_to "Individuals Portions", recipes_path(@filter = "individual") %> |
-<%= link_to "Couple Meals", recipes_path(@filter = "couple") %> |
-<%= link_to "Family Serving", recipes_path(@filter = "family") %>

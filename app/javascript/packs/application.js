@@ -26,12 +26,15 @@ require("channels")
 import "bootstrap";
 import { initFavoriteAlgoliaSearch } from "../plugins/init_favorite_algolia_search";
 import { initRecipeAlgoliaSearch } from "../plugins/init_recipe_algolia_search";
+import { initMeals } from "../calendar/inti_meals";
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initMeals();
   initFavoriteAlgoliaSearch();
   initRecipeAlgoliaSearch();
 });
