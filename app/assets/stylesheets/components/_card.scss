@@ -1,0 +1,37 @@
+.recipe-card-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .recipe-card-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 1192px) {
+  .recipe-card-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+.recipe-card-container > img {
+  object-fit: cover;
+}
+
+.recipe-card {
+  background-color: $white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.recipe-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10ex;
+}

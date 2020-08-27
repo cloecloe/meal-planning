@@ -39,15 +39,31 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @favorited = Favorite.where(user: current_user, recipe_id: params[:id]).empty? ? false : true
     @favorite = Favorite.new
+    @review = Review.new
+    @reviews = @recipe.reviews
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(recipe_params)
+    @recipe.ingredients = params[:recipe][:ingredients].split("\r\n")
+    @recipe.instructions = params[:recipe][:instructions].split("\r\n")
+
+    if @recipe.save
+      redirect_to recipe_path(@recipe)
+    else
+      render :new
+    end
   end
 
   def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path
   end
 
   def filter(tag)
@@ -75,7 +91,7 @@ class RecipesController < ApplicationController
     end
     render :index
   end
-  
+
   private
 
   def recipe_params

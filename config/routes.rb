@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :favorites, only: [:create]
     resources :meals, only: [:create]
+    resources :reviews, only: [:new, :create, :destroy]
   end
 
   resources :favorites, only: [:index]
   resources :meals, only: [:index]
   delete 'meals', to: 'meals#destroy'
 
+  get '/destroy_review', to: 'reviews#destroy', as: :reviews_destroy
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

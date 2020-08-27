@@ -1,18 +1,22 @@
-<div class="banner" style="background-color: rgb(255, 194, 194);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dy9zumgoz/image/upload/v1598561269/f5ijn0szbuv3yrwccnuw.jpg);">>
   <div class="container">
     <h1>Catchy phrase here...</h1>
-    <p>Second catchy phrase here...(need picture as background)</p>
-    <form class="form-inline m-3" >
+    <p>Share your recipes and get inspired by others'</p>
+    <form class="form-inline my-3" >
     <%# <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" /> %>
       <%# <div class="search-form-control form-group"> %>
         <input class="form-control" type="text" name="search" id="search" placeholder="Search recipe..." />
-        <button name="button" type="submit" class="btn btn-success my-2 mx-1"><i class="fas fa-search"></i> Search</button>
+        <button name="button" type="submit" class="btn orange-btn mx-1"><i class="fas fa-search"></i> Search</button>
       <%# </div> %>
     <%# </form> %>
     </form>
   </div>
 </div>
-<div>
+
+<div class="list-filters m-3">
+
+
+
   <%= link_to "All", recipes_path %> |
   <%= link_to "Easy", recipes_path(@filter = "easy") %> |
   <%= link_to "More Effort", recipes_path(@filter = "effort") %> |
@@ -23,18 +27,25 @@
   <%= link_to "Individuals Portions", recipes_path(@filter = "individual") %> |
   <%= link_to "Couple Meals", recipes_path(@filter = "couple") %> |
   <%= link_to "Family Serving", recipes_path(@filter = "family") %>
+
 </div>
 
-<%unless @recipes.empty? %>
-  <% @recipes.each do | recipe | %>
-    <ul><li>
-      N°<%= recipe.id %>: <%= recipe.title %><br>
-      <%= recipe.difficulty %> |
-      Prep: <%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %> |
-      <%=recipe.serving%>
-    </li></ul>
-  <% end%>
-  <%else%>
-    <p>-- No Recipes Found --</p>
-  <%end%>
+<div class="recipe-card-container">
+
+    <% @recipes.each do |recipe| %>
+      <%= link_to recipe_path(recipe) do%>
+      <div class="recipe-card m-3">
+          <%= cl_image_tag recipe.photo.key, height: 280, width: 350 %>
+          <div class="icons">
+
+          </div>
+          <div class="recipe-title px-3">
+            <strong><%= recipe.title %></strong>
+            <%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %>
+          </div>
+        </div>
+      <% end%>
+    <% end%>
+
+</div>
 

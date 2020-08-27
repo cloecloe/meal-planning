@@ -1,4 +1,29 @@
-<h1><%= @recipe.title %></h1>
+<h1>
+  <strong><%= @recipe.title.capitalize %></strong>
+
+    <%# if policy(@recipe).destroy? %>
+      <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete #{@recipe.title}?" } do %>
+        <i class="far fa-trash-alt smaller-icon"></i>
+      <% end %>
+    <%# end %>
+
+
+    <%# if policy(@recipe).edit? %>
+      <%= link_to edit_recipe_path(@recipe) do %>
+        <i class="far fa-edit smaller-icon"></i>
+      <% end %>
+    <%# end %>
+</h1>
+
+<%= simple_form_for [@recipe, @favorite], class: "favorite-container" do |f| %>
+  <%= f.hidden_field :favorited, value: @favorited.to_s %>
+  <% if @favorited %>
+    <i class="fas fa-heart" id="heart"></i>
+  <% else %>
+    <i class="far fa-heart" id="heart"></i>
+  <% end %>
+  <%= f.submit "", class: "favorite-submit" %>
+<% end %>
 
 <%= cl_image_tag @recipe.photo.key, height: 300, width: 400, crop: :fill %>
 
@@ -21,13 +46,34 @@
   <% end %>
 </ol>
 
-
-<%= simple_form_for [@recipe, @favorite], class: "favorite-container" do |f| %>
-  <%= f.hidden_field :favorited, value: @favorited.to_s %>
-  <% if @favorited %>
-    <i class="fas fa-heart"></i>
-  <% else %>
-    <i class="far fa-heart"></i>
+<h4>Reviews:</h4>
+<div class="row p-3 m-3">
+  <%= simple_form_for [@recipe, @review] do |f| %>
+    <%= f.input :description %>
+    <%= f.input :rating, as: :radio_buttons, collection: [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']] %>
+    <%= f.submit "Add a review!", class: "btn btn-primary d-flex flex-column my-2" %>
   <% end %>
-  <%= f.submit "", class: "favorite-submit" %>
+</div>
+
+  <% if @reviews.empty? %>
+    <%= "-- None --"%>
+  <% else %>
+  <ul>
+    <% @reviews.each do |review| %>
+      <li>
+        <% review.rating.times do |r| %>
+          <i class="fas fa-star text-primary"></i>
+        <% end %>
+        <% (5 - (review.rating)).times do |r| %>
+          <i class="far fa-star text-primary"></i>
+        <% end %>
+        <p><%= review.description %></p>
+
+
+      <%= link_to recipe_review_path(@recipe, review), method: :delete, data: { confirm: "Are you sure you want to delete your review?" } do %>
+        <i class="far fa-trash-alt smaller-icon"></i>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
