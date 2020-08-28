@@ -61,3 +61,31 @@
   align-items: center;
   justify-content: center;
 }
+
+.filters-card-container {
+  margin: 5% 5%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  border: solid 1px rgba(0,0,0,0.2);
+  
+}
+
+.filter-card {
+  width: 100%;
+  padding: 5%;
+  border: solid 1px rgba(0,0,0,0.2);
+}
+
+@media (min-width: 768px) {
+  .filters-card-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1192px) {
+  .filters-card-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
