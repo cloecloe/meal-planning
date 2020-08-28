@@ -44,6 +44,9 @@
             <% if recipe.serving.match(/[3-9]|10/) %>
               <i class="icons-round fas fa-users"></i>
             <% end %>
+            <% if !@favorites.where(recipe_id: recipe.id).empty? %>
+              <i class="icons-round fas fa-heart"></i>
+            <% end %>
           </div>
           <div class="recipe-title px-3">
             <strong><%= recipe.title %></strong>
