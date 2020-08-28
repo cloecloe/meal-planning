@@ -3,10 +3,9 @@
 <button id="update-btn" class= "btn btn-primary">Update</button>
 <button id = "back-btn" class= "btn btn-primary" onclick="window.location.href='/recipes'">Look for a meal</button>
 
-<%= week_calendar attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
-  <%= date %>
+<%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
   <p>BREAKFAST</p> 
-     <% breakfast_meals = meals.select{ |meal| meal.tagname == "breakfast"} %>
+     <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
   <ul>
   <% unless breakfast_meals.empty? %>
     <%breakfast_meals.each do |meal|%>
@@ -19,7 +18,7 @@
   <%end%>
   </ul>
   <p>LUNCH</p> 
-   <% lunch_meals = meals.select{ |meal| meal.tagname == "lunch"} %>
+   <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
   <ul>
   <% unless lunch_meals.empty? %>
     <%lunch_meals.each do |meal|%>
@@ -33,7 +32,7 @@
   <%end%>
   </ul>
   <p>DINNER</p> 
-   <% dinner_meals = meals.select{ |meal| meal.tagname == "dinner"} %>
+   <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
   <ul>
   <% unless dinner_meals.empty? %>
     <%dinner_meals.each do |meal|%>
