@@ -32,20 +32,30 @@
 
 <div class="recipe-card-container">
 
-    <% @recipes.each do |recipe| %>
-      <%= link_to recipe_path(recipe) do%>
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe_path(recipe) do%>
       <div class="recipe-card m-3">
-          <%= cl_image_tag recipe.photo.key, height: 280, width: 350 %>
-          <div class="icons">
-
+        <%= cl_image_tag recipe.photo.key, height: 280, width: 350 %>
+        <div class="card-info">
+          <div class="icons-list">
+            <% if recipe.preptime >= 10 %>
+              <i class="icons-round fas fa-stopwatch-20"></i>
+            <% end %>
+            <% if recipe.serving.match(/[3-9]|10/) %>
+              <i class="icons-round fas fa-users"></i>
+            <% end %>
+            <% if !@favorites.where(recipe_id: recipe.id).empty? %>
+              <i class="icons-round fas fa-heart"></i>
+            <% end %>
           </div>
           <div class="recipe-title px-3">
             <strong><%= recipe.title %></strong>
             <%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %>
           </div>
         </div>
-      <% end%>
+      </div>
     <% end%>
+  <% end%>
 
 </div>
 

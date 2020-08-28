@@ -35,3 +35,29 @@
   justify-content: space-between;
   height: 10ex;
 }
+
+.card-info {
+  position: relative;
+}
+
+.icons-list {
+  position: absolute;
+  top: -26px;
+  display: flex;
+}
+
+.icons-round {
+  background-color: $white;
+  color: $black;
+  opacity: 0.9;
+  font-size: 24px;
+  width: 3ex;
+  height: 3ex;
+  border-radius: 50%;
+  text-align: center;
+  margin: 3px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
