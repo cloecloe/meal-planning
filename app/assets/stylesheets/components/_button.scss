@@ -1,7 +1,9 @@
 .orange-btn {
   background-color: $orange;
   opacity: 0.9;
+  color: $white;
   &:hover {
+    color: white;
     opacity: 1;
   }
 }
