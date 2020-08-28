@@ -16,14 +16,14 @@
 
     <div class="column">
       <h5>Recipes</h5>
-      <p>All recipes</p>
-      <p>Your cookbook</p>
-      <p>Add a recipe</p>
+      <p><%= link_to "All recipes", recipes_path %></p>
+      <p><%= link_to "Your cookbook", favorites_path %></p>
+      <p><%= link_to "Add a recipe", new_recipe_path %></p>
     </div>
 
     <div class="column">
       <h5>Calendar</h5>
-      <p>Your calendar</p>
+      <p><% link_to "Your calendar", meals_path %></p>
       <p>Share your calendar</p>
     </div>
 

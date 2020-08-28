@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
-    skip_before_action :authenticate_user!, only: [ :index ]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    @favorites = Favorite.where(user_id: current_user.id)
     if params[:search]
       @recipes = Recipe.algolia_search(params[:search])
       # Pundit version: policy_scope(Recipe)
@@ -16,6 +17,15 @@ class RecipesController < ApplicationController
       filter(params[:format])
       # Pundit version: @recipes = policy_scope(Recipe).order(:created_at)
     end
+  end
+
+  def show
+    @recipe = Recipe.find(params[:id])
+    @favorited = Favorite.where(user: current_user, recipe_id: params[:id]).empty? ? false : true
+    @favorite = Favorite.new
+    @review = Review.new
+    @reviews = @recipe.reviews
+    @meal = Meal.new
   end
 
   def new
@@ -33,14 +43,6 @@ class RecipesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @recipe = Recipe.find(params[:id])
-    @favorited = Favorite.where(user: current_user, recipe_id: params[:id]).empty? ? false : true
-    @favorite = Favorite.new
-    @review = Review.new
-    @reviews = @recipe.reviews
   end
 
   def edit

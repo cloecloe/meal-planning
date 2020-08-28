@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :favorites, only: [:index]
-  resources :meals, only: [:index]
-  delete 'meals', to: 'meals#destroy'
+  resources :meals, only: [:index, :destroy]
+  delete "meals", to: "meals#destroy"
 
   patch 'calendars/:id/share', to: 'calendars#share', as: 'share'
 
