@@ -13,21 +13,17 @@
   </div>
 </div>
 
-<div class="list-filters m-3">
-
-
-
-  <%= link_to "All", recipes_path %> |
-  <%= link_to "Easy", recipes_path(@filter = "easy") %> |
-  <%= link_to "More Effort", recipes_path(@filter = "effort") %> |
-  <%= link_to "Challenging Recipes", recipes_path(@filter = "challenge") %> |
-  <%= link_to "Quick Recipes", recipes_path(@filter = "quick") %> |
-  <%= link_to "Short Recipes", recipes_path(@filter = "short") %> |
-  <%= link_to "Long Recipes", recipes_path(@filter = "long") %> |
-  <%= link_to "Individuals Portions", recipes_path(@filter = "individual") %> |
-  <%= link_to "Couple Meals", recipes_path(@filter = "couple") %> |
-  <%= link_to "Family Serving", recipes_path(@filter = "family") %>
-
+<div class="filters-card-container">
+    <div class = "filter-card text-center m-3"><%= link_to "All", recipes_path %></div>
+    <div class = "filter-card text-center m-3"><%= link_to "Quick Recipes", recipes_path(@filter = "quick") %></div>
+    <div class = "filter-card text-center m-3"><%= link_to "Easy", recipes_path(@filter = "easy") %></div>
+    <div class = "filter-card text-center m-3"><%= link_to "Individuals Portions", recipes_path(@filter = "individual") %></div>
+    <div class = "filter-card text-center m-3"><%= link_to "Short Recipes", recipes_path(@filter = "short") %></div>
+    <div class = "filter-card text-center m-3"><%= link_to "Couple Meals", recipes_path(@filter = "couple") %></div>
+    <div class = "filter-card text-center m-3"><%= link_to "More Effort", recipes_path(@filter = "effort") %></div>
+    <div class = "filter-card text-center m-3"><%= link_to "Family Serving", recipes_path(@filter = "family") %></div>
+    <div class = "filter-card text-center m-3"><%= link_to "Challenging Recipes", recipes_path(@filter = "challenge") %></div>
+    <div class = "filter-card text-center m-3"><%= link_to "Long Recipes", recipes_path(@filter = "long") %></div>
 </div>
 
 <div class="recipe-card-container">
