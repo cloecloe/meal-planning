@@ -1,0 +1,56 @@
+.calendar-heading {
+  font-size: 24px;
+}
+
+.calendar-heading > a {
+  text-decoration: none;
+  color: $coral;
+  border-radius: 50%;
+  padding: 4px;
+  text-align: center;
+  &:hover {
+    color: $white;
+    background-color: $coral;
+  }
+}
+
+.text-color {
+  background-color: $white;
+  color: $black;
+  border: 1px dashed $black;
+}
+
+.day {
+  border: 1px dashed $black;
+  background-color: $cultured;
+  color: $black;
+  max-width: 200px;
+  text-align: center;
+}
+
+.day-format {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meal-card {
+  width: 100%;
+  background-color: $coral;
+  opacity: 0.8;
+  border-radius: 8px;
+  padding: 2px 4px;
+  text-align: center;
+  margin: 2px auto;
+  a {
+    text-decoration: none;
+    color: $white;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.hover-garbage:hover {
+  color: $black;
+}

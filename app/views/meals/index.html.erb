@@ -1,77 +1,71 @@
-<h1>Calendar</h1>
+<h1 class="text-center my-4">Calendar</h1>
 
-<button id="update-btn" class= "btn btn-primary">Update</button>
-<button id = "back-btn" class= "btn btn-primary" onclick="window.location.href='/recipes'">Look for a meal</button>
-    
-<div>
+<button id="update-btn" class= "btn orange-btn">Group selection</button>
+<button id = "back-btn" class= "btn orange-btn" onclick="window.location.href='/recipes'">Look for a meal</button>
+  <p id="delete-btn" ><%= link_to "Delete selection"%></p>
+  <p class="array-chosen d-none"></p>
+
+<div class="calendar-format mx-3 mb-5">
+
  <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
-    <%= date %>
 
-    <p>BREAKFAST</p>
-    <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
-    <ul>
+    <div class="day-format">
+      <p class="text-center border-bottom mb-1">BREAKFAST</p>
+      <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
       <% unless breakfast_meals.empty? %>
       <%breakfast_meals.each do |meal|%>
         <div class= "meal-card" data-meal-id="<%= meal.id%>">
-          <%= link_to recipe_path(meal.recipe) do %>
-            <p><%= meal.recipe.title %><p>
-          <% end %>
+          <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
           <%# if policy(meal.recipe).destroy? %>
             <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-              <i class="far fa-trash-alt smaller-icon"></i>
+              <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
             <% end %>
           <%# end %>
         </div>
       <%end%>
       <%else%>
-       <p><i>--No recipe yet--</i></p>
+       <i class="text-secondary my-2">-No recipe-</i>
       <%end%>
-    </ul>
+    </div>
 
-    <p>LUNCH</p>
-    <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
-    <ul>
+    <div class="day-format">
+      <p class="text-center border-bottom mb-1">LUNCH</p>
+      <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
       <% unless lunch_meals.empty? %>
         <%lunch_meals.each do |meal|%>
           <div class= "meal-card" data-meal-id="<%= meal.id%>" >
-            <%= link_to recipe_path(meal.recipe) do %>
-              <p><%= meal.recipe.title %><p>
-            <% end %>
+            <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
             <%# if policy(meal.recipe).destroy? %>
               <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-                <i class="far fa-trash-alt smaller-icon"></i>
+                <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
               <% end %>
             <%# end %>
           </div>
         <%end%>
       <%else%>
-        <p><i>--No recipe yet--</i></p>
+        <i class="text-secondary my-2">-No recipe-</i>
       <%end%>
-    </ul>
+    </div>
 
-    <p>DINNER</p>
-    <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
-    <ul>
+    <div class="day-format">
+      <p class="text-center border-bottom mb-1">DINNER</p>
+      <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
       <% unless dinner_meals.empty? %>
         <%dinner_meals.each do |meal|%>
           <div class= "meal-card" data-meal-id="<%= meal.id%>">
-            <%= link_to recipe_path(meal.recipe) do %>
-              <p><%= meal.recipe.title %><p>
-            <% end %>
+            <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
             <%# if policy(meal.recipe).destroy? %>
               <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-                <i class="far fa-trash-alt smaller-icon"></i>
+                <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
               <% end %>
             <%# end %>
           </div>
         <%end%>
       <%else%>
-       <p><i>--None--</i></p>
+        <i class="text-secondary my-2">-No recipe-</i>
       <%end%>
-    </ul>
+    </div>
 
   <% end %>
 
-    <p id="delete-btn" ><%= link_to "Remove"%></p>
-    <p class="array-chosen"></p>
 </div>
