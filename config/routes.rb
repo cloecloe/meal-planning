@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :meals, only: [:index, :destroy]
   delete "meals", to: "meals#destroy"
 
+  patch 'calendars/:id/share', to: 'calendars#share', as: 'share'
+
   get '/destroy_review', to: 'reviews#destroy', as: :reviews_destroy
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

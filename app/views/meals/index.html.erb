@@ -2,10 +2,28 @@
 
 <button id="update-btn" class= "btn btn-primary">Update</button>
 <button id = "back-btn" class= "btn btn-primary" onclick="window.location.href='/recipes'">Look for a meal</button>
+<button id = "share-btn" class= "btn btn-primary" data-toggle="modal" data-target="#share-modal" >Share</button>
+
+<div class="modal fade" id="share-modal" tabindex="-1" aria-labelledby="share-modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Share my calendar</h5>
+        </div>
+        <div class="modal-body">
+          <%= form_tag(share_path(current_user.calendar), method: :patch) do %>
+            <%= text_field_tag 'email' %>
+            <%= submit_tag "Share" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
     
 <div>
  <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
     <%= date %>
+
 
     <p>BREAKFAST</p>
     <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
