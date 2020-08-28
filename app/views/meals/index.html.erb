@@ -3,11 +3,30 @@
 <div class="group-selection">
   <button id="update-btn" class= "btn orange-btn">Group selection</button>
   <button id = "back-btn" class= "btn orange-btn" onclick="window.location.href='/recipes'">Look for a meal</button>
+  <button id = "share-btn" class= "btn orange-btn" data-toggle="modal" data-target="#share-modal" >Share</button>
   <p id="delete-btn" ><%= link_to "Delete selection"%></p>
   <p class="array-chosen d-none"></p>
 </div>
 
-<div class="calendar-format mx-3 mb-5">
+<div class="modal fade" id="share-modal" tabindex="-1" aria-labelledby="share-modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Share my calendar</h5>
+        </div>
+        <div class="modal-body">
+          <%= form_tag(share_path(current_user.calendar), method: :patch) do %>
+            <%= text_field_tag 'email' %>
+            <%= submit_tag "Share" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+<div>
+  
+ <div class="calendar-format mx-3 mb-5">
 
  <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
 

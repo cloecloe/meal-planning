@@ -3,7 +3,6 @@ require 'open-uri'
 class MealsController < ApplicationController
   def index
     @meals = Meal.all
-    @array = []
   end
 
   def create
