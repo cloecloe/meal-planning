@@ -1,35 +1,35 @@
-<h1 class="text-center my-4">Calendar</h1>
+<h1 class="text-center my-4">My Calendar</h1>
 
-<button id="update-btn" class= "btn orange-btn">Group selection</button>
-<button id = "back-btn" class= "btn orange-btn" onclick="window.location.href='/recipes'">Look for a meal</button>
+<div class="group-selection">
+  <button id="update-btn" class= "btn orange-btn">Group selection</button>
+  <button id = "back-btn" class= "btn orange-btn" onclick="window.location.href='/recipes'">Look for a meal</button>
   <p id="delete-btn" ><%= link_to "Delete selection"%></p>
   <p class="array-chosen d-none"></p>
+</div>
 
 <div class="calendar-format mx-3 mb-5">
 
  <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
 
-    <div class="day-format">
-      <p class="text-center border-bottom mb-1">BREAKFAST</p>
+    <div class="day-format bottom-border">
+      <p class="text-center">BREAKFAST</p>
       <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
       <% unless breakfast_meals.empty? %>
-      <%breakfast_meals.each do |meal|%>
-        <div class= "meal-card" data-meal-id="<%= meal.id%>">
-          <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-          <%# if policy(meal.recipe).destroy? %>
-            <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-              <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
-            <% end %>
-          <%# end %>
-        </div>
-      <%end%>
-      <%else%>
-       <i class="text-secondary my-2">-No recipe-</i>
+        <%breakfast_meals.each do |meal|%>
+          <div class= "meal-card" data-meal-id="<%= meal.id%>">
+            <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
+            <%# if policy(meal.recipe).destroy? %>
+              <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+                <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
+              <% end %>
+            <%# end %>
+          </div>
+        <%end%>
       <%end%>
     </div>
 
-    <div class="day-format">
-      <p class="text-center border-bottom mb-1">LUNCH</p>
+    <div class="day-format bottom-border">
+      <p class="text-center">LUNCH</p>
       <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
       <% unless lunch_meals.empty? %>
         <%lunch_meals.each do |meal|%>
@@ -42,13 +42,11 @@
             <%# end %>
           </div>
         <%end%>
-      <%else%>
-        <i class="text-secondary my-2">-No recipe-</i>
       <%end%>
     </div>
 
     <div class="day-format">
-      <p class="text-center border-bottom mb-1">DINNER</p>
+      <p class="text-center">DINNER</p>
       <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
       <% unless dinner_meals.empty? %>
         <%dinner_meals.each do |meal|%>
@@ -61,8 +59,6 @@
             <%# end %>
           </div>
         <%end%>
-      <%else%>
-        <i class="text-secondary my-2">-No recipe-</i>
       <%end%>
     </div>
 

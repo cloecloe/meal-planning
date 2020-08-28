@@ -6,7 +6,6 @@
   text-decoration: none;
   color: $coral;
   border-radius: 50%;
-  padding: 4px;
   text-align: center;
   &:hover {
     color: $white;
@@ -15,23 +14,39 @@
 }
 
 .text-color {
-  background-color: $white;
+  background-color: $cultured;
   color: $black;
-  border: 1px dashed $black;
+  border: none !important;
+  padding: 4px !important;
 }
 
 .day {
-  border: 1px dashed $black;
-  background-color: $cultured;
+  border: 1px solid lightgrey;
+  background-color: $white;
   color: $black;
-  max-width: 200px;
+  min-width: 120px;
+  max-width: 240px;
   text-align: center;
+  padding: 0 !important;
 }
 
 .day-format {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  min-height: 80px;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 900px) {
+  .day {
+    min-width: 80px;
+  }
+}
+
+.bottom-border{
+  border-bottom: 1px solid lightgrey;
 }
 
 .meal-card {
@@ -39,9 +54,9 @@
   background-color: $coral;
   opacity: 0.8;
   border-radius: 8px;
-  padding: 2px 4px;
+  padding: 4px 8px;
   text-align: center;
-  margin: 2px auto;
+  margin: 2px;
   a {
     text-decoration: none;
     color: $white;
@@ -53,4 +68,12 @@
 
 .hover-garbage:hover {
   color: $black;
+}
+
+.group-selection {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    margin: 0 4px;
+  }
 }
