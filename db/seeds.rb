@@ -14,7 +14,11 @@ Recipe.destroy_all
 
 puts "starting seed"
 
-calendar = Calendar.create!
+5.times do
+  calendar = Calendar.create!({name: "My Calendar"})
+end
+
+puts "Calendar creation finished..."
 
 default_user = User.create!({
   first_name: "Micha",
@@ -30,6 +34,38 @@ second_user = User.create!({
   email: "boran@email.com",
   password: "123456",
   calendar_id: 1
+})
+
+third_user = User.create!({
+  first_name: "Emily",
+  last_name: "Rockarts",
+  email: "emily@email.com",
+  password: "123456",
+  calendar_id: 2
+})
+
+fourth_user = User.create!({
+  first_name: "Cloe",
+  last_name: "Furlan",
+  email: "cloe@email.com",
+  password: "123456",
+  calendar_id: 3
+})
+
+fifth_user = User.create!({
+  first_name: "Rebecca",
+  last_name: "Morel",
+  email: "rebecca@email.com",
+  password: "123456",
+  calendar_id: 4
+})
+
+sixth_user = User.create!({
+  first_name: "Alex",
+  last_name: "Encinas",
+  email: "alex@email.com",
+  password: "123456",
+  calendar_id: 5
 })
 
 # ingredient = 'cheese'
