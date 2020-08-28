@@ -12,19 +12,36 @@
     </form>
   </div>
 </div>
+<div id= "multi-item-example" class="carous-container carousel slide carousel-multi-item" data-ride="carousel">
+  <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+  <div class = "carousel-inner" role="listbox"> 
+      <div class = "carousel-item active">
+        <div class= "filters-container">
+          <div class = "filter-card"><%= link_to "All", recipes_path %></div>
+          <div class = "filter-card"><%= link_to "Quick Recipes", recipes_path(@filter = "quick") %></div>
+          <div class = "filter-card"><%= link_to "Easy Recipes", recipes_path(@filter = "easy") %></div>
+          <div class = "filter-card"><%= link_to "Individuals Portions", recipes_path(@filter = "individual") %></div>
+        </div>
+      </div>
+      <div class = "carousel-item">
+        <div class= "filters-container">
+        <div class = "filter-card"><%= link_to "Short Recipes", recipes_path(@filter = "short") %></div>
+        <div class = "filter-card"><%= link_to "Couple Meals", recipes_path(@filter = "couple") %></div>
+        <div class = "filter-card"><%= link_to "More-Effort Recipes", recipes_path(@filter = "effort") %></div>
+        <div class = "filter-card"><%= link_to "Family Serving", recipes_path(@filter = "family") %></div>
+        </div>
+      </div>
 
-<div class="filters-card-container">
-    <div class = "filter-card text-center m-3"><%= link_to "All", recipes_path %></div>
-    <div class = "filter-card text-center m-3"><%= link_to "Quick Recipes", recipes_path(@filter = "quick") %></div>
-    <div class = "filter-card text-center m-3"><%= link_to "Easy", recipes_path(@filter = "easy") %></div>
-    <div class = "filter-card text-center m-3"><%= link_to "Individuals Portions", recipes_path(@filter = "individual") %></div>
-    <div class = "filter-card text-center m-3"><%= link_to "Short Recipes", recipes_path(@filter = "short") %></div>
-    <div class = "filter-card text-center m-3"><%= link_to "Couple Meals", recipes_path(@filter = "couple") %></div>
-    <div class = "filter-card text-center m-3"><%= link_to "More Effort", recipes_path(@filter = "effort") %></div>
-    <div class = "filter-card text-center m-3"><%= link_to "Family Serving", recipes_path(@filter = "family") %></div>
-    <div class = "filter-card text-center m-3"><%= link_to "Challenging Recipes", recipes_path(@filter = "challenge") %></div>
-    <div class = "filter-card text-center m-3"><%= link_to "Long Recipes", recipes_path(@filter = "long") %></div>
+      <div class = "carousel-item">
+        <div class= "filters-container">
+        <div class = "filter-card"><%= link_to "Challenging Recipes", recipes_path(@filter = "challenge") %></div>
+        <div class = "filter-card"><%= link_to "Long Recipes", recipes_path(@filter = "long") %></div>
+        </div>
+      </div>
+  </div>
+  <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
 </div>
+
 
 <div class="recipe-card-container">
 
