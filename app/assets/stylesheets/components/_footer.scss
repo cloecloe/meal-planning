@@ -17,6 +17,14 @@
   justify-content: space-between;
 }
 
+.main-container a {
+  text-decoration: none;
+  color: $white;
+  &:hover {
+    color: $coral;
+  }
+}
+
 .footer-links a {
   color: $coral;
   text-decoration: none;
