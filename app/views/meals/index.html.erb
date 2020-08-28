@@ -3,48 +3,75 @@
 <button id="update-btn" class= "btn btn-primary">Update</button>
 <button id = "back-btn" class= "btn btn-primary" onclick="window.location.href='/recipes'">Look for a meal</button>
 
-<%= week_calendar attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
-  <%= date %>
-  <p>BREAKFAST</p> 
-     <% breakfast_meals = meals.select{ |meal| meal.tagname == "breakfast"} %>
-  <ul>
-  <% unless breakfast_meals.empty? %>
-    <%breakfast_meals.each do |meal|%>
-      <div class= "meal-card">
-      <p><%= meal.recipe.title %><p>
-      </div>
-    <%end%>
-  <%else%>
-     <p><i>--None--</i></p>
-  <%end%>
-  </ul>
-  <p>LUNCH</p> 
-   <% lunch_meals = meals.select{ |meal| meal.tagname == "lunch"} %>
-  <ul>
-  <% unless lunch_meals.empty? %>
-    <%lunch_meals.each do |meal|%>
-      <div class= "meal-card" data-meal-id = '<%= meal.id%>' >
-      
-      <p><%= meal.recipe.title %><p>
-      </div>
-    <%end%>
-  <%else%>
-     <p><i>--None--</i></p>
-  <%end%>
-  </ul>
-  <p>DINNER</p> 
-   <% dinner_meals = meals.select{ |meal| meal.tagname == "dinner"} %>
-  <ul>
-  <% unless dinner_meals.empty? %>
-    <%dinner_meals.each do |meal|%>
-      <div class= "meal-card" data-meal-id = '<%= meal.id%>'>
-      <p><%= meal.recipe.title %><p>
-      </div>
-    <%end%>
-  <%else%>
-     <p><i>--None--</i></p>
-  <%end%>
-  </ul>
-<% end %>
-<p id = "delete-btn" ><%= link_to "Remove"%></p>
-<p class = "array-chosen"></p>
+<div>
+  <%= week_calendar attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
+    <%= date %>
+
+    <p>BREAKFAST</p>
+    <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
+    <ul>
+      <% unless breakfast_meals.empty? %>
+      <%breakfast_meals.each do |meal|%>
+        <div class= "meal-card" data-meal-id="<%= meal.id%>">
+          <%= link_to recipe_path(meal.recipe) do %>
+            <p><%= meal.recipe.title %><p>
+          <% end %>
+          <%# if policy(meal.recipe).destroy? %>
+            <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+              <i class="far fa-trash-alt smaller-icon"></i>
+            <% end %>
+          <%# end %>
+        </div>
+      <%end%>
+      <%else%>
+       <p><i>--No recipe yet--</i></p>
+      <%end%>
+    </ul>
+
+    <p>LUNCH</p>
+    <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
+    <ul>
+      <% unless lunch_meals.empty? %>
+        <%lunch_meals.each do |meal|%>
+          <div class= "meal-card" data-meal-id="<%= meal.id%>" >
+            <%= link_to recipe_path(meal.recipe) do %>
+              <p><%= meal.recipe.title %><p>
+            <% end %>
+            <%# if policy(meal.recipe).destroy? %>
+              <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+                <i class="far fa-trash-alt smaller-icon"></i>
+              <% end %>
+            <%# end %>
+          </div>
+        <%end%>
+      <%else%>
+        <p><i>--No recipe yet--</i></p>
+      <%end%>
+    </ul>
+
+    <p>DINNER</p>
+    <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
+    <ul>
+      <% unless dinner_meals.empty? %>
+        <%dinner_meals.each do |meal|%>
+          <div class= "meal-card" data-meal-id="<%= meal.id%>">
+            <%= link_to recipe_path(meal.recipe) do %>
+              <p><%= meal.recipe.title %><p>
+            <% end %>
+            <%# if policy(meal.recipe).destroy? %>
+              <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+                <i class="far fa-trash-alt smaller-icon"></i>
+              <% end %>
+            <%# end %>
+          </div>
+        <%end%>
+      <%else%>
+       <p><i>--None--</i></p>
+      <%end%>
+    </ul>
+
+  <% end %>
+
+    <p id="delete-btn" ><%= link_to "Remove"%></p>
+    <p class="array-chosen"></p>
+</div>

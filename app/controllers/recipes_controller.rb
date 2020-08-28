@@ -19,6 +19,15 @@ class RecipesController < ApplicationController
     end
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+    @favorited = Favorite.where(user: current_user, recipe_id: params[:id]).empty? ? false : true
+    @favorite = Favorite.new
+    @review = Review.new
+    @reviews = @recipe.reviews
+    @meal = Meal.new
+  end
+
   def new
     @recipe = Recipe.new
   end
@@ -34,14 +43,6 @@ class RecipesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @recipe = Recipe.find(params[:id])
-    @favorited = Favorite.where(user: current_user, recipe_id: params[:id]).empty? ? false : true
-    @favorite = Favorite.new
-    @review = Review.new
-    @reviews = @recipe.reviews
   end
 
   def edit
