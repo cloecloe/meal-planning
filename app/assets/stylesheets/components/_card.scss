@@ -72,9 +72,12 @@
 }
 
 .filters-container {
+  margin: 2% 2%;
   border: solid 1px rgba(0,0,0,0.2);
   display: grid;
   grid-template-columns: 1fr;
+  justify-items: center; 
+  align-items: center; 
 }
 
 .filter-card {
@@ -89,9 +92,6 @@
   .filters-container {
     grid-template-columns: 1fr 1fr;
   }
-  .bis {
-    grid-template-rows: 1fr 1fr;
-  }
   .filter-card {
     width: 100%;
     padding: 4%;
@@ -101,9 +101,6 @@
 @media (min-width: 1192px) {
   .filters-container {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-  .bis {
-    grid-template-rows: 1fr;
   }
   .filter-card {
     width: 100%;
