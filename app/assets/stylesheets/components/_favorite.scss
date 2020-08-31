@@ -3,13 +3,12 @@
   height: 50px;
   position: relative;
   i {
-    width: 100%;
+    font-size: 24px;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     color: red;
-    border: 1px solid red;
   }
 }
 
@@ -21,5 +20,4 @@
   position: absolute;
   top: 0;
   left: 0;
-  border: 1px solid green;
 }

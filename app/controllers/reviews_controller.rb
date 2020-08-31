@@ -7,6 +7,8 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.recipe_id = @recipe.id
 
+    authorize(@review)
+
     if @review.save
       redirect_to recipe_path(@recipe)
     else
@@ -18,6 +20,7 @@ class ReviewsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @review = Review.find(params[:id])
     @review.destroy
+    authorize(@review)
     redirect_to recipe_path(@recipe)
   end
 

@@ -7,6 +7,11 @@ class RecipesController < ApplicationController
       @favorites = Favorite.where(user_id: current_user.id)
     end
     if params[:search]
+      if params[:search][:search]
+        params[:search] = params[:search][:search]
+      end
+    end
+    if params[:search]
       @recipes = Recipe.algolia_search(params[:search])
       policy_scope(Recipe)
       if @recipes.empty?
@@ -30,6 +35,9 @@ class RecipesController < ApplicationController
     @reviews = @recipe.reviews
     @meal = Meal.new
     authorize(@recipe) if current_user
+
+    @other_recipe = Recipe.all.sample
+    @second_recipe = Recipe.last
   end
 
   def new

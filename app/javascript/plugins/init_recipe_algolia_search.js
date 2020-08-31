@@ -2,7 +2,6 @@ import algoliasearch from "algoliasearch";
 
 const initRecipeAlgoliaSearch = () => {
   const inputRecipeField = document.querySelector("#search");
-
   const appId = document.querySelector("meta[name='algolia-app-id']").content;
   const searchOnlyApiKey = document.querySelector("meta[name='algolia-search-only-api-key']").content;
 
