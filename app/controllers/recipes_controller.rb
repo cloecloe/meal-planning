@@ -48,6 +48,7 @@ class RecipesController < ApplicationController
 
     if @recipe.save
       redirect_to recipe_path(@recipe)
+      Favorite.create(recipe_id: @recipe.id, user: current_user)
     else
       render :new
     end

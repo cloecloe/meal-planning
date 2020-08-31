@@ -41,7 +41,11 @@
 <h3>Method</h3>
 <ol>
   <% @recipe.instructions.each do |instruction|%>
-    <% instruction = instruction[6...-1] %>
+    <% if @recipe.user_id == 1 %>
+      <% instruction = instruction[6...-1] %>
+    <% else %>
+      <% instruction = instruction %>
+    <% end %>
     <li><%= instruction %></li><br>
   <% end %>
 </ol>
