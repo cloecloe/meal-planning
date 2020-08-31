@@ -14,44 +14,44 @@
 
         <% if current_user && policy(@recipe).destroy? %>
           <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete #{@recipe.title}?" } do %>
-            <i class="far fa-trash-alt"></i>
+            <i class="far fa-trash-alt smaller-icon"></i>
           <% end %>
         <% end %>
 
         <% if current_user && policy(@recipe).edit? %>
           <%= link_to edit_recipe_path(@recipe) do %>
-            <i class="far fa-edit"></i>
+            <i class="far fa-edit smaller-icon"></i>
           <% end %>
         <% end %>
       </h1>
 
-        <div class="rating d-flex align-items-center my-3">
-          <% if !@reviews.empty? %>
-            <% ratings = @recipe.reviews.map{|review| review.rating} %>
-            <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
-            <% medium_ratings.to_i.times do |r| %>
-              <i class="fas fa-star text-warning"></i>
-            <% end %>
-            <% if medium_ratings != medium_ratings.to_i %>
-              <i class="fas fa-star-half-alt text-warning"></i>
-              <% medium_ratings += 1 %>
-            <% end %>
-            <% (5 - medium_ratings.to_i).times do |r| %>
-              <i class="far fa-star text-warning"></i>
-            <% end %>
-            <div class="text-secondary mx-1"><%= ratings.count %> ratings</div>
-          <% else %>
-            <% 5.times do |r| %>
-              <i class="far fa-star text-warning"></i>
-            <% end %>
-            <div class="text-secondary mx-1">0 ratings</div>
+      <div class="rating d-flex align-items-center my-3">
+        <% if !@reviews.empty? %>
+          <% ratings = @recipe.reviews.map{|review| review.rating} %>
+          <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
+          <% medium_ratings.to_i.times do |r| %>
+            <i class="fas fa-star text-warning"></i>
           <% end %>
-        </div>
+          <% if medium_ratings != medium_ratings.to_i %>
+            <i class="fas fa-star-half-alt text-warning"></i>
+            <% medium_ratings += 1 %>
+          <% end %>
+          <% (5 - medium_ratings.to_i).times do |r| %>
+            <i class="far fa-star text-warning"></i>
+          <% end %>
+          <div class="text-secondary mx-1"><%= ratings.count %> ratings</div>
+        <% else %>
+          <% 5.times do |r| %>
+            <i class="far fa-star text-warning"></i>
+          <% end %>
+          <div class="text-secondary mx-1">0 ratings</div>
+        <% end %>
+      </div>
 
 
       <%= cl_image_tag @recipe.photo.key, height: 480, crop: :fill, class: "image-full" %>
 
-      <div class="first-part d-flex align-items-center">
+      <div class="first-part d-flex align-items-center justify-content-between">
         <div class="header-info d-flex my-3">
           <div class="info-each">
             <div class="text-secondary smaller-text">Serving</div>
@@ -66,16 +66,19 @@
             <div class="black-text"><%= @recipe.difficulty %></div>
           </div>
         </div>
-        <div class="info-each">
+        <div class="info-each d-flex ml-4">
           <%= simple_form_for [@recipe, @favorite], class: "favorite-container" do |f| %>
             <%= f.hidden_field :favorited, value: @favorited.to_s %>
             <% if @favorited %>
-              <i class="fas fa-heart" id="heart"></i>
+              <!-- <i class="fas fa-heart" id="heart"></i> -->
+              <i class="fas fa-bookmark id="heart""></i>
             <% else %>
-              <i class="far fa-heart" id="heart"></i>
+              <!-- <i class="far fa-heart" id="heart"></i> -->
+              <i class="far fa-bookmark id="heart""></i>
             <% end %>
             <%= f.submit "", class: "favorite-submit" %>
           <% end %>
+          Add to cookbook
         </div>
       </div>
 
