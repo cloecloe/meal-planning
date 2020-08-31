@@ -42,6 +42,7 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
     @recipe.ingredients = params[:recipe][:ingredients].split("\r\n")
     @recipe.instructions = params[:recipe][:instructions].split("\r\n")
+    @recipe.displayed = params[:recipe][:displayed] == "Yes" ? true : false
 
     authorize(@recipe)
 
