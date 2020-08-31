@@ -3,7 +3,9 @@ const initMeals = () => {
   const update = document.querySelector('#update-btn');
   const meals = document.querySelectorAll('.meal-card');
   const deleteBtn = document.querySelector('#delete-btn');
-  deleteBtn.style.display = "none";
+  if (deleteBtn) {
+    deleteBtn.style.display = "none";
+  }
   const toggleActiveClass = (event) => {
     event.currentTarget.classList.toggle('active');
     if (deleteBtn.style.display === "none") {
@@ -18,12 +20,11 @@ const initMeals = () => {
   };
   update.addEventListener('click', toggleActiveClass);
   const array = document.querySelector('.array-chosen');
-  console.log(array)
   const mealsChosen = [];
   meals.forEach((meal) => {
     meal.addEventListener('click', (e) => {
       if (update.classList.contains('active')){
-        e.currentTarget.classList.toggle('active'); 
+        e.currentTarget.classList.toggle('active');
       };
       if (meal.classList.contains('active')){
         mealsChosen.push(meal.dataset.mealId);

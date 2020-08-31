@@ -3,6 +3,20 @@ require 'open-uri'
 class MealsController < ApplicationController
   def index
     @meals = Meal.all
+    @recipe = Recipe.find(params[:recipe_id])
+    if params[:search]
+      @recipes = Recipe.algolia_search(params[:search])
+      policy_scope(Recipe)
+      if @recipes.empty?
+        @recipes = Recipe.where(displayed: true)
+        @recipes = policy_scope(Recipe).order(:created_at)
+        flash[:notice] = "Recipe not found"
+      end
+    else
+      @recipes = Recipe.where(displayed: true)
+      @recipes = policy_scope(Recipe).order(:created_at)
+    end
+
     policy_scope(Meal)
   end
 

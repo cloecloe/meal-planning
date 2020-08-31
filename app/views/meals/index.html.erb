@@ -13,39 +13,66 @@
 </div>
 
 <div class="modal fade" id="share-modal" tabindex="-1" aria-labelledby="share-modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5>Share my calendar</h5>
-        </div>
-        <div class="modal-body">
-          <%= form_tag(share_path(current_user.calendar), method: :patch) do %>
-            <%= text_field_tag 'email' %>
-            <%= submit_tag "Share" %>
-          <% end %>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Share my calendar</h5>
+      </div>
+      <div class="modal-body">
+        <%= form_tag(share_path(current_user.calendar), method: :patch) do %>
+          <%= text_field_tag 'email' %>
+          <%= submit_tag "Share" %>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
+
+
+<div class="modal fade" id="meal-modal" tabindex="-1" role="dialog" aria-labelledby="meal-modalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="meal-modalLongTitle">Add a Meal</h5>
+      </div>
+      <div class="modal-body">
+        <form class="form-inline my-3" id="meal-modal-search" >
+          <input class="form-control" type="text" name="search" id="search" placeholder="Search recipe..." />
+          <button name="button" type="submit" class="btn orange-btn mx-1"><i class="fas fa-search"></i> Search</button>
+        </form>
+        <div id="results">
+          <% @recipes.each do |recipe| %>
+            <div class="recipe-result" data-recipe-id="<%= recipe.id %>">
+              <%= recipe.title %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div>
-
  <div class="calendar-format mx-3 mb-5">
 
  <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
 
     <div class="day-format bottom-border">
       <p class="text-center">BREAKFAST</p>
+      <button data-tagname="Breakfast" data-date="<%= date %>" class= "btn orange-btn add-meal-button" data-toggle="modal" data-target="#meal-modal" >Add a meal</button>
       <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
       <% unless breakfast_meals.empty? %>
         <%breakfast_meals.each do |meal|%>
           <div class= "meal-card" data-meal-id="<%= meal.id%>">
             <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-            <%# if policy(meal.recipe).destroy? %>
+            <% if policy(meal.recipe).destroy? %>
               <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
                 <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
               <% end %>
-            <%# end %>
+            <% end %>
           </div>
         <%end%>
       <%end%>
@@ -53,6 +80,7 @@
 
     <div class="day-format bottom-border">
       <p class="text-center">LUNCH</p>
+      <button data-tagname="Lunch" data-date="<%= date %>" class= "btn orange-btn add-meal-button" data-toggle="modal" data-target="#meal-modal" >Add a meal</button>
       <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
       <% unless lunch_meals.empty? %>
         <%lunch_meals.each do |meal|%>
@@ -70,6 +98,7 @@
 
     <div class="day-format">
       <p class="text-center">DINNER</p>
+      <button data-tagname="Dinner" data-date="<%= date %>" class= "btn orange-btn add-meal-button" data-toggle="modal" data-target="#meal-modal" >Add a meal</button>
       <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
       <% unless dinner_meals.empty? %>
         <%dinner_meals.each do |meal|%>
