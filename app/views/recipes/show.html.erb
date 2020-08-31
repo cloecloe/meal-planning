@@ -1,18 +1,18 @@
 <h1>
   <strong><%= @recipe.title.capitalize %></strong>
 
-    <%# if policy(@recipe).destroy? %>
+    <% if current_user && policy(@recipe).destroy? %>
       <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete #{@recipe.title}?" } do %>
         <i class="far fa-trash-alt smaller-icon"></i>
       <% end %>
-    <%# end %>
+    <% end %>
 
 
-    <%# if policy(@recipe).edit? %>
+    <% if current_user && policy(@recipe).edit? %>
       <%= link_to edit_recipe_path(@recipe) do %>
         <i class="far fa-edit smaller-icon"></i>
       <% end %>
-    <%# end %>
+    <% end %>
 </h1>
 
 <%= simple_form_for [@recipe, @favorite], class: "favorite-container" do |f| %>
@@ -41,7 +41,11 @@
 <h3>Method</h3>
 <ol>
   <% @recipe.instructions.each do |instruction|%>
-    <% instruction = instruction[6...-1] %>
+    <% if @recipe.user_id == 1 %>
+      <% instruction = instruction[6...-1] %>
+    <% else %>
+      <% instruction = instruction %>
+    <% end %>
     <li><%= instruction %></li><br>
   <% end %>
 </ol>

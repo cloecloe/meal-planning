@@ -1,8 +1,9 @@
 class CalendarsController < ApplicationController
   def new
-
+    @calendar = Calendar.new
+    authorize(@calendar)
   end
-  
+
   def share
     @user = User.find_by(email: params[:email])
     if @user

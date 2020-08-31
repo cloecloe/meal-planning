@@ -3,6 +3,7 @@ require 'open-uri'
 class MealsController < ApplicationController
   def index
     @meals = Meal.all
+    policy_scope(Meal)
   end
 
   def create
@@ -17,6 +18,8 @@ class MealsController < ApplicationController
     @new_meal.recipe = @recipe
     @new_meal.calendar_id = current_user.calendar_id
 
+    authorize(@meal)
+
     if @new_meal.save
       flash[:notice] = "Recipe added to your calendar!"
     else
@@ -27,11 +30,12 @@ class MealsController < ApplicationController
 
   def destroy
     if params[:meal_ids]
-      Meal.destroy(params[:meal_ids])
+      @meal = Meal.destroy(params[:meal_ids])
     else
       @meal = Meal.find(params[:id])
       @meal.destroy
     end
+    authorize(@meal)
     redirect_to meals_path
   end
 
