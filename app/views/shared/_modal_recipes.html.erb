@@ -1,0 +1,71 @@
+<div class="modal fade" id="recipe-modal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>All recipes</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dy9zumgoz/image/upload/v1598561269/f5ijn0szbuv3yrwccnuw.jpg);">>
+            <div class="container">
+              <h1>Catchy phrase here...</h1>
+              <p>Share your recipes and get inspired by others'</p>
+              <form class="form-inline my-3" >
+              <%# <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" /> %>
+                <%# <div class="search-form-control form-group"> %>
+                  <input class="form-control" type="text" name="search" id="search" placeholder="Search recipe..." />
+                  <button name="button" type="submit" class="btn orange-btn mx-1"><i class="fas fa-search"></i> Search</button>
+                <%# </div> %>
+              <%# </form> %>
+              </form>
+            </div>
+          </div>
+
+          <div class="filters-card-container">
+              <div class = "filter-card text-center m-3"><%= link_to "All", recipes_path %></div>
+              <div class = "filter-card text-center m-3"><%= link_to "Quick Recipes", recipes_path(@filter = "quick") %></div>
+              <div class = "filter-card text-center m-3"><%= link_to "Easy", recipes_path(@filter = "easy") %></div>
+              <div class = "filter-card text-center m-3"><%= link_to "Individuals Portions", recipes_path(@filter = "individual") %></div>
+              <div class = "filter-card text-center m-3"><%= link_to "Short Recipes", recipes_path(@filter = "short") %></div>
+              <div class = "filter-card text-center m-3"><%= link_to "Couple Meals", recipes_path(@filter = "couple") %></div>
+              <div class = "filter-card text-center m-3"><%= link_to "More Effort", recipes_path(@filter = "effort") %></div>
+              <div class = "filter-card text-center m-3"><%= link_to "Family Serving", recipes_path(@filter = "family") %></div>
+              <div class = "filter-card text-center m-3"><%= link_to "Challenging Recipes", recipes_path(@filter = "challenge") %></div>
+              <div class = "filter-card text-center m-3"><%= link_to "Long Recipes", recipes_path(@filter = "long") %></div>
+          </div>
+
+          <div class="recipe-card-container">
+
+            <% @recipes.each do |recipe| %>
+              <%= link_to recipe_path(recipe) do%>
+                <div class="recipe-card m-3">
+                  <%= cl_image_tag recipe.photo.key, height: 280, width: 350 %>
+                  <div class="card-info">
+                    <div class="icons-list">
+                      <% if recipe.preptime >= 10 %>
+                        <i class="icons-round fas fa-stopwatch-20"></i>
+                      <% end %>
+                      <% if recipe.serving.match(/[3-9]|10/) %>
+                        <i class="icons-round fas fa-users"></i>
+                      <% end %>
+                      <% if user_signed_in? %>
+                        <% if !@favorites.where(recipe_id: recipe.id).empty? %>
+                          <i class="icons-round fas fa-heart"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="recipe-title px-3">
+                      <strong><%= recipe.title %></strong>
+                      <%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %>
+                    </div>
+                  </div>
+                </div>
+              <% end%>
+            <% end%>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>

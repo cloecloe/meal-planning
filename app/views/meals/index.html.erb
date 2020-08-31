@@ -23,9 +23,9 @@
       </div>
     </div>
   </div>
-    
+
 <div>
-  
+
  <div class="calendar-format mx-3 mb-5">
 
  <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
@@ -54,11 +54,11 @@
         <%lunch_meals.each do |meal|%>
           <div class= "meal-card" data-meal-id="<%= meal.id%>" >
             <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-            <%# if policy(meal.recipe).destroy? %>
+            <% if policy(meal.recipe).destroy? %>
               <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
                 <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
               <% end %>
-            <%# end %>
+            <% end %>
           </div>
         <%end%>
       <%end%>
@@ -71,11 +71,11 @@
         <%dinner_meals.each do |meal|%>
           <div class= "meal-card" data-meal-id="<%= meal.id%>">
             <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-            <%# if policy(meal.recipe).destroy? %>
+            <% if policy(meal.recipe).destroy? %>
               <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
                 <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
               <% end %>
-            <%# end %>
+            <% end %>
           </div>
         <%end%>
       <%end%>
