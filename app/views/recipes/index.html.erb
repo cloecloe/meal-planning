@@ -6,15 +6,16 @@
     <%# <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" /> %>
       <%# <div class="search-form-control form-group"> %>
         <input class="form-control" type="text" name="search" id="search" placeholder="Search recipe..." />
-        <button name="button" type="submit" class="btn orange-btn mx-1"><i class="fas fa-search"></i> Search</button>
+        <button name="button" type="submit" class="btn orange-btn"><i class="fas fa-search"></i></button>
       <%# </div> %>
     <%# </form> %>
     </form>
   </div>
 </div>
+
 <div id= "multi-item-example" class="carous-container carousel slide carousel-multi-item" data-ride="carousel">
   <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-  <div class = "carousel-inner" role="listbox"> 
+  <div class = "carousel-inner" role="listbox">
       <div class = "carousel-item active">
         <div class= "filters-container">
           <div class = "filter-card"><%= link_to "All", recipes_path %></div>
@@ -43,12 +44,12 @@
 </div>
 
 
-<div class="recipe-card-container">
+<div class="recipe-card-container mb-5">
 
   <% @recipes.each do |recipe| %>
     <%= link_to recipe_path(recipe) do%>
-      <div class="recipe-card m-3">
-        <%= cl_image_tag recipe.photo.key, height: 280, width: 350 %>
+      <div class="recipe-card">
+        <%= cl_image_tag recipe.photo.key, height: 280, width: 370 %>
         <div class="card-info">
           <div class="icons-list">
             <% if recipe.preptime >= 10 %>
@@ -64,8 +65,8 @@
             <% end %>
           </div>
           <div class="recipe-title px-3">
-            <strong><%= recipe.title %></strong>
-            <%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} mins" %>
+            <div class="black-title"><strong><%= recipe.title %></strong></div>
+            <div class="grey-text"><%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} min" %> • <%= recipe.difficulty %></div>
           </div>
         </div>
       </div>
