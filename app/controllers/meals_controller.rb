@@ -3,7 +3,6 @@ require 'open-uri'
 class MealsController < ApplicationController
   def index
     @meals = Meal.all
-    @recipe = Recipe.find(params[:recipe_id])
     if params[:search]
       @recipes = Recipe.algolia_search(params[:search])
       policy_scope(Recipe)
