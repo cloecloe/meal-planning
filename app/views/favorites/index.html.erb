@@ -1,36 +1,47 @@
-<h1><%= current_user.first_name %>'s Cookbook</h1>
+<div class="banner-smaller" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dy9zumgoz/image/upload/v1598887645/uttuozzjrtdutbkcpuqb.jpg);">>
+  <div class="container">
+    <h1 class="text-center"><%= current_user.first_name %>'s Cookbook</h1>
+  </div>
+</div>
 
- <form class="form-inline m-3" >
+
+<div class="container">
+
+  <form class="form-inline my-4" >
     <%# <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" /> %>
       <%# <div class="search-form-control form-group"> %>
         <input class="form-control" type="text" name="search" id="fav-search" placeholder="Search recipe..." />
-        <button name="button" type="submit" class="btn btn-success my-2 mx-1"><i class="fas fa-search"></i> Search</button>
+        <button name="button" type="submit" class="btn orange-btn"><i class="fas fa-search"></i></button>
       <%# </div> %>
     <%# </form> %>
-    </form>
+  </form>
 
-<div class="recipe-card-container">
+  <h2 class="mb-4"><%= @favorites.count %> Recipes</h2>
 
-  <% @favorites.each do |favorite| %>
-    <%= link_to recipe_path(favorite.recipe) do%>
-      <div class="recipe-card m-3">
-        <%= cl_image_tag favorite.recipe.photo.key, height: 280, width: 350 %>
-        <div class="card-info">
-          <div class="icons-list">
-            <% if favorite.recipe.preptime >= 10 %>
-              <i class="icons-round fas fa-stopwatch-20"></i>
-            <% end %>
-            <% if favorite.recipe.serving.match(/[3-9]|10/) %>
-              <i class="icons-round fas fa-users"></i>
-            <% end %>
-          </div>
-          <div class="recipe-title px-3">
-            <strong><%= favorite.recipe.title %></strong>
-            <%= favorite.recipe.preptime < 10 ? "#{favorite.recipe.preptime} h" : "#{favorite.recipe.preptime} mins" %>
+  <div class="recipe-card-container mb-5">
+
+    <% @favorites.each do |favorite| %>
+      <%= link_to recipe_path(favorite.recipe) do%>
+        <div class="recipe-card">
+          <%= cl_image_tag favorite.recipe.photo.key, height: 280, width: 370 %>
+          <div class="card-info">
+            <div class="icons-list">
+              <% if favorite.recipe.preptime >= 10 %>
+                <i class="icons-round fas fa-stopwatch-20"></i>
+              <% end %>
+              <% if favorite.recipe.serving.match(/[3-9]|10/) %>
+                <i class="icons-round fas fa-users"></i>
+              <% end %>
+            </div>
+            <div class="recipe-title px-3">
+              <div class="black-title"><strong><%= favorite.recipe.title %></strong></div>
+              <div class="grey-text"><%= favorite.recipe.preptime < 10 ? "#{favorite.recipe.preptime} h" : "#{favorite.recipe.preptime} min" %> • <%= favorite.recipe.difficulty %></div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+
+  </div>
 
 </div>

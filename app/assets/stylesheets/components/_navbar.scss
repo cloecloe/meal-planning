@@ -7,6 +7,23 @@
   flex-grow: 0;
 }
 
+.navbar-lewagon .navbar-brand {
+  display: flex;
+  align-items: center;
+  color: $black;
+}
+
+.navbar-lewagon .navbar-brand .white-text:hover {
+  color: $orange;
+}
+
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.navbar-collapse .nav-item a:hover {
+  color: $orange !important;
 }

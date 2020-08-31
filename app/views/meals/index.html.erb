@@ -1,4 +1,8 @@
-<h1 class="text-center my-4">My Calendar</h1>
+<div class="banner-smaller" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dy9zumgoz/image/upload/v1598887645/uttuozzjrtdutbkcpuqb.jpg);">>
+  <div class="container">
+    <h1 class="text-center my-4">My Calendar</h1>
+  </div>
+</div>
 
 <div class="group-selection">
   <button id="update-btn" class= "btn orange-btn">Group selection</button>
@@ -51,6 +55,7 @@
 </div>
 
 
+<div>
  <div class="calendar-format mx-3 mb-5">
 
  <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
@@ -63,11 +68,11 @@
         <%breakfast_meals.each do |meal|%>
           <div class= "meal-card" data-meal-id="<%= meal.id%>">
             <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-            <%# if policy(meal.recipe).destroy? %>
+            <% if policy(meal.recipe).destroy? %>
               <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
                 <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
               <% end %>
-            <%# end %>
+            <% end %>
           </div>
         <%end%>
       <%end%>
@@ -81,11 +86,11 @@
         <%lunch_meals.each do |meal|%>
           <div class= "meal-card" data-meal-id="<%= meal.id%>" >
             <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-            <%# if policy(meal.recipe).destroy? %>
+            <% if policy(meal.recipe).destroy? %>
               <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
                 <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
               <% end %>
-            <%# end %>
+            <% end %>
           </div>
         <%end%>
       <%end%>
@@ -99,11 +104,11 @@
         <%dinner_meals.each do |meal|%>
           <div class= "meal-card" data-meal-id="<%= meal.id%>">
             <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-            <%# if policy(meal.recipe).destroy? %>
+            <% if policy(meal.recipe).destroy? %>
               <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
                 <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
               <% end %>
-            <%# end %>
+            <% end %>
           </div>
         <%end%>
       <%end%>
