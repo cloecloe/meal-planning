@@ -161,7 +161,7 @@
 
         <%= link_to recipe_path(@other_recipe) do%>
           <div class="smaller-recipe-card my-3">
-            <%= cl_image_tag @other_recipe.photo.key, height: 150, width: 290 %>
+            <%= cl_image_tag @other_recipe.photo.key, height: 150 %>
             <div class="smaller-card-info">
               <div class="smaller-recipe-title px-3">
                 <strong><%= @other_recipe.title %></strong>
@@ -172,7 +172,7 @@
 
         <%= link_to recipe_path(@second_recipe) do%>
           <div class="smaller-recipe-card my-3">
-            <%= cl_image_tag @second_recipe.photo.key, height: 150, width: 290 %>
+            <%= cl_image_tag @second_recipe.photo.key, height: 150 %>
             <div class="smaller-card-info">
               <div class="smaller-recipe-title px-3">
                 <strong><%= @second_recipe.title %></strong>
