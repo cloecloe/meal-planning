@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
     authorize(@recipe) if current_user
 
     @other_recipe = Recipe.select { |recipe| recipe.id != @recipe.id }.sample
-    @second_recipe = Recipe.select { |recipe| recipe.id != @recipe.id }.sample
+    @second_recipe = Recipe.select { |recipe| recipe.id != @recipe.id && recipe.id != @other_recipe.id }.sample
   end
 
   def new
