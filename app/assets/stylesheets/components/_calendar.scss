@@ -93,7 +93,7 @@ tbody > tr {
   opacity: 0.8;
   border-radius: 8px;
   text-align: center;
-  
+
   a {
     text-decoration: none;
     color: $white;
@@ -123,4 +123,9 @@ tbody > tr {
     color: white;
     opacity: 1;
   }
+}
+
+.today {
+  background-color: rgba(255, 113, 113, .5);
+  opacity: 0.75;
 }
