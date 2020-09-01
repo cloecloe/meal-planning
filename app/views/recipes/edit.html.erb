@@ -1,17 +1,48 @@
-<div class="container my-5">
+<div class="container">
+  <div class="row">
+    <div class=" show_recipe col-12 col-md-8 mt-4">
+      <h1>Update your recipe: <strong><%= @recipe.title.capitalize %></strong></h1>
+      <%= cl_image_tag @recipe.photo.key, height: 480, crop: :fill, class: "image-full" %>
 
-  <h1>Update your recipe: <%= @recipe.title %></h1>
+        <%= simple_form_for(@recipe) do |f| %>
+          <%= f.input :title %>
+          <%= f.input :serving %>
+          <%= f.input :preptime, label: "Prep time (in minutes)" %>
+          <%= f.input :difficulty, collection: ["Easy", "Intermediate", "Advanced"] %>
+          <%= f.input :ingredients, hint: "Please write 1 ingredient per line", input_html: {rows: @recipe.ingredients.count} %>
+          <%= f.input :instructions, hint: "Please write 1 instruction per line", input_html: {rows: @recipe.instructions.count} %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :displayed, as: :radio_buttons, label: "Share with our global community?", collection: ["Yes", "No, keep private"] %>
+          <%= f.submit "Update!", class: "btn btn-warning" %>
+        <% end %>    
+    </div>
 
-  <%= simple_form_for(@recipe) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :serving %>
-    <%= f.input :preptime, label: "Prep time (in minutes)" %>
-    <%= f.input :difficulty, collection: ["Easy", "Intermediate", "Advanced"] %>
-    <%= f.input :ingredients, hint: "Please write 1 ingredient per line" %>
-    <%= f.input :instructions, hint: "Please write 1 instruction per line" %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :displayed, as: :radio_buttons, label: "Share with our global community?", collection: ["Yes", "No, keep private"] %>
-    <%= f.submit "Create!", class: "btn btn-warning" %>
-  <% end %>
+    <div class="col-12 col-md-4 mt-5">
+      <div class="smaller-recipe-card-container my-3">
+        <h4>Other recipes</h4>
 
+          <%= link_to recipe_path(@other_recipe) do%>
+            <div class="smaller-recipe-card my-3">
+              <%= cl_image_tag @other_recipe.photo.key, height: 150 %>
+              <div class="smaller-card-info">
+                <div class="smaller-recipe-title px-3">
+                  <strong><%= @other_recipe.title %></strong>
+                </div>
+              </div>
+            </div>
+          <% end%>
+
+          <%= link_to recipe_path(@second_recipe) do%>
+            <div class="smaller-recipe-card my-3">
+              <%= cl_image_tag @second_recipe.photo.key, height: 150 %>
+              <div class="smaller-card-info">
+                <div class="smaller-recipe-title px-3">
+                  <strong><%= @second_recipe.title %></strong>
+                </div>
+              </div>
+            </div>
+          <% end%>
+      </div>
+    </div>
+  </div>
 </div>

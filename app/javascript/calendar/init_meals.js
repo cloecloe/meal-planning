@@ -19,7 +19,10 @@ const initMeals = () => {
       meal.classList.remove('active');
     });
   };
-  update.addEventListener('click', toggleActiveClass);
+
+  if (update) {
+    update.addEventListener('click', toggleActiveClass);
+  }
   const array = document.querySelector('.array-chosen');
   const mealsChosen = [];
   meals.forEach((meal) => {
@@ -36,16 +39,19 @@ const initMeals = () => {
       };
     });
   });
-  deleteBtn.addEventListener('click', (e) => {
-    event.preventDefault();
-    fetchWithToken('/meals', {
-      method: 'delete',
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ meal_ids: mealsChosen})}).then(()=> location.reload());
-  });
+
+  if (deleteBtn) {
+    deleteBtn.addEventListener('click', (e) => {
+      event.preventDefault();
+      fetchWithToken('/meals', {
+        method: 'delete',
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ meal_ids: mealsChosen})}).then(()=> location.reload());
+    });
+  }
 };
 
 export{ initMeals };
