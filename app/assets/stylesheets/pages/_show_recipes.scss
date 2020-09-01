@@ -1,0 +1,32 @@
+.image-full {
+  width: 100%;
+  object-fit: cover;
+}
+
+.smaller-icon {
+  font-size: 16px;
+  color: grey;
+  &:hover {
+    color: $orange;
+  }
+}
+
+.black-text {
+  color: $black;
+}
+
+.smaller-text {
+  font-size: 12px;
+}
+
+.bigger-icon {
+  font-size: 32px;
+}
+
+.delete-review a {
+  text-decoration: none;
+  color: grey;
+  &:hover {
+    color: $orange;
+  }
+}

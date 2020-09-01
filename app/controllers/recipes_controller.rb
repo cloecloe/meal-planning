@@ -7,6 +7,11 @@ class RecipesController < ApplicationController
       @favorites = Favorite.where(user_id: current_user.id)
     end
     if params[:search]
+      if params[:search][:search]
+        params[:search] = params[:search][:search]
+      end
+    end
+    if params[:search]
       @recipes = Recipe.algolia_search(params[:search])
       policy_scope(Recipe)
       if @recipes.empty?
@@ -30,6 +35,9 @@ class RecipesController < ApplicationController
     @reviews = @recipe.reviews
     @meal = Meal.new
     authorize(@recipe) if current_user
+
+    @other_recipe = Recipe.select { |recipe| recipe.id != @recipe.id }.sample
+    @second_recipe = Recipe.select { |recipe| recipe.id != @recipe.id && recipe.id != @other_recipe.id }.sample
   end
 
   def new
@@ -87,16 +95,12 @@ class RecipesController < ApplicationController
       @recipes = Recipe.where(difficulty: "Easy", displayed: true)
     when "effort"
       @recipes = Recipe.where(difficulty: "More effort", displayed: true)
-    when "challenge"
-      @recipes = Recipe.where(difficulty: "A challenge", displayed: true)
     when "quick"
       @recipes = Recipe.where(preptime: (10..30), displayed: true)
     when "short"
       @recipes = Recipe.where(preptime: (31..59), displayed: true)
     when "long"
       @recipes = Recipe.where(preptime: (1..5), displayed: true)
-    when "individual"
-      @recipes = Recipe.where(serving: "Serves 1", displayed: true)
     when "couple"
       @recipes = Recipe.where(serving: "Serves 2", displayed: true)
     when "family"

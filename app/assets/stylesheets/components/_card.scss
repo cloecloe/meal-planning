@@ -1,7 +1,7 @@
 .recipe-card-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 16px;
+  grid-gap: 40px;
   justify-items: center;
   align-items: center;
   a {
@@ -42,15 +42,11 @@
   align-items: flex-start;
   justify-content: flex-end;
   padding-bottom: 10px;
-  height: 10ex;
+  height: 13ex;
 }
 
 .recipe-title .black-title {
     color: $black;
-}
-
-.recipe-title .grey-text {
-  color: grey;
 }
 
 .card-info {
@@ -79,29 +75,45 @@
 }
 
 .carous-container {
-  margin: 5% 5%;
+  margin: 1% 8%;
   display: flex;
   height: max-content;
-  border: solid 1px rgba(0,0,0,0.2);
   justify-items: center;
   align-items: center;
 }
 
+.arrow {
+  color: $black;
+  -webkit-text-stroke: 1%;
+}
+.arrow:hover {
+  color: $orange;
+}
+
 .filters-container {
-  margin: 2% 2%;
-  border: solid 1px rgba(0,0,0,0.2);
+  margin: 2% 1%;
   display: grid;
   grid-template-columns: 1fr;
+  column-gap: 1%;
   justify-items: center;
   align-items: center;
 }
 
 .filter-card {
   width: 100%;
-  padding: 2%;
-  border: solid 1px rgba(0,0,0,0.2);
+  margin: 1%;
+  background-color: $orange;
   text-align: center;
   text-justify: center;
+}
+
+.text-filter {
+  color: $white;
+}
+.text-filter:hover {
+  text-decoration: none;
+  color: $black;
+  opacity: 0.9;
 }
 
 @media (min-width: 768px) {
