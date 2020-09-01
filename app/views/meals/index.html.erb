@@ -26,16 +26,10 @@
         </div>
       </div>
     </div>
-  </div>
-
-<div>
-
- <div class="calendar-format mx-3 mb-5">
-
- <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
-
-    <div class="day-format bottom-border">
-      <p class="text-center">BREAKFAST</p>
+</div>
+<div class= "calendar-format">
+<%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
+    <div class="d-format">
       <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
       <% unless breakfast_meals.empty? %>
         <%breakfast_meals.each do |meal|%>
@@ -50,9 +44,7 @@
         <%end%>
       <%end%>
     </div>
-
-    <div class="day-format bottom-border">
-      <p class="text-center">LUNCH</p>
+    <div class="d-format">
       <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
       <% unless lunch_meals.empty? %>
         <%lunch_meals.each do |meal|%>
@@ -68,8 +60,7 @@
       <%end%>
     </div>
 
-    <div class="day-format">
-      <p class="text-center">DINNER</p>
+    <div class="d-format">
       <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
       <% unless dinner_meals.empty? %>
         <%dinner_meals.each do |meal|%>
@@ -84,7 +75,5 @@
         <%end%>
       <%end%>
     </div>
-
-  <% end %>
-
+<% end %>
 </div>

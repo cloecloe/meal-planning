@@ -1,4 +1,4 @@
-<div class="simple-calendar">
+<div class="simple-calendar all">
 
   <div class="calendar-heading text-center my-3">
     <%= link_to calendar.url_for_previous_view do %>
@@ -10,33 +10,36 @@
     <% end %>
   </div>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <% date_range.slice(0, 7).each do |day| %>
-          <th class="text-center text-color"><%= t('date.day_names')[day.wday] %></th>
-        <% end %>
-      </tr>
-      <tr>
-        <% date_range.each_slice(7) do |week| %>
-      </tr>
-    </thead>
-
-    <tbody>
-
+  <div class= "all-cal" style= "overflow-x:auto;">
+    <table class="table ">
+      <thead class = "first-col-head">
         <tr>
-          <% week.each do |day| %>
-            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
-              <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
-                <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
-              <% else %>
-                <% passed_block.call day, sorted_events.fetch(day, []) %>
-              <% end %>
-            <% end %>
+            <th></th>
+          <% date_range.slice(0, 7).each do |day| %>
+            <th class="text-center"><%= t('date.day_names')[day.wday] %></th>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+      </thead>
+      <tbody>
+          <tr>
+            <td class ="first-row-head">
+              <div class= "headlines">Breakfast</div>
+              <div class= "headlines">Lunch</div>
+              <div class= "headlines">Dinner</div>
+            </td>
+            <% date_range.each_slice(7) do |week| %>
+              <% week.each do |day| %>
+                <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+                  <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                    <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                  <% else %>
+                    <% passed_block.call day, sorted_events.fetch(day, []) %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
