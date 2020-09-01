@@ -10,7 +10,7 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+@media (min-width: 800px) {
   .recipe-card-container {
     grid-template-columns: 1fr 1fr;
   }
