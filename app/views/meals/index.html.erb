@@ -51,7 +51,7 @@
                 <div class="modal-card-info">
 
                   <div class="modal-recipe-title pl-3">
-                    <div class="black-title"><strong><%= recipe.title %></strong></div>
+                    <div class="modal-black-title"><%= recipe.title %></div>
                     <div class="text-secondary"><%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} min" %> • <%= recipe.difficulty %></div>
                     <div class="rating d-flex align-items-center my-1">
                       <% if !recipe.reviews.empty? %>
