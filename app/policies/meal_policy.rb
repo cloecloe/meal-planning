@@ -1,14 +1,14 @@
 class MealPolicy < ApplicationPolicy
+  def index?
+    return true
+  end
+
   def create?
     return true
   end
 
-  def update?
-    return user_is_owner_or_admin?
-  end
-
   def destroy?
-    return user_is_owner_or_admin?
+    return true
   end
 
   private
