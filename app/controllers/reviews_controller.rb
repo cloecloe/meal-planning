@@ -19,8 +19,8 @@ class ReviewsController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @review = Review.find(params[:id])
-    @review.destroy
     authorize(@review)
+    @review.destroy
     redirect_to recipe_path(@recipe)
   end
 
