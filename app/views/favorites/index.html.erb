@@ -35,7 +35,7 @@
             </div>
             <div class="recipe-title px-3">
               <div class="black-title"><strong><%= favorite.recipe.title %></strong></div>
-              <div class="text-secondary"><%= favorite.recipe.preptime < 10 ? "#{favorite.recipe.preptime} h" : "#{favorite.recipe.preptime} min" %> • <%= favorite.recipe.difficulty %></div>
+              <div class="text-secondary"><%= favorite.recipe.preptime < 5 ? "#{favorite.recipe.preptime} h" : "#{favorite.recipe.preptime} min" %> • <%= favorite.recipe.difficulty %></div>
             </div>
           </div>
         </div>
