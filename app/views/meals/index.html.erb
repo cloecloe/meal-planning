@@ -45,6 +45,7 @@
 
           <% @recipes.each do |recipe| %>
 
+            <div class="recipe-result button-adding" data-recipe-id="<%= recipe.id %>">
               <div class="modal-recipe-card my-2">
                 <%= cl_image_tag recipe.photo.key, height: 50, width: 50 %>
 
@@ -75,7 +76,6 @@
                     </div>
                   </div>
 
-                  <div class="recipe-result button-adding" data-recipe-id="<%= recipe.id %>">
                     <%= link_to "ADD MEAL", meals_path %>
                   </div>
 

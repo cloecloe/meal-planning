@@ -2,7 +2,6 @@ import {fetchWithToken} from "../utils/fetch_with_token"
 
 const mealSelection = () => {
   const allMeals = document.querySelectorAll(".add-meal-button")
-  console.log(allMeals);
   allMeals.forEach((meal) => {
     meal.addEventListener("click", (event) => {
       allMeals.forEach((meal) => {

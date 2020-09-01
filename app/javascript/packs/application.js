@@ -30,6 +30,7 @@ import { initRecipeAlgoliaSearch } from "../plugins/init_recipe_algolia_search";
 import { initMeals } from "../calendar/init_meals";
 import { initRating} from "../components/rating";
 import { mealSelection} from "../components/meal_modal";
+// import { editDisplay} from "../components/edit_display";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -39,6 +40,9 @@ document.addEventListener('turbolinks:load', () => {
   initRating()
   initFavoriteAlgoliaSearch();
   initRecipeAlgoliaSearch();
+  // editDisplay();
+  mealSelection()
+  initMeals();
 
   if (document.querySelector("#fav-search")) {
     initFavoriteAlgoliaSearch();
@@ -46,7 +50,5 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelector("#search")) {
     initRecipeAlgoliaSearch();
   }
-  mealSelection()
-  initMeals();
 });
 
