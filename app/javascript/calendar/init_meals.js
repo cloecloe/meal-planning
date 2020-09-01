@@ -1,4 +1,5 @@
 import {fetchWithToken } from "../utils/fetch_with_token";
+
 const initMeals = () => {
   const update = document.querySelector('#update-btn');
   const meals = document.querySelectorAll('.meal-card');

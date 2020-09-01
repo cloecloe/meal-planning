@@ -28,24 +28,63 @@
   </div>
 </div>
 
+<!-- Modal to add a recipe on a specific date -->
 
 <div class="modal fade" id="meal-modal" tabindex="-1" role="dialog" aria-labelledby="meal-modalLongTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="meal-modalLongTitle">Add a Meal</h5>
+      <div class="modal-header mb-2">
+        <h5 class="modal-title" id="meal-modalLongTitle">All recipes</h5>
       </div>
       <div class="modal-body">
-        <form class="form-inline my-3" id="meal-modal-search" >
+        <form class="form-inline mb-4" id="meal-modal-search" >
           <input class="form-control" type="text" name="search" id="search" placeholder="Search recipe..." />
-          <button name="button" type="submit" class="btn orange-btn mx-1"><i class="fas fa-search"></i> Search</button>
+          <button name="button" type="submit" class="btn orange-btn mx-1"><i class="fas fa-search"></i></button>
         </form>
         <div id="results">
+
           <% @recipes.each do |recipe| %>
-            <div class="recipe-result" data-recipe-id="<%= recipe.id %>">
-              <%= recipe.title %>
-            </div>
+
+              <div class="modal-recipe-card my-2">
+                <%= cl_image_tag recipe.photo.key, height: 50, width: 50 %>
+
+                <div class="modal-card-info">
+
+                  <div class="modal-recipe-title pl-3">
+                    <div class="modal-black-title"><%= recipe.title %></div>
+                    <div class="text-secondary"><%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} min" %> • <%= recipe.difficulty %></div>
+                    <div class="rating d-flex align-items-center my-1">
+                      <% if !recipe.reviews.empty? %>
+                        <% ratings = recipe.reviews.map{|review| review.rating} %>
+                        <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
+                        <% medium_ratings.to_i.times do |r| %>
+                          <i class="fas fa-star text-warning"></i>
+                        <% end %>
+                        <% if medium_ratings != medium_ratings.to_i %>
+                          <i class="fas fa-star-half-alt text-warning"></i>
+                          <% medium_ratings += 1 %>
+                        <% end %>
+                        <% (5 - medium_ratings.to_i).times do |r| %>
+                          <i class="far fa-star text-warning"></i>
+                        <% end %>
+                      <% else %>
+                        <% 5.times do |r| %>
+                          <i class="far fa-star text-warning"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+
+                  <div class="recipe-result button-adding" data-recipe-id="<%= recipe.id %>">
+                    <%= link_to "ADD MEAL", meals_path %>
+                  </div>
+
+                </div>
+
+              </div>
+
           <% end %>
+
         </div>
       </div>
       <div class="modal-footer">
