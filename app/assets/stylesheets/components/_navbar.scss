@@ -27,3 +27,22 @@
 .navbar-collapse .nav-item a:hover {
   color: $orange !important;
 }
+
+.navbar-collapse .icon-replace {
+  display: none;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  .navbar-collapse .coriander {
+    display: none;
+  }
+  .navbar-collapse .icon-replace {
+  display: block;
+  font-size: 24px;
+  margin-right: 8px;
+  }
+  .navbar-collapse .word {
+  display: none;
+  }
+}
