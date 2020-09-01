@@ -1,23 +1,23 @@
-.navbar-lewagon {
+.navbar-meal {
   justify-content: space-between;
-  background: white;
+  background: $white;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-meal .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand {
+.navbar-meal .navbar-brand {
   display: flex;
   align-items: center;
   color: $black;
 }
 
-.navbar-lewagon .navbar-brand .white-text:hover {
+.navbar-meal .navbar-brand .white-text:hover {
   color: $orange;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-meal .navbar-brand img {
   width: 40px;
   &:hover {
     opacity: 0.7;

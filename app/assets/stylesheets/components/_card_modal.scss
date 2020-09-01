@@ -1,0 +1,51 @@
+.modal-recipe-card {
+  overflow: hidden;
+  height: 80px;
+  background: $white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  img {
+    height: 100%;
+    width: 80px;
+    object-fit: cover;
+  }
+}
+
+.modal-recipe-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 10ex;
+}
+
+.modal-recipe-title .black-title {
+  color: $black;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.modal-card-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.button-adding {
+  padding: 4px 8px;
+}
+
+.button-adding a {
+  text-decoration: none;
+  color: $black;
+  &:hover {
+    color: $orange;
+  }
+}
+
+.modal-black-title {
+  color: $black;
+}
