@@ -7,12 +7,9 @@ const initRating = () => {
  let currentRating = 0
  // loop over all stars
   radioButtons.forEach((button) => {
-    console.log(button);
     button.addEventListener('mouseover', () => {
-      console.log("click event")
       const radioButtonsArray = Array.from(radioButtons);
       currentRating = radioButtonsArray.indexOf(button);
-      console.log(currentRating)
       starRadio.forEach((s) => {
         const starRadioArray = Array.from(starRadio);
         if (starRadioArray.indexOf(s) <= currentRating) {
