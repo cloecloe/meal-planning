@@ -36,8 +36,7 @@ import { mealSelection} from "../components/meal_modal";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-
-  initMeals();
+  initRating()
   initFavoriteAlgoliaSearch();
   initRecipeAlgoliaSearch();
 
@@ -47,7 +46,7 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelector("#search")) {
     initRecipeAlgoliaSearch();
   }
-  initRating()
   mealSelection()
+  initMeals();
 });
 
