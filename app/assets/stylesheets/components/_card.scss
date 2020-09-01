@@ -1,7 +1,7 @@
 .recipe-card-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 16px;
+  grid-gap: 40px;
   justify-items: center;
   align-items: center;
   a {
@@ -84,7 +84,7 @@
 
 .arrow {
   color: $black;
-  -webkit-text-stroke: 1%;  
+  -webkit-text-stroke: 1%;
 }
 .arrow:hover {
   color: $orange;
