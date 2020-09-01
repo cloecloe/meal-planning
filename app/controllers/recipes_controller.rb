@@ -65,6 +65,9 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     authorize(@recipe)
+    
+    @other_recipe = Recipe.select { |recipe| recipe.id != @recipe.id }.sample
+    @second_recipe = Recipe.select { |recipe| recipe.id != @recipe.id && recipe.id != @other_recipe.id }.sample
   end
 
   def update

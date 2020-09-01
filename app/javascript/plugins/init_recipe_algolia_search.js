@@ -23,18 +23,20 @@ const initRecipeAlgoliaSearch = () => {
 
   const results = document.getElementById("results");
 
-  inputRecipeField.addEventListener("input", () => {
-      recipeIndex.search(inputRecipeField.value, {
-          restrictSearchableAttributes: ['title', 'ingredients'],
-      }).then((response) => {
-          if (results) {
-            // results.innerHTML("")
-            console.log(response)
-            buildCards(response);
-          };
-            // console.log(results);
-      })
-  });
+  if (inputRecipeField) {
+    inputRecipeField.addEventListener("input", () => {
+        recipeIndex.search(inputRecipeField.value, {
+            restrictSearchableAttributes: ['title', 'ingredients'],
+        }).then((response) => {
+            if (results) {
+              // results.innerHTML("")
+              console.log(response)
+              buildCards(response);
+            };
+              // console.log(results);
+        })
+    });
+  }
 }
 
 export { initRecipeAlgoliaSearch };
