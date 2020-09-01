@@ -20,4 +20,5 @@ class Recipe < ApplicationRecord
   validates :serving, presence: true
   validates :preptime, presence: true
   validates :difficulty, presence: true
+  validates :photo, presence: true
 end
