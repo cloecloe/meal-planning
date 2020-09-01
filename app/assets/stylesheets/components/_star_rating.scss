@@ -1,0 +1,37 @@
+.form-check {
+  display: inline;
+  color: transparent;
+
+}
+
+.form-check {
+  border: 1px solid red;
+  width: 10px;
+  justify: center;
+  padding-left: 20px;
+  z-index: 100;
+  opacity: 0;
+}
+
+.form-check-label {
+  padding: 0px;
+}
+
+.radio-stars {
+  position: relative;
+}
+
+.stars {
+  position: absolute;
+  bottom: 2px;
+  left: -12px;
+}
+
+.star {
+  padding: 0px 0px 0px 12px;
+
+}
+
+.invalid-feedback {
+  text-align: right;
+}

@@ -115,7 +115,16 @@
         <h4>Add a review</h4>
         <%= simple_form_for [@recipe, @review] do |f| %>
           <%= f.input :description %>
-          <%= f.input :rating, as: :radio_buttons, collection: [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']] %>
+          <div class="radio-stars">
+            <%= f.input :rating, as: :radio_buttons, collection: [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']] %>
+            <div class="stars d-flex">
+              <div class="star"><i class="far fa-star"></i></div>
+              <div class="star"><i class="far fa-star"></i></div>
+              <div class="star"><i class="far fa-star"></i></div>
+              <div class="star"><i class="far fa-star"></i></div>
+              <div class="star"><i class="far fa-star"></i></div>
+            </div>
+          </div>
           <%= f.submit "Add a review!", class: "btn orange-btn d-flex flex-column" %>
         <% end %>
       </div>
@@ -145,7 +154,6 @@
     </div>
 
     <div class="col-12 col-md-4 mt-5">
-
       <div class="grey-form p-3">
         <h4>Add to your calendar</h4>
         <%= simple_form_for [@recipe, @meal] do |f| %>
