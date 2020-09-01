@@ -1,6 +1,6 @@
 <div class="container mb-5">
   <div class="row">
-    <div class=" show_recipe col-12 col-md-8 mt-4">
+    <div class=" show_recipe form-recipe-edit col-12 col-md-8 mt-4">
       <h1>Update your recipe: <strong><%= @recipe.title.capitalize %></strong></h1>
       <%= cl_image_tag @recipe.photo.key, height: 480, crop: :fill, class: "image-full" %>
 
@@ -9,8 +9,8 @@
           <%= f.input :serving %>
           <%= f.input :preptime, label: "Prep time (in minutes)" %>
           <%= f.input :difficulty, collection: ["Easy", "Intermediate", "Advanced"] %>
-          <%= f.input :ingredients, hint: "Please write 1 ingredient per line", input_html: {rows: @recipe.ingredients.count} %>
-          <%= f.input :instructions, hint: "Please write 1 instruction per line", input_html: {rows: @recipe.instructions.count} %>
+          <%= f.input :ingredients, hint: "Please write 1 ingredient per line", input_html: {rows: @recipe.ingredients.count, value: @recipe.ingredients.join("\r\n") } %>
+          <%= f.input :instructions, hint: "Please write 1 instruction per line", input_html: {rows: @recipe.instructions.count, value: @recipe.instructions.join("\r\n") } %>
           <%= f.input :photo, as: :file %>
           <%= f.input :displayed, as: :radio_buttons, label: "Share with our global community?", collection: ["Yes", "No, keep private"] %>
           <%= f.submit "Update!", class: "btn btn-warning" %>

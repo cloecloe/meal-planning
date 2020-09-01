@@ -1,16 +1,12 @@
-.form-check {
-  display: inline;
-  color: transparent;
-
-}
-
-.form-check {
+.review_rating .form-check {
   border: 1px solid red;
   width: 10px;
   justify: center;
   padding-left: 20px;
   z-index: 100;
   opacity: 0;
+  display: inline;
+  color: transparent;
 }
 
 .form-check-label {

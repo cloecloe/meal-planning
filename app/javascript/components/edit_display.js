@@ -1,31 +1,30 @@
 const editDisplay = () => {
   // Ingredients Display:
-  const ingValue = document.querySelector('textarea[name="recipe[ingredients]"]');
-  if (ingValue) {
+  const editForm = document.querySelector(".form-recipe-edit");
+  if (editForm) {
+  const ingValue = editForm.querySelector('textarea[name="recipe[ingredients]"]');
 
     const ingData = ingValue.value;
+    console.log(ingData[0]);
     const ingArray = ingData.substring(1, ingData.length - 1).replaceAll('"', "").split(",");
-    
     let ingTrimed = [];
     ingArray.forEach((ing) => {
       ingTrimed.push(ing.trim());
     });
-  
+
     document.querySelector('textarea[name="recipe[ingredients]"]').value = ingTrimed.join("\r\n");
-  }
-  
+
   // Instruciton Display:
-  const instValue = document.querySelector('textarea[name="recipe[instructions]"]');
-  if (instValue) {
-    
+    const instValue = document.querySelector('textarea[name="recipe[instructions]"]');
+
     const instData = instValue.value;
     const instArray = instData.substring(1, instData.length - 1).replaceAll('"', "").split(",");
-  
+
     let instTrimed = [];
     instArray.forEach((inst) => {
       instTrimed.push(inst.trim());
     });
-  
+
     document.querySelector('textarea[name="recipe[instructions]"]').value = instTrimed.join("\r\n");
   }
 }
