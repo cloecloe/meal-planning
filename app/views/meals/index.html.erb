@@ -90,19 +90,13 @@
       <div class="modal-footer">
       </div>
     </div>
-  </div>
+
 </div>
+<div class= "calendar-format">
+<%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
+    <div class="d-format">
+      <button data-tagname="Breakfast" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
 
-
-<div>
- <div class="calendar-format mx-3 mb-5">
-
- <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
-
-    <div class="day-format bottom-border">
-      <div class="text-center">BREAKFAST
-        <button data-tagname="Breakfast" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
-      </div>
       <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
       <% unless breakfast_meals.empty? %>
         <%breakfast_meals.each do |meal|%>
@@ -116,10 +110,8 @@
       <%end%>
     </div>
 
-    <div class="day-format bottom-border">
-      <div class="text-center">LUNCH
-        <button data-tagname="Lunch" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
-      </div>
+    <div class="d-format">
+      <button data-tagname="Lunch" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
       <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
       <% unless lunch_meals.empty? %>
         <%lunch_meals.each do |meal|%>
@@ -133,10 +125,9 @@
       <%end%>
     </div>
 
-    <div class="day-format">
-      <div class="text-center">DINNER
-        <button data-tagname="Dinner" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
-      </div>
+
+    <div class="d-format">
+      <button data-tagname="Dinner" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
       <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
       <% unless dinner_meals.empty? %>
         <%dinner_meals.each do |meal|%>
@@ -149,7 +140,5 @@
         <%end%>
       <%end%>
     </div>
-
-  <% end %>
-
+<% end %>
 </div>

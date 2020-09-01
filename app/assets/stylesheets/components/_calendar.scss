@@ -17,46 +17,83 @@
   background-color: $cultured;
   color: $black;
   border: none !important;
-  padding: 4px !important;
-}
-
-.day {
-  border: 1px solid lightgrey;
-  background-color: $white;
-  color: $black;
-  min-width: 120px;
-  max-width: 240px;
-  text-align: center;
   padding: 0 !important;
 }
+.all-cal{
+  border: 1px solid rgb(161, 160, 160);
+  justify-content: center;
+  width: 100%;
+  display: table;
+  border-spacing: 0 !important;
+}
 
-.day-format {
+.all{
+  border: 1px solid lightgrey;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  margin: 2% 2%;
+}
+
+.table {
+  border: none !important;
+}
+
+.first-col-head {
+  border: none !important ;
+  display: table-header-group;
+}
+
+.first-row-head {
+  border: 1px solid red ;
+  height: 100%;
+  display: table-cell;
+  flex-direction: column;
+}
+
+tbody > tr {
+  border: 2px solid lightblue;
   width: 100%;
-  min-height: 80px;
+  display: table-row;
+}
+.day{
+  border: 1px solid lightgreen;
+  display: table-cell;
+  background-color: lightyellow;
+}
+
+.headlines {
+  border: solid 1px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-format {
+  border: 1px solid lightgrey;
+  color: $black;
+  height: 150px;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
 }
 
 // Medium devices (tablets, 768px and up)
 @media (max-width: 900px) {
-  .day {
-    min-width: 80px;
-  }
-}
-
-.bottom-border{
-  border-bottom: 1px solid lightgrey;
 }
 
 .meal-card {
-  width: 100%;
+  width: 85%;
+  padding: 2% 2%;
+  margin: auto;
+  height: fit-content;
   background-color: $coral;
   opacity: 0.8;
   border-radius: 8px;
-  padding: 4px 8px;
   text-align: center;
-  margin: 2px;
+  
   a {
     text-decoration: none;
     color: $white;
