@@ -1,12 +1,21 @@
+<div class="banner-smaller" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dy9zumgoz/image/upload/v1598887645/uttuozzjrtdutbkcpuqb.jpg);">>
+  <div class="container">
+    <h1 class="text-center">Add a recipe</h1>
+  </div>
+</div>
+
 <div class="container my-5">
 
-  <h1>Add your recipe</h1>
+<h2>Create a new recipe</h2>
+<p class="text-secondary border-bottom pb-3">Your new recipe will be added to you private cookbook. Or if you’d like, you can also share it with others.</p>
 
   <%= simple_form_for(@recipe) do |f| %>
     <%= f.input :title %>
-    <%= f.input :serving %>
-    <%= f.input :preptime, label: "Prep time (in minutes)" %>
-    <%= f.input :difficulty, collection: ["Easy", "Intermediate", "Advanced"] %>
+    <div class="inline-elements d-flex justify-content-between">
+      <%= f.input :serving %>
+      <%= f.input :preptime, label: "Prep time (in minutes)" %>
+      <%= f.input :difficulty, collection: ["Easy", "Intermediate", "Advanced"] %>
+    </div>
     <%= f.input :ingredients, hint: "Please write 1 ingredient per line" %>
     <%= f.input :instructions, hint: "Please write 1 instruction per line" %>
     <%= f.input :photo, as: :file %>
