@@ -22,3 +22,11 @@
 .bigger-icon {
   font-size: 32px;
 }
+
+.delete-review a {
+  text-decoration: none;
+  color: grey;
+  &:hover {
+    color: $orange;
+  }
+}
