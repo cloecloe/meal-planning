@@ -38,6 +38,7 @@ class RecipesController < ApplicationController
 
     @other_recipe = Recipe.select { |recipe| recipe.id != @recipe.id }.sample
     @second_recipe = Recipe.select { |recipe| recipe.id != @recipe.id && recipe.id != @other_recipe.id }.sample
+
   end
 
   def new

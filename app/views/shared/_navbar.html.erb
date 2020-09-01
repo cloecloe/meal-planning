@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+<nav class="navbar navbar-expand navbar-light navbar-meal sticky-top">
   <div class="collapse navbar-collapse">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= cl_image_tag("") %>
-      <div class="white-text">Coriander</div>
+      <%= cl_image_tag("hcy3sm5ch14bjarjzqil") %>
+      <div class="white-text coriander">Coriander</div>
     <% end %>
   </div>
 
@@ -10,20 +10,31 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Calendar",meals_path , class: "nav-link" %>
+          <%= link_to meals_path , class: "nav-link" do %>
+            <div class="word">Calendar</div>
+              <i class="far fa-calendar-alt icon-replace"></i>
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Cookbook",favorites_path , class: "nav-link" %>
+          <%= link_to favorites_path , class: "nav-link" do %>
+            <div class="word">Cookbook</div>
+              <i class="fas fa-book-open icon-replace"></i>
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Add recipe",new_recipe_path , class: "nav-link" %>
+          <%= link_to new_recipe_path , class: "nav-link" do %>
+            <div class="word">Add recipe</div>
+              <i class="far fa-plus-square icon-replace"></i>
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Log out (#{current_user.first_name})", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <i class="fas fa-sign-out-alt mx-1"></i><%= current_user.first_name %>
+          <% end %>
         </li>
 
         <!-- <li class="nav-item dropdown"> -->
-          <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%#= image_tag "https://kitt.meal.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> -->
             <%# <%= link_to "Action", "#", class: "dropdown-item" %>
             <%# <%= link_to "Another action", "#", class: "dropdown-item"  %>

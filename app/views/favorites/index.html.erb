@@ -35,7 +35,29 @@
             </div>
             <div class="recipe-title px-3">
               <div class="black-title"><strong><%= favorite.recipe.title %></strong></div>
-              <div class="text-secondary"><%= favorite.recipe.preptime < 10 ? "#{favorite.recipe.preptime} h" : "#{favorite.recipe.preptime} min" %> • <%= favorite.recipe.difficulty %></div>
+              <div class="text-secondary"><%= favorite.recipe.preptime < 5 ? "#{favorite.recipe.preptime} h" : "#{favorite.recipe.preptime} min" %> • <%= favorite.recipe.difficulty %></div>
+
+              <div class="rating d-flex align-items-center my-1">
+                <% if !favorite.recipe.reviews.empty? %>
+                  <% ratings = favorite.recipe.reviews.map{|review| review.rating} %>
+                  <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
+                  <% medium_ratings.to_i.times do |r| %>
+                    <i class="fas fa-star text-warning"></i>
+                  <% end %>
+                  <% if medium_ratings != medium_ratings.to_i %>
+                    <i class="fas fa-star-half-alt text-warning"></i>
+                    <% medium_ratings += 1 %>
+                  <% end %>
+                  <% (5 - medium_ratings.to_i).times do |r| %>
+                    <i class="far fa-star text-warning"></i>
+                  <% end %>
+                <% else %>
+                  <% 5.times do |r| %>
+                    <i class="far fa-star text-warning"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            
             </div>
           </div>
         </div>

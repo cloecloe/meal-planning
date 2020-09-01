@@ -6,6 +6,10 @@ class ReviewsController < ApplicationController
     @reviews = @recipe.reviews
     @review.user = current_user
     @review.recipe_id = @recipe.id
+    @meal = Meal.new
+    @other_recipe = Recipe.select { |recipe| recipe.id != @recipe.id }.sample
+    @second_recipe = Recipe.select { |recipe| recipe.id != @recipe.id && recipe.id != @other_recipe.id }.sample
+
 
     authorize(@review)
 

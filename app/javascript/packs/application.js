@@ -37,8 +37,7 @@ import { editDisplay} from "../components/edit_display";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-
-  initMeals();
+  initRating()
   initFavoriteAlgoliaSearch();
   initRecipeAlgoliaSearch();
   editDisplay();
@@ -49,7 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelector("#search")) {
     initRecipeAlgoliaSearch();
   }
-  initRating()
   mealSelection()
+  initMeals();
 });
 
