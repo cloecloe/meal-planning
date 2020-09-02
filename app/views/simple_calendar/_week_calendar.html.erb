@@ -1,6 +1,6 @@
 <div class="simple-calendar all">
 
-  <div class="calendar-heading text-center my-3">
+  <div class="calendar-heading text-center display-full-week my-3">
     <%= link_to calendar.url_for_previous_view do %>
       <svg width="40px" height="60px" viewBox="0 0 16 16" class=" cal-arrow bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
          <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
@@ -13,6 +13,23 @@
     </span>
     <%= link_to calendar.url_for_next_view do %>
       <svg width="40px" height="60px" viewBox="0 0 16 16" class="cal-arrow bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+      </svg>
+    <% end %>
+  </div>
+
+  <div class="calendar-heading text-center display-one-day my-3">
+    <%= link_to calendar.url_for_previous_view do %>
+      <svg width="24px" height="30px" viewBox="0 0 16 16" class=" cal-arrow bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+         <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+      </svg>
+    <% end %>
+    <span class="calendar-title mx-2">
+      <%= t('date.abbr_month_names')[date_range.slice(0,7).first.month] %>
+      <%= date_range.slice(0,7).first.day %>
+    </span>
+    <%= link_to calendar.url_for_next_view do %>
+      <svg width="24px" height="30px" viewBox="0 0 16 16" class="cal-arrow bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
       </svg>
     <% end %>
