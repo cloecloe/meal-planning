@@ -1,7 +1,7 @@
 .footer {
   background: $black;
   display: flex;
-  height: 150px;
+  height: 160px;
   padding: 15px;
   color: $white;
   display: flex;
@@ -36,10 +36,12 @@
 }
 .footer .fa-heart {
   color: $orange;
+  padding: 0% 1%;
 }
 
 .footer-copyright {
   font-size: 12px;
   display: flex;
   justify-content: flex-end;
+  align-items: baseline;
 }
