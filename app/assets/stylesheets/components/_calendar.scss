@@ -188,19 +188,6 @@ margin: 0 0 !important;
     .table-big {
     display:none;
     }
-
-    .table-medium {
-      display:none;
-    }
-
-    .table-small {
-      border: none !important;
-      width: 100% ;
-      table-layout: fixed;
-      padding: none !important;
-      margin: none !important;
-      display: table;
-    }
     .cal-arrow{
       width: 20px;
       height: 40px;
@@ -221,7 +208,7 @@ margin: 0 0 !important;
     .table-big {
       display: none;
     }
-    .table-small {
+    .table-medium {
       border: none !important;
       width: 100% ;
       padding: none !important;
@@ -233,6 +220,9 @@ margin: 0 0 !important;
     }
     .today .d-format {
       background-color: $white;
+    }
+    .icons{
+      opacity: 0.7;
     }
   }
 }
