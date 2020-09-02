@@ -31,6 +31,7 @@
 .recipe-card {
   background-color: $white;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transition: .2s;
   &:hover {
     opacity: 0.5;
   }
@@ -103,18 +104,24 @@
   width: 100%;
   margin: 1%;
   background-color: $orange;
+  opacity: 0.9;
   text-align: center;
   text-justify: center;
+  transition: .2s;
+  &:hover{
+  opacity: 1;
+  color: white;
+  }
 }
 
 .text-filter {
   color: $white;
+  text-decoration: none !important;
+  &:hover {
+    color: white;
+  }
 }
-.text-filter:hover {
-  text-decoration: none;
-  color: $black;
-  opacity: 0.9;
-}
+
 
 @media (min-width: 768px) {
   .filters-container {
