@@ -198,7 +198,7 @@
     <div class="grey-form p-3">
       <h4>Add to your calendar</h4>
       <%= simple_form_for [@recipe, @meal] do |f| %>
-        <%= f.input :date, as: :date %>
+        <%= f.input :date, as: :date, use_short_month: true %>
         <%= f.input :tagname, collection: ["Breakfast", "Lunch", "Dinner"], label: "Time of day" %>
         <%= f.submit "Add to calendar!", class: "btn orange-btn" %>
       <% end %>
