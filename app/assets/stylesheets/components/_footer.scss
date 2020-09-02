@@ -1,7 +1,7 @@
 .footer {
   background: $black;
   display: flex;
-  height: 160px;
+  height: 180px;
   padding: 15px;
   color: $white;
   display: flex;
@@ -43,5 +43,6 @@
   font-size: 12px;
   display: flex;
   justify-content: flex-end;
-  align-items: baseline;
+  align-items: center;
+  margin: 5px 0px 0px 0px;
 }
