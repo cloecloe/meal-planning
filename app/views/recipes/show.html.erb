@@ -1,3 +1,7 @@
+<% title @recipe.title %>
+<% meta_tag :description, @recipe.instructions %>
+<% meta_tag :keywords, @recipe.ingredients.join(',') %>
+
 <%#= simple_form_for :search, url: :recipes, class: "form-update", method: "GET" do |f| %>
   <%#= f.input :search, id: "search", class: "d-flex", label: "SEARCH", placeholder: "Dessert, Sushis, pasta..." %>
   <%#= f.submit "", class: "btn orange-btn" do %>
