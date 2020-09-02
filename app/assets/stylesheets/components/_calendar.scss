@@ -38,9 +38,7 @@
 .table-medium {
   display: none;
 }
-.table-small {
-  display: none;
-}
+
 .table-big {
   border: none !important;
   width: 100% ;
@@ -54,8 +52,6 @@
   border: none !important;
   display: table-row;
   width: inherit;
-  padding: none !important;
-  margin: none !important;
 }
 
 .body {
@@ -165,6 +161,9 @@ margin: 0 0 !important;
       padding: none !important;
       margin: none !important;
       display: table;
+      .headers th {
+        text-align: center;
+      }
     }
     .icons{
       opacity: 0.7;
@@ -192,7 +191,6 @@ margin: 0 0 !important;
       width: 20px;
       height: 40px;
     }
-
     .calendar-title {
       font-size: 70%;
     }
@@ -216,6 +214,9 @@ margin: 0 0 !important;
       display: table;
       td {
         width: 80%;
+      }
+      .headers th {
+        padding: 0 20px;
       }
     }
     .today .d-format {

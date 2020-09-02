@@ -49,7 +49,7 @@
     <tr class= "headers">
       <th class= "text-color"></th>
       <% date_range.slice(0, 7).each do |day| %>
-        <th class= "text-center text-color"><%= t('date.day_names')[day.wday] %></th>
+        <th class= "text-color"><%= t('date.abbr_day_names')[day.wday] %></th>
       <% end %>
     </tr>
     <tr class = "body">
