@@ -13,18 +13,15 @@
   }
 }
 
-.orange-btn {
-  background-color: $coral;
-  opacity: 0.8;
-}
-
-.text-color {
-  background-color: $cultured;
-  color: $black;
-  font-weight: lighter;
-  font-size: larger;
-  border: none !important;
-  padding: 0 !important;
+.simple-calendar {
+  .text-color {
+    background-color: $cultured;
+    color: $black;
+    font-weight: lighter;
+    font-size: larger;
+    border: none !important;
+    padding: 0 !important;
+  }
 }
 
 .all{
@@ -81,7 +78,7 @@ margin: 0 0 !important;
 
 .headlines {
   border: none;
-  height: 280px;
+  height: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,12 +88,12 @@ margin: 0 0 !important;
   border: 1px solid lightgrey;
   color: $black;
   background-color: $white;
-  height: 280px;
+  height: 220px;
   width: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: stretch;
+  overflow-y: scroll;
 }
 
 .meal-card {
@@ -146,81 +143,97 @@ margin: 0 0 !important;
   }
 }
 
-.today {
-  background-color: rgba(255, 113, 113, .5);
-  opacity: 0.75;
+.today .d-format {
+  background-color: rgba(255, 113, 113, .1);
 }
 
+.display-one-day {
+  display: none;
+}
 
 // Medium devices (tablets, 768px and up)
 @media (max-width: 992px) {
-  .table-big {
-      display:none;
+  .display-full-week {
+    .table-big {
+        display:none;
+      }
+
+    .table-medium {
+      border: none !important;
+      width: 100% ;
+      table-layout: fixed;
+      padding: none !important;
+      margin: none !important;
+      display: table;
+    }
+    .icons{
+      opacity: 0.7;
     }
 
-  .table-medium {
-    border: none !important;
-    width: 100% ;
-    table-layout: fixed;
-    padding: none !important;
-    margin: none !important;
-    display: table;
-  }
-
-  .d-format {
-    height: 420px;
-  }
-
-  .headlines {
-    height: 420px;
-  }
-  .icons{
-    opacity: 0.7;
-  }
-
-  .calendar-title {
-    font-size: smaller;
-  }
-  .cal-arrow{
-    width: 30px;
-    height: 50px;
-  }
-  .text-color {
-    font-size: initial;
+    .calendar-title {
+      font-size: smaller;
+    }
+    .cal-arrow{
+      width: 30px;
+      height: 50px;
+    }
+    .text-color {
+      font-size: initial;
+    }
   }
 }
 
 @media (max-width: 768px) {
-  .table-big {
+  .display-full-week {
+    .table-big {
     display:none;
     }
 
-  .table-medium {
-    display:none;
-  }
-  
-  .table-small {
-    border: none !important;
-    width: 100% ;
-    table-layout: fixed;
-    padding: none !important;
-    margin: none !important;
-    display: table;
-  }
+    .table-medium {
+      display:none;
+    }
 
-  .d-format {
-    height: 420px;
-  }
+    .table-small {
+      border: none !important;
+      width: 100% ;
+      table-layout: fixed;
+      padding: none !important;
+      margin: none !important;
+      display: table;
+    }
+    .cal-arrow{
+      width: 20px;
+      height: 40px;
+    }
 
-  .headlines {
-    height: 420px;
+    .calendar-title {
+      font-size: 70%;
+    }
   }
-  .cal-arrow{
-    width: 20px;
-    height: 40px;
-  }
+}
 
-  .calendar-title {
-    font-size: 70%;
+@media (max-width: 600px) {
+  .display-full-week {
+    display: none;
   }
+  .display-one-day {
+    display: block;
+    .table-big {
+      display: none;
+    }
+    .table-small {
+      border: none !important;
+      width: 100% ;
+      padding: none !important;
+      margin: none !important;
+      display: table;
+      td {
+        width: 80%;
+      }
+    }
+    .today .d-format {
+      background-color: $white;
+    }
   }
+}
+

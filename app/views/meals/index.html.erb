@@ -1,3 +1,5 @@
+<% require 'selenium-webdriver' %>
+
 <div class="banner-smaller" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dy9zumgoz/image/upload/v1599060136/ae96sokwvk654fmdwb0v.jpg);">
   <div class="container">
     <h1 class="text-center my-4">My Calendar</h1>
@@ -39,7 +41,7 @@
       <div class="modal-body">
         <form class="form-inline mb-4" id="meal-modal-search" >
           <input class="form-control" type="text" name="search" id="search" placeholder="Search recipe..." />
-          <button name="button" type="submit" class="btn orange-btn mx-1"><i class="fas fa-search"></i></button>
+          <button name="button" type="submit" class="btn orange-btn"><i class="fas fa-search"></i></button>
         </form>
         <div id="results">
 
@@ -92,51 +94,106 @@
   </div>
 </div>
 
-<%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
+<!-- Weekly calendar -->
 
-  <div class="d-format">
-    <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
-    <% unless breakfast_meals.empty? %>
-      <%breakfast_meals.each do |meal|%>
-        <div class= "meal-card" data-meal-id="<%= meal.id%>">
-          <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-          <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-            <i class="far fa-trash-alt hover-garbage"></i>
-          <% end %>
-        </div>
+<div class="display-full-week">
+  <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
+    <div class="d-format">
+      <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
+      <button data-tagname="Breakfast" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
+      <% unless breakfast_meals.empty? %>
+        <%breakfast_meals.each do |meal|%>
+          <div class= "meal-card" data-meal-id="<%= meal.id%>">
+            <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
+            <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+              <i class="far fa-trash-alt hover-garbage"></i>
+            <% end %>
+          </div>
+        <%end%>
       <%end%>
-    <%end%>
-    <button data-tagname="Breakfast" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
-  </div>
+    </div>
 
-  <div class="d-format">
-    <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
-    <% unless lunch_meals.empty? %>
-      <%lunch_meals.each do |meal|%>
-        <div class= "meal-card" data-meal-id="<%= meal.id%>" >
-          <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-          <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-            <i class="far fa-trash-alt hover-garbage"></i>
-          <% end %>
-        </div>
+    <div class="d-format">
+      <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
+      <button data-tagname="Lunch" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
+      <% unless lunch_meals.empty? %>
+        <%lunch_meals.each do |meal|%>
+          <div class= "meal-card" data-meal-id="<%= meal.id%>" >
+            <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
+            <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+              <i class="far fa-trash-alt hover-garbage"></i>
+            <% end %>
+          </div>
+        <%end%>
       <%end%>
-    <%end%>
-    <button data-tagname="Lunch" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
-  </div>
+    </div>
 
-
-  <div class="d-format">
-    <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
-    <% unless dinner_meals.empty? %>
-      <%dinner_meals.each do |meal|%>
-        <div class= "meal-card" data-meal-id="<%= meal.id%>">
-          <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
-          <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-            <i class="far fa-trash-alt hover-garbage"></i>
-          <% end %>
-        </div>
+    <div class="d-format">
+      <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
+      <button data-tagname="Dinner" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
+      <% unless dinner_meals.empty? %>
+        <%dinner_meals.each do |meal|%>
+          <div class= "meal-card" data-meal-id="<%= meal.id%>">
+            <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
+            <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+              <i class="far fa-trash-alt hover-garbage"></i>
+            <% end %>
+          </div>
+        <%end%>
       <%end%>
-    <%end%>
-    <button data-tagname="Dinner" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>
+
+<!-- Daily calendar -->
+
+<div class="display-one-day">
+
+  <%= calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_days: 1, events: @meals do |date, meals| %>
+
+    <div class="d-format">
+      <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
+      <button data-tagname="Breakfast" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
+      <% unless breakfast_meals.empty? %>
+        <%breakfast_meals.each do |meal|%>
+          <div class= "meal-card" data-meal-id="<%= meal.id%>">
+            <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
+            <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+              <i class="far fa-trash-alt hover-garbage"></i>
+            <% end %>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+
+    <div class="d-format">
+      <% lunch_meals = meals.select{ |meal| meal.tagname == "Lunch"} %>
+      <button data-tagname="Lunch" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
+      <% unless lunch_meals.empty? %>
+        <%lunch_meals.each do |meal|%>
+          <div class= "meal-card" data-meal-id="<%= meal.id%>" >
+            <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
+            <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+              <i class="far fa-trash-alt hover-garbage"></i>
+            <% end %>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+
+    <div class="d-format">
+      <% dinner_meals = meals.select{ |meal| meal.tagname == "Dinner"} %>
+      <button data-tagname="Dinner" data-date="<%= date %>" class= "btn add-meal-button" data-toggle="modal" data-target="#meal-modal" ><i class="far fa-plus-square"></i></button>
+      <% unless dinner_meals.empty? %>
+        <%dinner_meals.each do |meal|%>
+          <div class= "meal-card" data-meal-id="<%= meal.id%>">
+            <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
+            <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
+              <i class="far fa-trash-alt hover-garbage"></i>
+            <% end %>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+  <% end %>
+</div>
