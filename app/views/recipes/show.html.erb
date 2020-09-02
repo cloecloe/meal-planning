@@ -73,7 +73,31 @@
 
     <div class="align-items d-flex align-items-center justify-content-between">
       <div class="current-user d-flex align-items-center">
-          <i class="fas fa-pepper-hot bigger-icon"></i>
+          <% if user_signed_in? %>
+            <% if @recipe.user_id == 1 %>
+              <i class="fas fa-horse"></i>
+            <% elsif @recipe.user_id == 2 %>
+              <i class="fas fa-horse"></i>
+            <% elsif @recipe.user_id == 3 %>
+              <i class="fas fa-horse"></i>
+            <% elsif @recipe.user_id == 4 %>
+              <i class="fas fa-piggy-bank"></i>
+            <% elsif @recipe.user_id == 5 %>
+              <i class="fas fa-cat"></i>
+            <% elsif @recipe.user_id == 6 %>
+              <i class="fas fa-fish"></i>
+            <% elsif @recipe.user_id == 7 %>
+              <i class="fas fa-hotdog"></i>
+            <% elsif @recipe.user_id == 8 %>
+              <i class="fas fa-hotdog"></i>
+            <% elsif @recipe.user_id == 9 %>
+              <i class="fas fa-male"></i>
+            <% elsif @recipe.user_id == 10 %>
+              <i class="fas fa-female"></i>  
+            <% end %>         
+          <% else %>
+            <i class="far fa-user-circle"></i>
+          <% end %>
           <div class="d-flex flex-column ml-2 my-3">
           <div><span class="text-secondary">by</span> <strong><%= @recipe.user.first_name %> <%= @recipe.user.last_name %></strong></div>
           <div class="text-secondary">created on <%= @recipe.created_at.strftime("%B %d, %Y") %></div>
