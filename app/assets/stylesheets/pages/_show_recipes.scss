@@ -1,4 +1,4 @@
-.show-container {
+.recipe-container {
   display: flex;
   justify-content: center;
   margin: 4% 3%;
@@ -46,7 +46,7 @@
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 902px) {
-  .show-container {
+  .recipe-container {
     .display-only-big-screen {
       width: 30%;
       display: flex;
