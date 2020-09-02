@@ -11,16 +11,15 @@
 
   <%= simple_form_for(@recipe) do |f| %>
     <%= f.input :title %>
-    <div class="inline-elements d-flex justify-content-between">
+    <div class="inline-elements d-flex justify-content-between" id="responsive-recipe-div">
       <%= f.input :serving %>
       <%= f.input :preptime, label: "Prep time (in minutes)" %>
       <%= f.input :difficulty, collection: ["Easy", "Intermediate", "Advanced"] %>
     </div>
-    <%= f.input :ingredients, hint: "Please write 1 ingredient per line", input_html: { value: "" } %>
-    <%= f.input :instructions, hint: "Please write 1 instruction per line", input_html: { value: "" } %>
-    <%= f.input :photo, as: :file, input_html: { class: "photo-upload" } %>
-    <%= f.input :displayed, as: :radio_buttons, label: "Share with our global community?", collection: ["Yes", "No, keep private"] %>
+      <%= f.input :ingredients, hint: "Please write 1 ingredient per line", input_html: { value: "" } %>
+      <%= f.input :instructions, hint: "Please write 1 instruction per line", input_html: { value: "" } %>
+      <%= f.input :photo, as: :file, input_html: { class: "photo-upload" } %>
+      <%= f.input :displayed, as: :radio_buttons, label: "Share with our global community?", collection: ["Yes", "No, keep private"] %>
     <%= f.submit "Create!", class: "btn orange-btn" %>
   <% end %>
-
 </div>
