@@ -52,7 +52,7 @@
     </div>
 
 
-    <%= cl_image_tag @recipe.photo.key, height: 480, crop: :fill, class: "image-full" %>
+    <%= cl_image_tag @recipe.photo.key, height: 480, crop: :scale, class: "image-full" %>
 
 <!-- Card after image for prep time, servings, info on recipe creator,... -->
 
