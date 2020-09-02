@@ -93,7 +93,7 @@
 </div>
 
 <%= week_calendar partial: 'simple_calendar/week_calendar', attribute: :date, number_of_weeks: 1, events: @meals do |date, meals| %>
-  
+
   <div class="d-format">
     <% breakfast_meals = meals.select{ |meal| meal.tagname == "Breakfast"} %>
     <% unless breakfast_meals.empty? %>
@@ -101,7 +101,7 @@
         <div class= "meal-card" data-meal-id="<%= meal.id%>">
           <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
           <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-            <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
+            <i class="far fa-trash-alt hover-garbage"></i>
           <% end %>
         </div>
       <%end%>
@@ -116,7 +116,7 @@
         <div class= "meal-card" data-meal-id="<%= meal.id%>" >
           <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
           <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-            <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
+            <i class="far fa-trash-alt hover-garbage"></i>
           <% end %>
         </div>
       <%end%>
@@ -132,7 +132,7 @@
         <div class= "meal-card" data-meal-id="<%= meal.id%>">
           <%= link_to meal.recipe.title, recipe_path(meal.recipe) %>
           <%= link_to meal_path(meal), method: :delete, data: { confirm: "Are you sure you want to delete meal?" } do %>
-            <i class="far fa-trash-alt smaller-icon hover-garbage"></i>
+            <i class="far fa-trash-alt hover-garbage"></i>
           <% end %>
         </div>
       <%end%>

@@ -110,8 +110,12 @@ margin: 0 0 !important;
   }
 }
 
-.hover-garbage:hover {
-  color: $black;
+.hover-garbage {
+  font-size: 14px;
+  color: white;
+  &:hover {
+    color: $orange;
+  }
 }
 
 .group-selection {
