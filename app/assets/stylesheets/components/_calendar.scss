@@ -7,15 +7,17 @@
   color: $coral;
   border-radius: 50%;
   text-align: center;
+  opacity: 0.6;
   &:hover {
-    color: $white;
-    background-color: $coral;
+    opacity: 1;
   }
 }
 
 .text-color {
   background-color: $cultured;
   color: $black;
+  font-weight: lighter;
+  font-size: larger;
   border: none !important;
   padding: 0 !important;
 }
@@ -31,7 +33,13 @@
   padding:1%;
 }
 
-.table {
+.table-medium {
+  display: none;
+}
+.table-small {
+  display: none;
+}
+.table-big {
   border: none !important;
   width: 100% ;
   table-layout: fixed;
@@ -55,20 +63,20 @@
 }
 .first-col {
   border: none !important;
-  padding: 1% 0% !important;
+  padding: 1% 1% 0% 0% !important;
   height: 100%;
   flex-direction: column;
 }
 
 .day {
 border: none !important ;
-padding: 2% 0% !important;
+padding: 2% 0% 0% 0% !important;
 margin: 0 0 !important;
 }
 
 .headlines {
   border: none;
-  height: 240px;
+  height: 280px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,16 +86,12 @@ margin: 0 0 !important;
   border: 1px solid lightgrey;
   color: $black;
   background-color: $white;
-  height: 240px;
+  height: 280px;
   width: inherit;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-}
-
-// Medium devices (tablets, 768px and up)
-@media (max-width: 900px) {
 }
 
 .meal-card {
@@ -140,3 +144,76 @@ margin: 0 0 !important;
   background-color: rgba(255, 113, 113, .5);
   opacity: 0.75;
 }
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 992px) {
+  .table-big {
+      display:none;
+    }
+
+  .table-medium {
+    border: none !important;
+    width: 100% ;
+    table-layout: fixed;
+    padding: none !important;
+    margin: none !important;
+    display: table;
+  }
+
+  .d-format {
+    height: 420px;
+  }
+
+  .headlines {
+    height: 420px;
+  }
+  .icons{
+    opacity: 0.7;
+  }
+
+  .calendar-title {
+    font-size: smaller;
+  }
+  .cal-arrow{
+    width: 30px;
+    height: 50px;
+  }
+  .text-color {
+    font-size: initial;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-big {
+    display:none;
+    }
+
+  .table-medium {
+    display:none;
+  }
+  
+  .table-small {
+    border: none !important;
+    width: 100% ;
+    table-layout: fixed;
+    padding: none !important;
+    margin: none !important;
+    display: grid;
+  }
+
+  .d-format {
+    height: 420px;
+  }
+
+  .headlines {
+    height: 420px;
+  }
+  .cal-arrow{
+    width: 20px;
+    height: 40px;
+  }
+
+  .calendar-title {
+    font-size: 70%;
+  }
+  }
