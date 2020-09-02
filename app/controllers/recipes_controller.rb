@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
     if user_signed_in?
       @favorites = Favorite.where(user_id: current_user.id)
     end
-    if params[:search]
+    if params[:search].present?
       @recipes = Recipe.algolia_search(params[:search])
       policy_scope(Recipe)
       if @recipes.empty?

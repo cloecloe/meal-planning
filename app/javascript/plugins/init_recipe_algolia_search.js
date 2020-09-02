@@ -30,11 +30,9 @@ const initRecipeAlgoliaSearch = () => {
             minWordSizefor1Typo: 2
         }).then((response) => {
             if (results) {
-              // results.innerHTML("")
               console.log(response)
               buildCards(response);
             };
-              // console.log(results);
         })
     });
   }

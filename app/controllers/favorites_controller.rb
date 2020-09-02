@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
     @other_recipe = Recipe.all.sample
     @second_recipe = Recipe.select { |recipe| recipe.id != @other_recipe.id }.sample
     @third_recipe = Recipe.select { |recipe| recipe.id != @second_recipe.id && recipe.id != @other_recipe.id }.sample
-    if params[:search]
+    if params[:search].present?
       @favorites = Favorite.algolia_search(params[:search])
       policy_scope(Favorite)
       if @favorites.empty?
