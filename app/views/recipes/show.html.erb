@@ -5,222 +5,233 @@
   <%# end %>
 <%# end %>
 
-<div class="container">
-  <div class="row">
-    <div class=" show_recipe col-12 col-md-8 mt-4">
+<div class="show-container">
+  <div class="show_recipe mt-4">
 
 <!-- Title -->
 
-      <h1>
-        <strong><%= @recipe.title.capitalize %></strong>
+    <h1>
+      <strong><%= @recipe.title.capitalize %></strong>
 
-        <% if current_user && policy(@recipe).destroy? %>
-          <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete #{@recipe.title}?" } do %>
-            <i class="far fa-trash-alt smaller-icon"></i>
-          <% end %>
+      <% if current_user && policy(@recipe).destroy? %>
+        <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete #{@recipe.title}?" } do %>
+          <i class="far fa-trash-alt smaller-icon"></i>
         <% end %>
+      <% end %>
 
-        <% if current_user && policy(@recipe).edit? %>
-          <%= link_to edit_recipe_path(@recipe) do %>
-            <i class="far fa-edit smaller-icon"></i>
-          <% end %>
+      <% if current_user && policy(@recipe).edit? %>
+        <%= link_to edit_recipe_path(@recipe) do %>
+          <i class="far fa-edit smaller-icon"></i>
         <% end %>
-      </h1>
+      <% end %>
+    </h1>
 
 <!-- Star ratings -->
 
-      <div class="rating d-flex align-items-center my-3">
-        <% if !@reviews.empty? %>
-          <% ratings = @recipe.reviews.map{|review| review.rating} %>
-          <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
-          <% medium_ratings.to_i.times do |r| %>
-            <i class="fas fa-star text-warning"></i>
-          <% end %>
-          <% if medium_ratings != medium_ratings.to_i %>
-            <i class="fas fa-star-half-alt text-warning"></i>
-            <% medium_ratings += 1 %>
-          <% end %>
-          <% (5 - medium_ratings.to_i).times do |r| %>
-            <i class="far fa-star text-warning"></i>
-          <% end %>
-          <div class="text-secondary mx-1"><%= ratings.count %> ratings</div>
-        <% else %>
-          <% 5.times do |r| %>
-            <i class="far fa-star text-warning"></i>
-          <% end %>
-          <div class="text-secondary mx-1">0 ratings</div>
+    <div class="rating d-flex align-items-center my-3">
+      <% if !@reviews.empty? %>
+        <% ratings = @recipe.reviews.map{|review| review.rating} %>
+        <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
+        <% medium_ratings.to_i.times do |r| %>
+          <i class="fas fa-star text-warning"></i>
         <% end %>
-      </div>
+        <% if medium_ratings != medium_ratings.to_i %>
+          <i class="fas fa-star-half-alt text-warning"></i>
+          <% medium_ratings += 1 %>
+        <% end %>
+        <% (5 - medium_ratings.to_i).times do |r| %>
+          <i class="far fa-star text-warning"></i>
+        <% end %>
+        <div class="text-secondary mx-1"><%= ratings.count %> ratings</div>
+      <% else %>
+        <% 5.times do |r| %>
+          <i class="far fa-star text-warning"></i>
+        <% end %>
+        <div class="text-secondary mx-1">0 ratings</div>
+      <% end %>
+    </div>
 
 
-      <%= cl_image_tag @recipe.photo.key, height: 480, crop: :fill, class: "image-full" %>
+    <%= cl_image_tag @recipe.photo.key, height: 480, crop: :fill, class: "image-full" %>
 
 <!-- Card after image for prep time, servings, info on recipe creator,... -->
 
-      <div class="first-part d-flex align-items-center justify-content-start my-3">
-        <div class="info-each">
-          <div class="text-secondary smaller-text">Serving</div>
-          <div class="black-text"><%= @recipe.serving %></div>
-        </div>
-        <div class="info-each mx-4">
-          <div class="text-secondary smaller-text">Prep Time</div>
-          <div class="black-text"><%= @recipe.preptime %></div>
-        </div>
-        <div class="info-each">
-          <div class="text-secondary smaller-text">Difficulty</div>
-          <div class="black-text"><%= @recipe.difficulty %></div>
+    <div class="first-part d-flex align-items-center justify-content-start my-3">
+      <div class="info-each">
+        <div class="text-secondary smaller-text">Serving</div>
+        <div class="black-text"><%= @recipe.serving %></div>
+      </div>
+      <div class="info-each mx-4">
+        <div class="text-secondary smaller-text">Prep Time</div>
+        <div class="black-text"><%= @recipe.preptime %></div>
+      </div>
+      <div class="info-each">
+        <div class="text-secondary smaller-text">Difficulty</div>
+        <div class="black-text"><%= @recipe.difficulty %></div>
+      </div>
+    </div>
+
+    <div class="align-items d-flex align-items-center justify-content-between">
+      <div class="current-user d-flex align-items-center">
+          <i class="fas fa-pepper-hot bigger-icon"></i>
+          <div class="d-flex flex-column ml-2 my-3">
+          <div><span class="text-secondary">by</span> <strong><%= @recipe.user.first_name %> <%= @recipe.user.last_name %></strong></div>
+          <div class="text-secondary">created on <%= @recipe.created_at.strftime("%B %d, %Y") %></div>
         </div>
       </div>
-
-      <div class="align-items d-flex align-items-center justify-content-between">
-        <div class="current-user d-flex align-items-center">
-            <i class="fas fa-pepper-hot bigger-icon"></i>
-            <div class="d-flex flex-column ml-2 my-3">
-            <div><span class="text-secondary">by</span> <strong><%= @recipe.user.first_name %> <%= @recipe.user.last_name %></strong></div>
-            <div class="text-secondary">created on <%= @recipe.created_at.strftime("%B %d, %Y") %></div>
-          </div>
-        </div>
-        <div class="d-flex ml-4">
-          <%= simple_form_for [@recipe, @favorite], class: "favorite-container" do |f| %>
-            <%= f.hidden_field :favorited, value: @favorited.to_s %>
-            <% if @favorited %>
-              <!-- <i class="fas fa-heart" id="heart"></i> -->
-              <i class="fas fa-bookmark id="heart""></i>
-            <% else %>
-              <!-- <i class="far fa-heart" id="heart"></i> -->
-              <i class="far fa-bookmark id="heart""></i>
-            <% end %>
-            <%= f.submit "", class: "favorite-submit" %>
-          <% end %>
-          Add to cookbook
-        </div>
-      </div>
-
-      <h2 class="border-bottom p-3">Ingredients (<%= @recipe.ingredients.count %>)</h2>
-
-      <ul class="my-3">
-        <% @recipe.ingredients.each do |ingredient|%>
-          <li class="text-secondary"><%= ingredient %></li>
-        <% end %>
-      </ul>
-
-      <h2 class="border-bottom pb-3">Steps (<%= @recipe.instructions.count %>)</h2>
-      <ol class="my-3">
-        <% @recipe.instructions.each do |instruction|%>
-          <% if @recipe.user_id == 1 %>
-            <% instruction = instruction[6...-1] %>
+      <div class="d-flex ml-4">
+        <%= simple_form_for [@recipe, @favorite], class: "favorite-container" do |f| %>
+          <%= f.hidden_field :favorited, value: @favorited.to_s %>
+          <% if @favorited %>
+            <!-- <i class="fas fa-heart" id="heart"></i> -->
+            <i class="fas fa-bookmark id="heart""></i>
           <% else %>
-            <% instruction = instruction %>
+            <!-- <i class="far fa-heart" id="heart"></i> -->
+            <i class="far fa-bookmark id="heart""></i>
           <% end %>
-          <li class="text-secondary"><%= instruction %></li><br>
+          <%= f.submit "", class: "favorite-submit" %>
         <% end %>
-      </ol>
+        Add to cookbook
+      </div>
+    </div>
+
+<!-- Calendar for for smaller screens only -->
+    <div class="grey-form smaller-screen-display p-3">
+      <h4>Add to your calendar</h4>
+      <%= simple_form_for [@recipe, @meal] do |f| %>
+        <%= f.input :date, as: :date %>
+        <%= f.input :tagname, collection: ["Breakfast", "Lunch", "Dinner"], label: "Time of day" %>
+        <%= f.submit "Add to calendar!", class: "btn orange-btn" %>
+      <% end %>
+    </div>
+<!-- End of calendar form -->
+
+    <h2 class="border-bottom p-3">Ingredients (<%= @recipe.ingredients.count %>)</h2>
+
+    <ul class="my-3">
+      <% @recipe.ingredients.each do |ingredient|%>
+        <li class="text-secondary"><%= ingredient %></li>
+      <% end %>
+    </ul>
+
+    <h2 class="border-bottom pb-3">Steps (<%= @recipe.instructions.count %>)</h2>
+    <ol class="my-3">
+      <% @recipe.instructions.each do |instruction|%>
+        <% if @recipe.user_id == 1 %>
+          <% instruction = instruction[6...-1] %>
+        <% else %>
+          <% instruction = instruction %>
+        <% end %>
+        <li class="text-secondary"><%= instruction %></li><br>
+      <% end %>
+    </ol>
 
 <!-- Review form -->
 
-      <div class="grey-form border m-3 p-3">
-        <h4>Add a review</h4>
-        <%= simple_form_for [@recipe, @review] do |f| %>
-          <%= f.input :description %>
-          <div class="radio-stars">
-            <%= f.input :rating, as: :radio_buttons, collection: [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']] %>
-            <div class="stars d-flex">
-              <div class="star"><i class="far fa-star"></i></div>
-              <div class="star"><i class="far fa-star"></i></div>
-              <div class="star"><i class="far fa-star"></i></div>
-              <div class="star"><i class="far fa-star"></i></div>
-              <div class="star"><i class="far fa-star"></i></div>
-            </div>
+    <div class="grey-form border my-3 p-3">
+      <h4>Add a review</h4>
+      <%= simple_form_for [@recipe, @review] do |f| %>
+        <%= f.input :description %>
+        <div class="radio-stars">
+          <%= f.input :rating, as: :radio_buttons, collection: [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']] %>
+          <div class="stars d-flex">
+            <div class="star"><i class="far fa-star"></i></div>
+            <div class="star"><i class="far fa-star"></i></div>
+            <div class="star"><i class="far fa-star"></i></div>
+            <div class="star"><i class="far fa-star"></i></div>
+            <div class="star"><i class="far fa-star"></i></div>
           </div>
-          <%= f.submit "Add a review!", class: "btn orange-btn d-flex flex-column" %>
-        <% end %>
-      </div>
+        </div>
+        <%= f.submit "Add a review!", class: "btn orange-btn d-flex flex-column" %>
+      <% end %>
+    </div>
 
-      <h2 class="border-bottom pb-3">Reviews (<%= @recipe.reviews.count %>)</h2>
+    <h2 class="border-bottom pb-3">Reviews (<%= @recipe.reviews.count %>)</h2>
 
 <!-- Display of reviews -->
 
-      <% if !@reviews.empty? %>
-        <div class="my-3">
-          <% @reviews.reverse.each do |review| %>
+    <% if !@reviews.empty? %>
+      <div class="my-3">
+        <% @reviews.reverse.each do |review| %>
 
-            <div class="my-3">
-              <div class="header-review d-flex justify-content-between">
-                <div class="current-user d-flex align-items-center">
-                  <i class="fas fa-pepper-hot bigger-icon"></i>
-                  <div class="d-flex flex-column ml-2">
-                    <strong><%= @recipe.user.first_name %> <%= @recipe.user.last_name %></strong>
+          <div class="my-3">
+            <div class="header-review d-flex justify-content-between">
+              <div class="current-user d-flex align-items-center">
+                <i class="fas fa-pepper-hot bigger-icon"></i>
+                <div class="d-flex flex-column ml-2">
+                  <strong><%= @recipe.user.first_name %> <%= @recipe.user.last_name %></strong>
 
-                    <div class="text-warning">
-                      <% review.rating.times do |r| %>
-                        <i class="fas fa-star"></i>
-                      <% end %>
-                      <% (5 - (review.rating)).times do |r| %>
-                        <i class="far fa-star"></i>
-                      <% end %>
-                    </div>
-
-                    <div class="text-secondary">created on <%= @recipe.created_at.strftime("%B %d, %Y") %></div>
-                  </div>
-                </div>
-
-                <div class="delete-review d-flex align-items-center">
-                  <% if current_user && policy(review).destroy? %>
-                    <%= link_to recipe_review_path(@recipe, review), method: :delete, data: { confirm: "Are you sure you want to delete your review?" } do %>
-                      <i class="far fa-trash-alt mr-2"></i>
+                  <div class="text-warning">
+                    <% review.rating.times do |r| %>
+                      <i class="fas fa-star"></i>
                     <% end %>
-                  <% end %>
+                    <% (5 - (review.rating)).times do |r| %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                  </div>
+
+                  <div class="text-secondary">created on <%= @recipe.created_at.strftime("%B %d, %Y") %></div>
                 </div>
               </div>
 
-              <p class="my-2"><%= review.description %></p>
-
+              <div class="delete-review d-flex align-items-center">
+                <% if current_user && policy(review).destroy? %>
+                  <%= link_to recipe_review_path(@recipe, review), method: :delete, data: { confirm: "Are you sure you want to delete your review?" } do %>
+                    <i class="far fa-trash-alt mr-2"></i>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
-          <% end %>
-        </div>
-      <% end %>
 
-    </div>
+            <p class="my-2"><%= review.description %></p>
 
-    <div class="col-12 col-md-4 mt-5">
-      <div class="grey-form p-3">
-        <h4>Add to your calendar</h4>
-        <%= simple_form_for [@recipe, @meal] do |f| %>
-          <%= f.input :date, as: :date %>
-          <%= f.input :tagname, collection: ["Breakfast", "Lunch", "Dinner"], label: "Time of day" %>
-          <%= f.submit "Add to calendar!", class: "btn orange-btn" %>
+          </div>
         <% end %>
       </div>
+    <% end %>
 
-      <div class="smaller-recipe-card-container my-3">
+  </div>
 
-        <h4>Other recipes</h4>
+<!-- Right side of the screen: calendar form and recipe ideas -->
 
-        <%= link_to recipe_path(@other_recipe) do%>
-          <div class="smaller-recipe-card my-3">
-            <%= cl_image_tag @other_recipe.photo.key, height: 150 %>
-            <div class="smaller-card-info">
-              <div class="smaller-recipe-title px-3">
-                <strong><%= @other_recipe.title %></strong>
-              </div>
+  <div class="display-only-big-screen mt-5">
+    <div class="grey-form p-3">
+      <h4>Add to your calendar</h4>
+      <%= simple_form_for [@recipe, @meal] do |f| %>
+        <%= f.input :date, as: :date %>
+        <%= f.input :tagname, collection: ["Breakfast", "Lunch", "Dinner"], label: "Time of day" %>
+        <%= f.submit "Add to calendar!", class: "btn orange-btn" %>
+      <% end %>
+    </div>
+
+    <div class="smaller-recipe-card-container my-3">
+
+      <h4>Other recipes</h4>
+
+      <%= link_to recipe_path(@other_recipe) do%>
+        <div class="smaller-recipe-card my-3">
+          <%= cl_image_tag @other_recipe.photo.key, height: 150 %>
+          <div class="smaller-card-info">
+            <div class="smaller-recipe-title px-3">
+              <strong><%= @other_recipe.title %></strong>
             </div>
           </div>
-        <% end%>
+        </div>
+      <% end%>
 
-        <%= link_to recipe_path(@second_recipe) do%>
-          <div class="smaller-recipe-card my-3">
-            <%= cl_image_tag @second_recipe.photo.key, height: 150 %>
-            <div class="smaller-card-info">
-              <div class="smaller-recipe-title px-3">
-                <strong><%= @second_recipe.title %></strong>
-              </div>
+      <%= link_to recipe_path(@second_recipe) do%>
+        <div class="smaller-recipe-card my-3">
+          <%= cl_image_tag @second_recipe.photo.key, height: 150 %>
+          <div class="smaller-card-info">
+            <div class="smaller-recipe-title px-3">
+              <strong><%= @second_recipe.title %></strong>
             </div>
           </div>
-        <% end%>
-
-      </div>
+        </div>
+      <% end%>
 
     </div>
 
   </div>
+
 </div>

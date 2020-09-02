@@ -1,8 +1,5 @@
-.smaller-recipe-card-container {
-  display: none;
-  a {
-    text-decoration: none;
-  }
+.smaller-recipe-card-container a {
+  text-decoration: none;
 }
 
 .smaller-recipe-card {
@@ -10,14 +7,6 @@
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   &:hover {
     opacity: 0.7;
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .smaller-recipe-card-container {
-    display: flex;
-    flex-direction: column;
   }
 }
 

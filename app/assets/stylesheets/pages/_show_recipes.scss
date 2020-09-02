@@ -1,3 +1,16 @@
+.show-container {
+  display: flex;
+  justify-content: center;
+  margin: 4% 3%;
+  .show_recipe {
+    width: 100%;
+    margin: 0 2%;
+  }
+  .display-only-big-screen {
+    display: none;
+  }
+}
+
 .image-full {
   width: 100%;
   object-fit: cover;
@@ -28,5 +41,23 @@
   color: grey;
   &:hover {
     color: $orange;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 902px) {
+  .show-container {
+    .display-only-big-screen {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      margin: 0 2%;
+    }
+    .smaller-screen-display {
+      display: none;
+    }
+    .show_recipe {
+      width: 70%;
+    }
   }
 }
