@@ -10,6 +10,12 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
+          <%= link_to recipes_path , class: "nav-link" do %>
+            <div class="word">Home</div>
+              <i class="fas fa-home icon-replace"></i>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to meals_path , class: "nav-link" do %>
             <div class="word">Calendar</div>
               <i class="far fa-calendar-alt icon-replace"></i>
