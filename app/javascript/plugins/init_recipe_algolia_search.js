@@ -27,6 +27,7 @@ const initRecipeAlgoliaSearch = () => {
     inputRecipeField.addEventListener("input", () => {
         recipeIndex.search(inputRecipeField.value, {
             restrictSearchableAttributes: ['title', 'ingredients'],
+            minWordSizefor1Typo: 2
         }).then((response) => {
             if (results) {
               // results.innerHTML("")

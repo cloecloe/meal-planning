@@ -27,7 +27,7 @@ import "bootstrap";
 import { initFavoriteAlgoliaSearch } from "../plugins/init_favorite_algolia_search";
 import { initRecipeAlgoliaSearch } from "../plugins/init_recipe_algolia_search";
 
-import { initMeals } from "../calendar/init_meals";
+// import { initMeals } from "../calendar/init_meals";
 import { initRating} from "../components/rating";
 import { mealSelection} from "../components/meal_modal";
 // import { editDisplay} from "../components/edit_display";
@@ -42,7 +42,7 @@ document.addEventListener('turbolinks:load', () => {
   initRecipeAlgoliaSearch();
   // editDisplay();
   mealSelection()
-  initMeals();
+  // initMeals();
 
   if (document.querySelector("#fav-search")) {
     initFavoriteAlgoliaSearch();

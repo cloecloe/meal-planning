@@ -1,0 +1,9 @@
+.form-check-input.is-valid ~ .form-check-label {
+    color: black;
+}
+
+@media (max-width: 768px) {
+  #responsive-recipe-div {
+    flex-direction: column;
+  }
+}

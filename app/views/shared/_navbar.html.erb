@@ -10,6 +10,12 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
+          <%= link_to recipes_path , class: "nav-link" do %>
+            <div class="word">Home</div>
+              <i class="fas fa-home icon-replace"></i>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to meals_path , class: "nav-link" do %>
             <div class="word">Calendar</div>
               <i class="far fa-calendar-alt icon-replace"></i>
@@ -76,7 +82,9 @@
               <%= f.button :submit, "Log in", class: "w-100 btn orange-btn" %>
             </div>
           <% end %>
-          <%= link_to "Sign up","#", class: "nav-link my-1 dark-text", data: { toggle: "modal", target: "#signupModal" } %>
+          <div class="signup-footer">
+          <%= link_to "Sign up","#", class: "nav-link my-1 dark-text", id: "sign-btn", data: { toggle: "modal", target: "#signupModal" } %>
+          </div>
         </div>
       </div>
     </div>
