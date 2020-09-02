@@ -23,3 +23,36 @@
   height: 8ex;
   color: $black;
 }
+
+
+// @media (max-width: 768px) {
+//   #horizontal-card-stack {
+//     flex-direction: column;
+//   }
+// }
+
+
+  #horizontal-card-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 40px;
+  justify-items: center;
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 800px) {
+    #horizontal-card-stack {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 1192px) {
+    #horizontal-card-stack {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
