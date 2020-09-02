@@ -43,6 +43,12 @@
     color: $orange;
   }
 }
+.add-cook {
+  align-items: center;
+  form {
+    margin: 0px 10px 0px 0px;
+  }
+}
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 1000px) {
