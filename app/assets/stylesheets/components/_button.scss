@@ -2,6 +2,7 @@
   background-color: $orange;
   opacity: 0.9;
   color: $white;
+  transition: .2s;
   &:hover {
     color: white;
     opacity: 1;
@@ -36,8 +37,20 @@
     -webkit-user-select: none;
     cursor: pointer;
     font-size: 14px;
+    transition: .2s;
     &:hover {
       color: white;
       opacity: 1;
+    }
   }
+
+#sign-btn {
+  text-align: center;
+  color: $orange;
+  transition: .2s;
+  &:hover {
+    color: white;
+    background-color: $orange;
+    opacity: .9;
   }
+}
