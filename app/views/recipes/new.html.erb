@@ -1,25 +1,28 @@
 <div class="banner-smaller" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dy9zumgoz/image/upload/v1599060159/b1cjhbicimryeapzhv4x.jpg);">>
   <div class="container">
-    <h1 class="text-center">Add a recipe</h1>
+    <h1 class="text-center my-5">Add a recipe</h1>
   </div>
 </div>
 
 <div class="container my-5 recipe-new-form">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-12 col-lg-9">
+      <h2>Create a new recipe</h2>
+      <p class="text-secondary border-bottom pb-3">Your new recipe will be added to you private cookbook. Or if you’d like, you can also share it with others.</p>
 
-<h2>Create a new recipe</h2>
-<p class="text-secondary border-bottom pb-3">Your new recipe will be added to you private cookbook. Or if you’d like, you can also share it with others.</p>
-
-  <%= simple_form_for(@recipe) do |f| %>
-    <%= f.input :title %>
-    <div class="inline-elements d-flex justify-content-between" id="responsive-recipe-div">
-      <%= f.input :serving %>
-      <%= f.input :preptime, label: "Prep time (in minutes)" %>
-      <%= f.input :difficulty, collection: ["Easy", "Intermediate", "Advanced"] %>
+        <%= simple_form_for(@recipe) do |f| %>
+          <%= f.input :title %>
+          <div class="inline-elements d-flex justify-content-between" id="responsive-recipe-div">
+            <%= f.input :serving %>
+            <%= f.input :preptime, label: "Prep time (in minutes)" %>
+            <%= f.input :difficulty, collection: ["Easy", "Intermediate", "Advanced"] %>
+          </div>
+            <%= f.input :ingredients, hint: "Please write 1 ingredient per line", input_html: { value: "" } %>
+            <%= f.input :instructions, hint: "Please write 1 instruction per line", input_html: { value: "" } %>
+            <%= f.input :photo, as: :file, input_html: { class: "photo-upload" } %>
+            <%= f.input :displayed, as: :radio_buttons, label: "Share with our global community?", collection: ["Yes", "No, keep private"] %>
+          <%= f.submit "Create!", class: "btn orange-btn" %>
+        <% end %>
+      </div>
     </div>
-      <%= f.input :ingredients, hint: "Please write 1 ingredient per line", input_html: { value: "" } %>
-      <%= f.input :instructions, hint: "Please write 1 instruction per line", input_html: { value: "" } %>
-      <%= f.input :photo, as: :file, input_html: { class: "photo-upload" } %>
-      <%= f.input :displayed, as: :radio_buttons, label: "Share with our global community?", collection: ["Yes", "No, keep private"] %>
-    <%= f.submit "Create!", class: "btn orange-btn" %>
-  <% end %>
-</div>
+  </div>

@@ -1,6 +1,6 @@
 .modal-recipe-card {
   overflow: hidden;
-  height: 80px;
+  height: 90px;
   background: $white;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   display: flex;
@@ -12,19 +12,8 @@
   }
 }
 
-.modal-recipe-title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: 10ex;
-}
-
-.modal-recipe-title .black-title {
-  color: $black;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
+.modal-card-main {
+  width: 100%;
 }
 
 .modal-card-info {
@@ -32,6 +21,20 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.modal-recipe-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.modal-recipe-title .black-title {
+  color: $black;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .button-adding {
@@ -44,8 +47,4 @@
   &:hover {
     color: $orange;
   }
-}
-
-.modal-black-title {
-  color: $black;
 }

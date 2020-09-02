@@ -1,6 +1,6 @@
 <div class="banner-smaller" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dy9zumgoz/image/upload/v1599060136/ae96sokwvk654fmdwb0v.jpg);">
   <div class="container">
-    <h1 class="text-center my-4">My Calendar</h1>
+    <h1 class="text-center my-5">My Calendar</h1>
   </div>
 </div>
 
@@ -49,39 +49,42 @@
               <div class="modal-recipe-card my-2">
                 <%= cl_image_tag recipe.photo.key, height: 50, width: 50 %>
 
-                <div class="modal-card-info">
+                <div class="modal-card-main pl-3">
 
-                  <div class="modal-recipe-title pl-3">
-                    <div class="modal-black-title"><%= recipe.title %></div>
-                    <div class="text-secondary"><%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} min" %> • <%= recipe.difficulty %></div>
-                    <div class="rating d-flex align-items-center my-1">
-                      <% if !recipe.reviews.empty? %>
-                        <% ratings = recipe.reviews.map{|review| review.rating} %>
-                        <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
-                        <% medium_ratings.to_i.times do |r| %>
-                          <i class="fas fa-star text-warning"></i>
+                  <div class="modal-black-title"><%= recipe.title %></div>
+
+                  <div class="modal-card-info">
+                    <div class="modal-recipe-title">
+                      <div class="text-secondary"><%=recipe.preptime < 10 ? "#{recipe.preptime} h" : "#{recipe.preptime} min" %> • <%= recipe.difficulty %></div>
+                      <div class="rating d-flex align-items-center my-1">
+                        <% if !recipe.reviews.empty? %>
+                          <% ratings = recipe.reviews.map{|review| review.rating} %>
+                          <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
+                          <% medium_ratings.to_i.times do |r| %>
+                            <i class="fas fa-star text-warning"></i>
+                          <% end %>
+                          <% if medium_ratings != medium_ratings.to_i %>
+                            <i class="fas fa-star-half-alt text-warning"></i>
+                            <% medium_ratings += 1 %>
+                          <% end %>
+                          <% (5 - medium_ratings.to_i).times do |r| %>
+                            <i class="far fa-star text-warning"></i>
+                          <% end %>
+                        <% else %>
+                          <% 5.times do |r| %>
+                            <i class="far fa-star text-warning"></i>
+                          <% end %>
                         <% end %>
-                        <% if medium_ratings != medium_ratings.to_i %>
-                          <i class="fas fa-star-half-alt text-warning"></i>
-                          <% medium_ratings += 1 %>
-                        <% end %>
-                        <% (5 - medium_ratings.to_i).times do |r| %>
-                          <i class="far fa-star text-warning"></i>
-                        <% end %>
-                      <% else %>
-                        <% 5.times do |r| %>
-                          <i class="far fa-star text-warning"></i>
-                        <% end %>
-                      <% end %>
+                      </div>
                     </div>
-                  </div>
 
-                    <%= link_to "ADD MEAL", meals_path %>
+                      <%= link_to "ADD MEAL", meals_path %>
                   </div>
-
                 </div>
 
               </div>
+
+            </div>
 
           <% end %>
 
