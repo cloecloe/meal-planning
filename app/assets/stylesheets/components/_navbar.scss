@@ -13,8 +13,11 @@
   color: $black;
 }
 
-.navbar-meal .navbar-brand .white-text:hover {
-  color: $orange;
+.navbar-meal .navbar-brand .white-text {
+  transition: .2s;
+  &:hover {
+    color: $orange;
+  }
 }
 
 .navbar-meal .navbar-brand img {
@@ -24,12 +27,20 @@
   }
 }
 
-.navbar-collapse .nav-item a:hover {
-  color: $orange !important;
+.navbar-collapse .nav-item a {
+  transition: .2s;
+  &:hover {
+    color: $orange !important;
+  }
 }
 
 .navbar-collapse .icon-replace {
   display: none;
+}
+
+.signup-footer {
+  display: flex;
+  justify-content: center;
 }
 
 // Medium devices (tablets, 768px and up)
