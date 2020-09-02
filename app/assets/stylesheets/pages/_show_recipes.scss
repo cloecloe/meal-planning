@@ -1,4 +1,4 @@
-.show-container {
+.recipe-container {
   display: flex;
   justify-content: center;
   margin: 4% 3%;
@@ -45,8 +45,8 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 902px) {
-  .show-container {
+@media (min-width: 1000px) {
+  .recipe-container {
     .display-only-big-screen {
       width: 30%;
       display: flex;
@@ -58,6 +58,10 @@
     }
     .show_recipe {
       width: 70%;
+    }
+    .image-full {
+      width: 100%;
+      object-fit: cover;
     }
   }
 }

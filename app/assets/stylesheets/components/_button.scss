@@ -2,6 +2,7 @@
   background-color: $orange;
   opacity: 0.9;
   color: $white;
+  transition: .2s;
   &:hover {
     color: white;
     opacity: 1;
@@ -23,12 +24,7 @@
     background-color: $orange;
     opacity: 0.9;
     color: $white;
-    // font-weight: bold;
     display: inline-block;
-    // position: absolute;
-    // right: 5px;
-    // border: 1px solid $f-nav-green;
-    // border-radius: 12px;
     padding: 6px 30px;
     margin-top: 3px;
     outline: none;
@@ -36,8 +32,20 @@
     -webkit-user-select: none;
     cursor: pointer;
     font-size: 14px;
+    transition: .2s;
     &:hover {
       color: white;
       opacity: 1;
+    }
   }
+
+#sign-btn {
+  text-align: center;
+  color: $orange;
+  transition: .2s;
+  &:hover {
+    color: white;
+    background-color: $orange;
+    opacity: .9;
   }
+}

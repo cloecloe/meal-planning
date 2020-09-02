@@ -13,7 +13,8 @@ const initFavoriteAlgoliaSearch = () => {
   if (inputFavoriteField) {
     inputFavoriteField.addEventListener("input", () => {
       favoriteIndex.search(inputFavoriteField.value, {
-        filters: `user_ids:${currentUserId}`
+        filters: `user_ids:${currentUserId}`,
+        minWordSizefor1Typo: 2
         }).then((response) => {
         console.log(response);
       })
