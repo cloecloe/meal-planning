@@ -3,64 +3,107 @@
     <h1 class="text-center"><%= current_user.first_name %>'s Cookbook</h1>
   </div>
 </div>
+<div class="index-container m-4">
+    <div class="search-bar">
+      <form class="form-inline my-4 d-flex" >
+        <%# <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" /> %>
+          <%# <div class="search-form-control form-group"> %>
+            <input class="form-control" type="text" name="search" id="fav-search" placeholder="Search recipe..." />
+            <button name="button" type="submit" class="btn orange-btn"><i class="fas fa-search"></i></button>
+          <%# </div> %>
+        <%# </form> %>
+      </form>
 
-<div class="container">
-  <form class="form-inline my-4 d-flex" >
-    <%# <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" /> %>
-      <%# <div class="search-form-control form-group"> %>
-        <input class="form-control" type="text" name="search" id="fav-search" placeholder="Search recipe..." />
-        <button name="button" type="submit" class="btn orange-btn"><i class="fas fa-search"></i></button>
-      <%# </div> %>
-    <%# </form> %>
-  </form>
+      <h2 class="mb-4"><%= @favorites.count %> Recipes</h2>
+    </div>
 
-  <h2 class="mb-4"><%= @favorites.count %> Recipes</h2>
-</div>
+      <% if @favorites.empty? %>
+        <p> You don't have any recipes in your cookbook right now.</p>
+        <p> Find a new favourite today!</p>
 
-<div class="recipe-card-container mb-5">
+          <div id="horizontal-card-stack">
 
-  <% @favorites.each do |favorite| %>
-    <%= link_to recipe_path(favorite.recipe) do%>
-      <div class="recipe-card">
-        <%= cl_image_tag favorite.recipe.photo.key, height: 280, width: 370 %>
-        <div class="card-info">
-          <div class="icons-list">
-            <% if favorite.recipe.preptime >= 10 %>
-              <i class="icons-round fas fa-stopwatch-20"></i>
-            <% end %>
-            <% if favorite.recipe.serving.match(/[3-9]|10/) %>
-              <i class="icons-round fas fa-users"></i>
-            <% end %>
+            <%= link_to recipe_path(@other_recipe) do%>
+              <div class="smaller-recipe-card my-2">
+                <%= cl_image_tag @other_recipe.photo.key, height: 200 %>
+                <div class="smaller-card-info">
+                  <div class="smaller-recipe-title px-3">
+                    <strong><%= @other_recipe.title %></strong>
+                  </div>
+                </div>
+              </div>
+            <% end%>
+
+            <%= link_to recipe_path(@second_recipe) do%>
+              <div class="smaller-recipe-card my-2">
+                <%= cl_image_tag @second_recipe.photo.key, height: 200 %>
+                <div class="smaller-card-info">
+                  <div class="smaller-recipe-title px-3">
+                    <strong><%= @second_recipe.title %></strong>
+                  </div>
+                </div>
+              </div>
+            <% end%>
+
+            <%= link_to recipe_path(@third_recipe) do%>
+              <div class="smaller-recipe-card my-2">
+                <%= cl_image_tag @third_recipe.photo.key, height: 200 %>
+                <div class="smaller-card-info">
+                  <div class="smaller-recipe-title px-3">
+                    <strong><%= @third_recipe.title %></strong>
+                  </div>
+                </div>
+              </div>
+            <% end%>
+
           </div>
-          <div class="recipe-title px-3">
-            <div class="black-title"><strong><%= favorite.recipe.title %></strong></div>
-            <div class="text-secondary"><%= favorite.recipe.preptime < 5 ? "#{favorite.recipe.preptime} h" : "#{favorite.recipe.preptime} min" %> • <%= favorite.recipe.difficulty %></div>
+        <% else %>
 
-            <div class="rating d-flex align-items-center my-1">
-              <% if !favorite.recipe.reviews.empty? %>
-                <% ratings = favorite.recipe.reviews.map{|review| review.rating} %>
-                <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
-                <% medium_ratings.to_i.times do |r| %>
-                  <i class="fas fa-star text-warning"></i>
+
+    <div class="recipe-card-container mb-5">
+
+      <% @favorites.each do |favorite| %>
+        <%= link_to recipe_path(favorite.recipe) do%>
+          <div class="recipe-card">
+            <%= cl_image_tag favorite.recipe.photo.key, height: 280, width: 370 %>
+            <div class="card-info">
+              <div class="icons-list">
+                <% if favorite.recipe.preptime >= 10 %>
+                  <i class="icons-round fas fa-stopwatch-20"></i>
                 <% end %>
-                <% if medium_ratings != medium_ratings.to_i %>
-                  <i class="fas fa-star-half-alt text-warning"></i>
-                  <% medium_ratings += 1 %>
+                <% if favorite.recipe.serving.match(/[3-9]|10/) %>
+                  <i class="icons-round fas fa-users"></i>
                 <% end %>
-                <% (5 - medium_ratings.to_i).times do |r| %>
-                  <i class="far fa-star text-warning"></i>
-                <% end %>
-              <% else %>
-                <% 5.times do |r| %>
-                  <i class="far fa-star text-warning"></i>
-                <% end %>
-              <% end %>
+              </div>
+              <div class="recipe-title px-3">
+                <div class="black-title"><strong><%= favorite.recipe.title %></strong></div>
+                <div class="text-secondary"><%= favorite.recipe.preptime < 5 ? "#{favorite.recipe.preptime} h" : "#{favorite.recipe.preptime} min" %> • <%= favorite.recipe.difficulty %></div>
+
+                <div class="rating d-flex align-items-center my-1">
+                  <% if !favorite.recipe.reviews.empty? %>
+                    <% ratings = favorite.recipe.reviews.map{|review| review.rating} %>
+                    <% medium_ratings = ratings.sum.fdiv(ratings.count) %>
+                    <% medium_ratings.to_i.times do |r| %>
+                      <i class="fas fa-star text-warning"></i>
+                    <% end %>
+                    <% if medium_ratings != medium_ratings.to_i %>
+                      <i class="fas fa-star-half-alt text-warning"></i>
+                      <% medium_ratings += 1 %>
+                    <% end %>
+                    <% (5 - medium_ratings.to_i).times do |r| %>
+                      <i class="far fa-star text-warning"></i>
+                    <% end %>
+                  <% else %>
+                    <% 5.times do |r| %>
+                      <i class="far fa-star text-warning"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
             </div>
-
           </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-
+  </div>
 </div>
