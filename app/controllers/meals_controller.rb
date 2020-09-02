@@ -2,6 +2,9 @@ require 'nokogiri'
 require 'open-uri'
 class MealsController < ApplicationController
   def index
+    @other_recipe = Recipe.all.sample
+    @second_recipe = Recipe.select { |recipe| recipe.id != @other_recipe.id }.sample
+    @third_recipe = Recipe.select { |recipe| recipe.id != @second_recipe.id && recipe.id != @other_recipe.id }.sample
     @meals = Meal.all
     if params[:search]
       @recipes = Recipe.algolia_search(params[:search])
