@@ -44,6 +44,28 @@
   }
 }
 
+
+@media (min-width: 768px) {
+  .recipe-container {
+    .display-only-big-screen {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      margin: 0 2%;
+    }
+    .smaller-screen-display {
+      display: none;
+    }
+    .show_recipe {
+      width: 50%;
+    }
+    .image-full {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
 // Medium devices (tablets, 768px and up)
 @media (min-width: 1000px) {
   .recipe-container {
@@ -60,8 +82,10 @@
       width: 70%;
     }
     .image-full {
-      width: 100%;
+      width: 70%;
       object-fit: cover;
     }
   }
 }
+
+
