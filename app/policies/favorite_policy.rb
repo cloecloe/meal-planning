@@ -1,7 +1,7 @@
 class FavoritePolicy < ApplicationPolicy
-  def index?
-    return true
-  end
+  # def index?
+  #   return true
+  # end
 
   def create?
     return true
@@ -16,9 +16,11 @@ class FavoritePolicy < ApplicationPolicy
     return record.user_id == user.id || user.admin == true
   end
 
-  # class Scope < Scope
-  #   def resolve
-  #     scope.all
-  #   end
-  # end
+  class Scope < Scope
+    def resolve
+      # `scope` == Favorite class itself
+      # Should return an array of all favorites you're authorized to see
+      scope.includes(:recipe)
+    end
+  end
 end
