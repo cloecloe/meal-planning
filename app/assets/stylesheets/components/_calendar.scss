@@ -111,6 +111,9 @@ margin: 0 0 !important;
   &:hover {
     opacity: 1;
   }
+  &:nth-of-type(even) {
+    background: $orange;
+  }
 }
 
 .hover-garbage {

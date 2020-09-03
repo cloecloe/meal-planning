@@ -8,17 +8,17 @@
 <div class="index-recipes-container">
 
   <div class="favorite-search-bar">
-    <form class="form-inline my-4 d-flex" >
+    <form class="form-inline my-4" >
           <input class="form-control" type="text" name="search" id="fav-search" placeholder="Search recipes..." />
           <button type="submit" class="btn orange-btn"><i class="fas fa-search"></i></button>
     </form>
 
     <h2 class="mb-4"><%= @favorites.count %> Recipes</h2>
-  </div>
 
   <% if @favorites.empty? %>
     <p> You don't have any recipes in your cookbook right now.</p>
     <p> Find a new favourite today!</p>
+  </div>
 
     <div id="horizontal-card-stack">
 
@@ -55,6 +55,7 @@
         </div>
       <% end%>
     </div>
+  </div>
 
   <% else %>
 

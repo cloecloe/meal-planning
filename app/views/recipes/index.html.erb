@@ -9,6 +9,7 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 <div class="index-recipes-container">
 
   <div id= "multi-item-example" class="carous-container carousel slide carousel-multi-item" data-ride="carousel">
@@ -16,22 +17,22 @@
     <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
     </svg></a>
       <div class = "carousel-inner" role="listbox">
-          <div class = "carousel-item active">
-            <div class= "filters-container">
-              <div class = "filter-card"><%= link_to "All", recipes_path, class: "text-filter" %></div>
-              <div class = "filter-card"><%= link_to "Under 30 Minutes", recipes_path(@filter = "quick"), class: "text-filter" %></div>
-              <div class = "filter-card"><%= link_to "Recipes for Beginners", recipes_path(@filter = "easy"), class: "text-filter" %></div>
-              <div class = "filter-card"><%= link_to "Meals for 2", recipes_path(@filter = "couple"), class: "text-filter" %></div>
-            </div>
+        <div class = "carousel-item active">
+          <div class= "filters-container">
+            <div class = "filter-card"><%= link_to "All", recipes_path, class: "text-filter" %></div>
+            <div class = "filter-card"><%= link_to "Under 30 Minutes", recipes_path(@filter = "quick"), class: "text-filter" %></div>
+            <div class = "filter-card"><%= link_to "Recipes for Beginners", recipes_path(@filter = "easy"), class: "text-filter" %></div>
+            <div class = "filter-card"><%= link_to "Meals for 2", recipes_path(@filter = "couple"), class: "text-filter" %></div>
           </div>
-          <div class = "carousel-item">
-            <div class= "filters-container">
-              <div class = "filter-card"><%= link_to "Family Serving", recipes_path(@filter = "family"), class: "text-filter" %></div>
-              <div class = "filter-card"><%= link_to "Long Preparation", recipes_path(@filter = "long"), class: "text-filter" %></div>
-              <div class = "filter-card"><%= link_to "A Few Steps", recipes_path(@filter = "short"), class: "text-filter" %></div>
-              <div class = "filter-card"><%= link_to "Challenging Recipes", recipes_path(@filter = "effort"), class: "text-filter" %></div>
-            </div>
+        </div>
+        <div class = "carousel-item">
+          <div class= "filters-container">
+            <div class = "filter-card"><%= link_to "Family Serving", recipes_path(@filter = "family"), class: "text-filter" %></div>
+            <div class = "filter-card"><%= link_to "Long Preparation", recipes_path(@filter = "long"), class: "text-filter" %></div>
+            <div class = "filter-card"><%= link_to "A Few Steps", recipes_path(@filter = "short"), class: "text-filter" %></div>
+            <div class = "filter-card"><%= link_to "Challenging Recipes", recipes_path(@filter = "effort"), class: "text-filter" %></div>
           </div>
+        </div>
       </div>
       <a class="btn-floating arrow" href="#multi-item-example" data-slide="next"><svg width="40px" height="100px" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
