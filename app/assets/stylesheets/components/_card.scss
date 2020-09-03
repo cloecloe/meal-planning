@@ -101,6 +101,7 @@
 }
 
 .filter-card {
+
   width: 100%;
   margin: 1%;
   background-color: $orange;
@@ -109,14 +110,16 @@
   text-justify: center;
   transition: .2s;
   &:hover{
-  opacity: 1;
-  color: white;
+    opacity: 1;
+    color: white;
+    text-decoration: none !important;
   }
 }
 
 .text-filter {
-  color: $white;
   text-decoration: none !important;
+  font-size: 115%;
+  color: $white;
   &:hover {
     color: white;
   }

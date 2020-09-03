@@ -16,18 +16,18 @@
   <div class = "carousel-inner" role="listbox">
       <div class = "carousel-item active">
         <div class= "filters-container">
-          <div class = "filter-card"><%= link_to "All", recipes_path, class: "text-filter" %></div>
-          <div class = "filter-card"><%= link_to "Under 30 Minutes", recipes_path(@filter = "quick"), class: "text-filter" %></div>
-          <div class = "filter-card"><%= link_to "Recipes for Beginners", recipes_path(@filter = "easy"), class: "text-filter" %></div>
-          <div class = "filter-card"><%= link_to "Meals for 2", recipes_path(@filter = "couple"), class: "text-filter" %></div>
+          <%= link_to recipes_path, class: "filter-card" do %><div class = "text-filter">All</div><%end%>
+          <%= link_to recipes_path(@filter = "quick"), class: "filter-card" do %><div class = "text-filter" >Under 30 Minutes</div><%end%>
+          <%= link_to recipes_path(@filter = "easy"), class: "filter-card" do %><div class = "text-filter" >Recipes for Beginners</div><%end%>
+          <%= link_to recipes_path(@filter = "couple"), class: "filter-card" do %><div class = "text-filter" >Meals for 2</div><%end%>
         </div>
       </div>
       <div class = "carousel-item">
         <div class= "filters-container">
-          <div class = "filter-card"><%= link_to "Family Serving", recipes_path(@filter = "family"), class: "text-filter" %></div>
-          <div class = "filter-card"><%= link_to "Long Preparation", recipes_path(@filter = "long"), class: "text-filter" %></div>
-          <div class = "filter-card"><%= link_to "A Few Steps", recipes_path(@filter = "short"), class: "text-filter" %></div>
-          <div class = "filter-card"><%= link_to "Challenging Recipes", recipes_path(@filter = "effort"), class: "text-filter" %></div>
+          <%= link_to recipes_path(@filter = "family"), class: "filter-card" do %><div class = "text-filter" >Family Serving</div><%end%>
+          <%= link_to recipes_path(@filter = "long"), class: "filter-card" do %><div class = "text-filter" >Long Preparation</div><%end%>
+          <%= link_to recipes_path(@filter = "short"), class: "filter-card" do %><div class = "text-filter" >A Few Steps</div><%end%>
+          <%= link_to recipes_path(@filter = "effort"), class: "filter-card" do %><div class = "text-filter" >Challenging Recipes</div><%end%>
         </div>
       </div>
   </div>
