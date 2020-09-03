@@ -9,6 +9,7 @@ class FavoritesController < ApplicationController
     @third_recipe = Recipe.select { |recipe| recipe.id != @second_recipe.id && recipe.id != @other_recipe.id }.sample
     if params[:search].present?
       @favorites = Favorite.algolia_search(params[:search])
+      # PG SEARCH VERSION: @favorites = Favorite.search_by_recipe_title_and_ingredients(params[:search])
       policy_scope(Favorite)
       if @favorites.empty?
         @favorites = policy_scope(Favorite).where(user: current_user)
