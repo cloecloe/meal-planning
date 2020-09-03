@@ -93,8 +93,8 @@
             <% elsif @recipe.user_id == 9 %>
               <i class="fas fa-male"></i>
             <% elsif @recipe.user_id == 10 %>
-              <i class="fas fa-female"></i>  
-            <% end %>         
+              <i class="fas fa-female"></i>
+            <% end %>
           <% else %>
             <i class="far fa-user-circle"></i>
           <% end %>
@@ -108,10 +108,10 @@
           <%= f.hidden_field :favorited, value: @favorited.to_s %>
           <% if @favorited %>
             <!-- <i class="fas fa-heart" id="heart"></i> -->
-            <i class="fas fa-bookmark id="heart""></i>
+            <i class="fas fa-bookmark" id="heart"></i>
           <% else %>
             <!-- <i class="far fa-heart" id="heart"></i> -->
-            <i class="far fa-bookmark id="heart""></i>
+            <i class="far fa-bookmark" id="heart"></i>
           <% end %>
           <%= f.submit "", class: "favorite-submit" %>
         <% end %>
