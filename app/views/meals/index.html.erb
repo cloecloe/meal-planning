@@ -19,12 +19,12 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5>Share my calendar</h5>
+        <h5>Share my calendar (by email)</h5>
       </div>
       <div class="modal-body">
         <%= form_tag(share_path(current_user.calendar), method: :patch) do %>
           <%= text_field_tag 'email' %>
-          <%= submit_tag "Share" %>
+          <%= submit_tag "Share", class: "btn orange-btn" %>
         <% end %>
       </div>
     </div>
