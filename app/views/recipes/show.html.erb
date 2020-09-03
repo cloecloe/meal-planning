@@ -73,29 +73,27 @@
 
     <div class="align-items d-flex align-items-center justify-content-between">
       <div class="current-user d-flex align-items-center">
-          <% if user_signed_in? %>
-            <% if @recipe.user_id == 1 %>
-              <i class="fas fa-horse"></i>
-            <% elsif @recipe.user_id == 2 %>
-              <i class="fas fa-horse"></i>
-            <% elsif @recipe.user_id == 3 %>
-              <i class="fas fa-horse"></i>
-            <% elsif @recipe.user_id == 4 %>
-              <i class="fas fa-piggy-bank"></i>
-            <% elsif @recipe.user_id == 5 %>
-              <i class="fas fa-cat"></i>
-            <% elsif @recipe.user_id == 6 %>
-              <i class="fas fa-fish"></i>
-            <% elsif @recipe.user_id == 7 %>
-              <i class="fas fa-hotdog"></i>
-            <% elsif @recipe.user_id == 8 %>
-              <i class="fas fa-hotdog"></i>
-            <% elsif @recipe.user_id == 9 %>
-              <i class="fas fa-male"></i>
-            <% elsif @recipe.user_id == 10 %>
-              <i class="fas fa-female"></i>
-            <% end %>
-          <% else %>
+          <% if @recipe.user_id == 1 %>
+            <i class="fas fa-horse"></i>
+          <% elsif @recipe.user_id == 2 %>
+            <i class="fas fa-horse"></i>
+          <% elsif @recipe.user_id == 3 %>
+            <i class="fas fa-horse"></i>
+          <% elsif @recipe.user_id == 4 %>
+            <i class="fas fa-piggy-bank"></i>
+          <% elsif @recipe.user_id == 5 %>
+            <i class="fas fa-cat"></i>
+          <% elsif @recipe.user_id == 6 %>
+            <i class="fas fa-fish"></i>
+          <% elsif @recipe.user_id == 7 %>
+            <i class="fas fa-hotdog"></i>
+          <% elsif @recipe.user_id == 8 %>
+            <i class="fas fa-hotdog"></i>
+          <% elsif @recipe.user_id == 9 %>
+            <i class="fas fa-male"></i>
+          <% elsif @recipe.user_id == 10 %>
+            <i class="fas fa-female"></i>
+          <% elsif %>
             <i class="far fa-user-circle"></i>
           <% end %>
           <div class="d-flex flex-column ml-2 my-3">
@@ -181,7 +179,31 @@
           <div class="my-3">
             <div class="header-review d-flex justify-content-between">
               <div class="current-user d-flex align-items-center">
-                <i class="fas fa-pepper-hot bigger-icon"></i>
+
+                <% if review.user_id == 1 %>
+                  <i class="fas fa-horse"></i>
+                <% elsif review.user_id == 2 %>
+                  <i class="fas fa-horse"></i>
+                <% elsif review.user_id == 3 %>
+                  <i class="fas fa-horse"></i>
+                <% elsif review.user_id == 4 %>
+                  <i class="fas fa-piggy-bank"></i>
+                <% elsif review.user_id == 5 %>
+                  <i class="fas fa-cat"></i>
+                <% elsif review.user_id == 6 %>
+                  <i class="fas fa-fish"></i>
+                <% elsif review.user_id == 7 %>
+                  <i class="fas fa-hotdog"></i>
+                <% elsif review.user_id == 8 %>
+                  <i class="fas fa-hotdog"></i>
+                <% elsif review.user_id == 9 %>
+                  <i class="fas fa-male"></i>
+                <% elsif review.user_id == 10 %>
+                  <i class="fas fa-female"></i>
+                <% elsif %>
+                  <i class="far fa-user-circle"></i>
+                <% end %>
+
                 <div class="d-flex flex-column ml-2">
                   <strong><%= review.user.first_name %> <%= review.user.last_name %></strong>
 
