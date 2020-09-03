@@ -13,7 +13,7 @@
     </form>
 
     <h2 class="mb-4"><%= @favorites.count %> Recipes</h2>
-  </div>
+
 
   <% if @favorites.empty? %>
     <p> You don't have any recipes in your cookbook right now.</p>
@@ -54,6 +54,7 @@
         </div>
       <% end%>
     </div>
+  </div>
 
   <% else %>
 
