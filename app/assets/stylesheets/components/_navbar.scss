@@ -3,6 +3,13 @@
   background: $white;
 }
 
+.full-screen-size {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
 .navbar-meal .navbar-collapse {
   flex-grow: 0;
 }
