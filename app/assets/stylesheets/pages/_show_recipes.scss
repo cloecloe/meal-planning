@@ -1,5 +1,6 @@
 .recipe-container {
   display: flex;
+  align-items: flex-start;
   justify-content: center;
   margin: 4% 3%;
   .show_recipe {
@@ -70,7 +71,13 @@
       object-fit: cover;
     }
   }
+  .sticky-sidebar {
+  position: sticky;
+  top: 60px;
+  }
 }
+
+
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 1205px) {
