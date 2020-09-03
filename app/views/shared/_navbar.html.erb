@@ -1,61 +1,60 @@
 <nav class="navbar navbar-expand navbar-light navbar-meal sticky-top">
-  <div class="full-screen-size">
-    <div class="collapse navbar-collapse">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <%= cl_image_tag("hcy3sm5ch14bjarjzqil") %>
-        <div class="white-text coriander">Coriander</div>
+
+  <div class="collapse navbar-collapse">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= cl_image_tag("hcy3sm5ch14bjarjzqil") %>
+      <div class="white-text coriander">Coriander</div>
+    <% end %>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to recipes_path , class: "nav-link" do %>
+            <div class="word">Home</div>
+              <i class="fas fa-home icon-replace"></i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to meals_path , class: "nav-link" do %>
+            <div class="word">Calendar</div>
+              <i class="far fa-calendar-alt icon-replace"></i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to favorites_path , class: "nav-link" do %>
+            <div class="word">Cookbook</div>
+              <i class="fas fa-book-open icon-replace"></i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_recipe_path , class: "nav-link" do %>
+            <div class="word">Add recipe</div>
+              <i class="far fa-plus-square icon-replace"></i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <div class="word">Log out (</i><%= current_user.first_name %>)</div>
+            <i class="fas fa-sign-out-alt icon-replace"></i>
+          <% end %>
+        </li>
+
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", "#", class: "nav-link", data: { toggle: "modal", target: "#loginModal" } %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", "#", class: "nav-link", data: { toggle: "modal", target: "#signupModal" } %>
+        </li>
       <% end %>
-    </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <ul class="navbar-nav mr-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to recipes_path , class: "nav-link" do %>
-              <div class="word">Home</div>
-                <i class="fas fa-home icon-replace"></i>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to meals_path , class: "nav-link" do %>
-              <div class="word">Calendar</div>
-                <i class="far fa-calendar-alt icon-replace"></i>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to favorites_path , class: "nav-link" do %>
-              <div class="word">Cookbook</div>
-                <i class="fas fa-book-open icon-replace"></i>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_recipe_path , class: "nav-link" do %>
-              <div class="word">Add recipe</div>
-                <i class="far fa-plus-square icon-replace"></i>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-              <div class="word">Log out (</i><%= current_user.first_name %>)</div>
-              <i class="fas fa-sign-out-alt icon-replace"></i>
-            <% end %>
-          </li>
-
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", "#", class: "nav-link", data: { toggle: "modal", target: "#loginModal" } %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign up", "#", class: "nav-link", data: { toggle: "modal", target: "#signupModal" } %>
-          </li>
-        <% end %>
-
-      </ul>
-
-    </div>
+    </ul>
 
   </div>
+
 </nav>
 
 <% if !user_signed_in? %>

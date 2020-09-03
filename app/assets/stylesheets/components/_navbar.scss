@@ -1,13 +1,8 @@
 .navbar-meal {
-  justify-content: space-between;
-  background: $white;
-}
-
-.full-screen-size {
-  max-width: 1200px;
-  width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 9%;
+  background: $white;
 }
 
 .navbar-meal .navbar-collapse {
