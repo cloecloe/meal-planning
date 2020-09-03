@@ -5,7 +5,6 @@ const buildCards = (response) => {
   const algoIDs = response.hits.map(recipe => parseInt(recipe.objectID, 10));
   document.querySelectorAll(".recipe-result").forEach((card) => {
     if (!algoIDs.includes(Number(card.dataset.recipeId))) {
-      console.log(card)
       card.hidden = true;
     } else if (algoIDs.includes(Number(card.dataset.recipeId))) {
       card.hidden = false;
@@ -14,7 +13,7 @@ const buildCards = (response) => {
 }
 
 const initRecipeAlgoliaSearch = () => {
-  const inputRecipeField = document.querySelector("#search");
+  const inputRecipeField = document.querySelector("#calendar-search");
   const appId = document.querySelector("meta[name='algolia-app-id']").content;
   const searchOnlyApiKey = document.querySelector("meta[name='algolia-search-only-api-key']").content;
 
@@ -30,7 +29,6 @@ const initRecipeAlgoliaSearch = () => {
             minWordSizefor1Typo: 2
         }).then((response) => {
             if (results) {
-              console.log(response)
               buildCards(response);
             };
         })
