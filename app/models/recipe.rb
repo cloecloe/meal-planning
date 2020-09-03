@@ -6,6 +6,17 @@ class Recipe < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one_attached :photo
 
+  #*************************************************
+  #PG SEARCH VERSION:
+  # include PgSearch::Model
+  # pg_search_scope :search_by_title_and_ingredients,
+  #   against: [ :title, :syllabus ],
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
+  #*************************************************
+
+
   include AlgoliaSearch
 
   algoliasearch do

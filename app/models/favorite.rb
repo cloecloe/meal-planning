@@ -3,6 +3,18 @@ class Favorite < ApplicationRecord
   belongs_to :recipe
   validates_uniqueness_of :recipe_id, scope: :user_id
 
+  #*************************************************
+  #PG SEARCH VERSION:
+  # include PgSearch::Model
+  # pg_search_scope :search_by_recipe_title_and_ingredients,
+    # associated_against: {
+    #   recipe: [ :title, :ingredients ]
+    # },
+    # using: {
+    #   tsearch: { prefix: true }
+    # }
+  #*************************************************
+
   include AlgoliaSearch
   
   algoliasearch do
