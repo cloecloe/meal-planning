@@ -35,7 +35,7 @@
         </li>
         <li class="nav-item">
           <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-            <i class="fas fa-sign-out-alt mx-1"></i><%= current_user.first_name %>
+            Log out (</i><%= current_user.first_name %>)
           <% end %>
         </li>
 

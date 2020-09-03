@@ -6,9 +6,11 @@ class CalendarsController < ApplicationController
 
   def share
     @user = User.find_by(email: params[:email])
+    calendar = Calendar.find(params[:id])
+    authorize(calendar)
     if @user
       @user.calendar_id = params[:id]
-      @user.save
+      @user.save!
       redirect_to meals_path
       flash[:notice] = "Share successful"
     else

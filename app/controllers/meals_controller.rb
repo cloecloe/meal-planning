@@ -5,7 +5,7 @@ class MealsController < ApplicationController
     @other_recipe = Recipe.all.sample
     @second_recipe = Recipe.select { |recipe| recipe.id != @other_recipe.id }.sample
     @third_recipe = Recipe.select { |recipe| recipe.id != @second_recipe.id && recipe.id != @other_recipe.id }.sample
-    @meals = Meal.all
+    @meals = current_user.calendar.meals
     if params[:search]
       @recipes = Recipe.algolia_search(params[:search])
       # PG SEARCH VERSION: @recipes = Recipe.search_by_title_and_ingredients(params[:search])
