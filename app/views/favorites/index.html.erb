@@ -12,49 +12,50 @@
           <input class="form-control" type="text" name="search" id="fav-search" placeholder="Search recipes..." />
           <button type="submit" class="btn orange-btn"><i class="fas fa-search"></i></button>
     </form>
+  </div>
 
-    <h2 class="mb-4"><%= @favorites.count %> Recipes</h2>
+  <h2 class="mb-4"><%= @favorites.count %> Recipes</h2>
 
   <% if @favorites.empty? %>
     <p> You don't have any recipes in your cookbook right now.</p>
     <p> Find a new favourite today!</p>
-  </div>
 
-  <div id="horizontal-card-stack">
+    <div id="horizontal-card-stack">
 
-    <%= link_to recipe_path(@other_recipe) do%>
-      <div class="smaller-recipe-card my-2">
-        <%= cl_image_tag @other_recipe.photo.key, height: 200 %>
-        <div class="smaller-card-info">
-          <div class="smaller-recipe-title px-3">
-            <strong><%= @other_recipe.title %></strong>
+      <%= link_to recipe_path(@other_recipe) do%>
+        <div class="smaller-recipe-card my-2">
+          <%= cl_image_tag @other_recipe.photo.key, height: 200 %>
+          <div class="smaller-card-info">
+            <div class="smaller-recipe-title px-3">
+              <strong><%= @other_recipe.title %></strong>
+            </div>
           </div>
         </div>
-      </div>
-    <% end%>
+      <% end%>
 
-    <%= link_to recipe_path(@second_recipe) do%>
-      <div class="smaller-recipe-card my-2">
-        <%= cl_image_tag @second_recipe.photo.key, height: 200 %>
-        <div class="smaller-card-info">
-          <div class="smaller-recipe-title px-3">
-            <strong><%= @second_recipe.title %></strong>
+      <%= link_to recipe_path(@second_recipe) do%>
+        <div class="smaller-recipe-card my-2">
+          <%= cl_image_tag @second_recipe.photo.key, height: 200 %>
+          <div class="smaller-card-info">
+            <div class="smaller-recipe-title px-3">
+              <strong><%= @second_recipe.title %></strong>
+            </div>
           </div>
         </div>
-      </div>
-    <% end%>
+      <% end%>
 
-    <%= link_to recipe_path(@third_recipe) do%>
-      <div class="smaller-recipe-card my-2">
-        <%= cl_image_tag @third_recipe.photo.key, height: 200 %>
-        <div class="smaller-card-info">
-          <div class="smaller-recipe-title px-3">
-            <strong><%= @third_recipe.title %></strong>
+      <%= link_to recipe_path(@third_recipe) do%>
+        <div class="smaller-recipe-card my-2">
+          <%= cl_image_tag @third_recipe.photo.key, height: 200 %>
+          <div class="smaller-card-info">
+            <div class="smaller-recipe-title px-3">
+              <strong><%= @third_recipe.title %></strong>
+            </div>
           </div>
         </div>
-      </div>
-    <% end%>
-  </div>
+      <% end%>
+
+    </div>
 
   <% else %>
 
