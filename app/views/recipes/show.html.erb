@@ -6,6 +6,7 @@
 <%# end %>
 
 <div class="recipe-container">
+
   <div class="show_recipe mt-4">
 
 <!-- Title -->
@@ -51,8 +52,9 @@
       <% end %>
     </div>
 
-
-    <%= cl_image_tag @recipe.photo.key, height: 480, crop: :scale, class: "image-full" %>
+    <div class="image-full">
+      <%= cl_image_tag @recipe.photo.key, height: 480 %>
+    </div>
 
 <!-- Card after image for prep time, servings, info on recipe creator,... -->
 
