@@ -205,42 +205,44 @@
   <% end %>
 </div>
 
-<div class="meal-container-recipe my-5">
-  <h2>Try these recipes:</h2>
-  <div id="horizontal-card-stack">
+<div class="index-recipes-container">
+  <div class="meal-container-recipe my-5">
+    <h2>Try these recipes:</h2>
+    <div id="horizontal-card-stack">
 
-    <%= link_to recipe_path(@other_recipe) do%>
-      <div class="smaller-recipe-card my-2">
-        <%= cl_image_tag @other_recipe.photo.key, height: 200 %>
-        <div class="smaller-card-info">
-          <div class="smaller-recipe-title px-3">
-            <strong><%= @other_recipe.title %></strong>
+      <%= link_to recipe_path(@other_recipe) do%>
+        <div class="smaller-recipe-card my-2">
+          <%= cl_image_tag @other_recipe.photo.key, height: 200 %>
+          <div class="smaller-card-info">
+            <div class="smaller-recipe-title px-3">
+              <strong><%= @other_recipe.title %></strong>
+            </div>
           </div>
         </div>
-      </div>
-    <% end%>
+      <% end%>
 
-    <%= link_to recipe_path(@second_recipe) do%>
-      <div class="smaller-recipe-card my-2">
-        <%= cl_image_tag @second_recipe.photo.key, height: 200 %>
-        <div class="smaller-card-info">
-          <div class="smaller-recipe-title px-3">
-            <strong><%= @second_recipe.title %></strong>
+      <%= link_to recipe_path(@second_recipe) do%>
+        <div class="smaller-recipe-card my-2">
+          <%= cl_image_tag @second_recipe.photo.key, height: 200 %>
+          <div class="smaller-card-info">
+            <div class="smaller-recipe-title px-3">
+              <strong><%= @second_recipe.title %></strong>
+            </div>
           </div>
         </div>
-      </div>
-    <% end%>
+      <% end%>
 
-    <%= link_to recipe_path(@third_recipe) do%>
-      <div class="smaller-recipe-card my-2">
-        <%= cl_image_tag @third_recipe.photo.key, height: 200 %>
-        <div class="smaller-card-info">
-          <div class="smaller-recipe-title px-3">
-            <strong><%= @third_recipe.title %></strong>
+      <%= link_to recipe_path(@third_recipe) do%>
+        <div class="smaller-recipe-card my-2">
+          <%= cl_image_tag @third_recipe.photo.key, height: 200 %>
+          <div class="smaller-card-info">
+            <div class="smaller-recipe-title px-3">
+              <strong><%= @third_recipe.title %></strong>
+            </div>
           </div>
         </div>
-      </div>
-    <% end%>
+      <% end%>
+    </div>
+
   </div>
-
 </div>
