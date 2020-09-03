@@ -1,9 +1,9 @@
 .recipe-card-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 40px;
   justify-items: center;
   align-items: center;
+  row-gap: 15px;
   a {
     text-decoration: none;
   }
@@ -76,7 +76,7 @@
 }
 
 .carous-container {
-  margin: 1% 8%;
+  margin: 1% 0;
   display: flex;
   height: max-content;
   justify-items: center;

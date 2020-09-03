@@ -81,7 +81,9 @@
                       </div>
                     </div>
 
-                      <%= link_to "ADD MEAL", meals_path %>
+                      <%= link_to meals_path do %>
+                        <i class="far fa-plus-square add-meal-button bigger-icon"></i>
+                      <% end %>
                   </div>
                 </div>
 
