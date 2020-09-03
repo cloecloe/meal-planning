@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
     end
     if params[:search].present?
       @recipes = Recipe.algolia_search(params[:search])
+      # PG SEARCH VERSION: @recipes = Recipe.search_by_title_and_ingredients(params[:search])
       policy_scope(Recipe)
       if @recipes.empty?
         @recipes = Recipe.where(displayed: true)
