@@ -124,9 +124,10 @@ margin: 0 0 !important;
 .hover-garbage {
   display: none;
   font-size: 14px;
-  color: $orange ;
+  color: $white;
+  opacity: 0.7;
   &:hover {
-    color: $white;
+    opacity: 1;
   }
 }
 
