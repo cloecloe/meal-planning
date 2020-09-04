@@ -98,7 +98,9 @@ margin: 0 0 !important;
   height: fit-content;
   padding: 2% 2%;
   margin: 2% 2%;
-  background-color: $coral;
+  background-color: $white;
+  border: 1px solid $coral;
+  color: $coral;
   opacity: 0.8;
   border-radius: 8px;
   display: flex ;
@@ -106,7 +108,7 @@ margin: 0 0 !important;
   align-items: center;
   a {
     text-decoration: none;
-    color: $white;
+    color: $coral;
   }
   &:hover {
     opacity: 1;
@@ -115,9 +117,9 @@ margin: 0 0 !important;
 
 .hover-garbage {
   font-size: 14px;
-  color: white;
+  color: $orange ;
   &:hover {
-    color: $orange;
+    color: $white;
   }
 }
 
