@@ -18,3 +18,13 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+
+.form-inline {
+  width: 50%;
+  display:flex;
+  flex-flow: nowrap;
+  justify-content: space-between;
+  .form-control {
+    width: 100%;
+  }
+}

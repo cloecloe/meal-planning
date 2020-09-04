@@ -1,9 +1,9 @@
 .recipe-card-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 40px;
   justify-items: center;
   align-items: center;
+  row-gap: 15px;
   a {
     text-decoration: none;
   }
@@ -76,7 +76,7 @@
 }
 
 .carous-container {
-  margin: 1% 8%;
+  margin: 1% 0;
   display: flex;
   height: max-content;
   justify-items: center;
@@ -101,6 +101,7 @@
 }
 
 .filter-card {
+
   width: 100%;
   margin: 1%;
   background-color: $orange;
@@ -109,14 +110,16 @@
   text-justify: center;
   transition: .2s;
   &:hover{
-  opacity: 1;
-  color: white;
+    opacity: 1;
+    color: white;
+    text-decoration: none !important;
   }
 }
 
 .text-filter {
-  color: $white;
   text-decoration: none !important;
+  font-size: 115%;
+  color: $white;
   &:hover {
     color: white;
   }

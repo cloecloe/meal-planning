@@ -91,6 +91,14 @@ margin: 0 0 !important;
   flex-direction: column;
   align-items: stretch;
   overflow-y: auto;
+  &:hover {
+    .add-meal-button {
+      display: block;
+    }
+    .hover-garbage {
+      display: block;
+    }
+  }
 }
 
 .meal-card {
@@ -113,9 +121,13 @@ margin: 0 0 !important;
   &:hover {
     opacity: 1;
   }
+  &:nth-of-type(even) {
+    background: $orange;
+  }
 }
 
 .hover-garbage {
+  display: none;
   font-size: 14px;
   color: $orange ;
   &:hover {
@@ -130,6 +142,7 @@ margin: 0 0 !important;
 }
 
 .add-meal-button {
+  display: none;
   color: $orange;
   padding: 1px 2px;
   opacity: 0.7;
@@ -219,7 +232,6 @@ margin: 0 0 !important;
         text-align: center
       }
     }
-
     .icons{
       opacity: 0.7;
     }

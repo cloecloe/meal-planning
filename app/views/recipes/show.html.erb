@@ -6,6 +6,7 @@
 <%# end %>
 
 <div class="recipe-container">
+
   <div class="show_recipe mt-4">
 
 <!-- Title -->
@@ -51,8 +52,9 @@
       <% end %>
     </div>
 
-
-    <%= cl_image_tag @recipe.photo.key, height: 480, crop: :scale, class: "image-full" %>
+    <div class="image-full">
+      <%= cl_image_tag @recipe.photo.key, height: 480 %>
+    </div>
 
 <!-- Card after image for prep time, servings, info on recipe creator,... -->
 
@@ -240,7 +242,7 @@
 
 <!-- Right side of the screen: calendar form and recipe ideas -->
 
-  <div class="display-only-big-screen mt-5">
+  <div class="display-only-big-screen mt-5 sticky-sidebar">
     <div class="grey-form p-3">
       <h4>Add to your calendar</h4>
       <%= simple_form_for [@recipe, @meal] do |f| %>
