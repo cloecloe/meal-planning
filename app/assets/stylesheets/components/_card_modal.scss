@@ -24,11 +24,17 @@
   align-items: flex-start;
 }
 
-.bigger-icon {
-  font-size: 20px;
+.bigger-icon-card {
+  font-size: 30px;
   position: absolute;
   right: 20px;
   bottom: 30px;
+  color: $orange;
+  opacity: 0.7;
+  &:hover {
+    color: $orange;
+    opacity: 1;
+  }
 }
 
 .modal-recipe-title {
