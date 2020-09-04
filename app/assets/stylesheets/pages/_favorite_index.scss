@@ -3,3 +3,13 @@
   width: 50%;
   }
 }
+
+
+@media (max-width: 576px) {
+  .favorite-search-bar {
+    .form-inline {
+      width: 100%;
+    }
+  }
+}
+
